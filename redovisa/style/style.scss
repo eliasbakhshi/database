@@ -1,0 +1,36 @@
+@import "_reset.scss";
+
+body {
+    margin: 0 auto;
+    background: #fff;
+    width: 700px;
+    font-family: Arial, Helvetica, sans-serif;
+    header {
+        background-color: rgb(243, 243, 243);
+        border-radius: 10px;
+        nav{
+            display: flex;
+            align-content: center;
+            padding: 1em 1em 1em 1em;
+            a{
+                border-radius: 10px;
+                padding: .5em 1em .5em 1em;
+                &:hover {
+                    background-color: rgb(231, 231, 231);
+                }
+            }
+        }
+    }
+    article{
+        margin-top: 2em;
+        h1 {
+            margin: 1em 0 ;
+        }
+        img {
+            width: 100%;
+            margin: 2em 0;
+            border-radius: 10px;
+
+        }
+    }
+}
