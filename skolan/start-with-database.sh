@@ -7,5 +7,6 @@ sudo mariadb --table skolan < insert-larare.sql
 sudo mariadb --table skolan < ddl-alter.sql
 sudo mariadb --table skolan < dml-update.sql
 sudo mariadb --table skolan < dml-update-lonerevision.sql
+sudo mariadb --table skolan < dml-select.sql
 
 echo "Database is ready to use."
