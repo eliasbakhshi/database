@@ -10,7 +10,7 @@ FROM larare;
 -- Albus kompetens är nu 7 och lönen har ökat till 85 000.
 UPDATE larare SET kompetens = 7 , lon = 85000 where fornamn = "Albus";
 -- Minervas lön har ökat med 4 000.
-UPDATE larare l set l.lon = l.lon + 400 where l.fornamn = "Minervas";
+UPDATE larare l set l.lon = l.lon + 4000 where l.fornamn = "Minerva";
 -- Argus har fått ett risktillägg om 2 000 och kompetensen är satt till 3.
 UPDATE larare l set l.lon = l.lon + 2000, l.kompetens = 3 where l.fornamn = "Argus";
 
@@ -28,3 +28,11 @@ UPDATE larare l set l.lon = l.lon + 5000, l.kompetens = l.kompetens + 1 where l.
 
 -- Ge alla lärare en ökning om 2.2% men exkludera Albus, Severus, Minerva och Hagrid som redan fått tillräckligt.
 UPDATE larare l set l.lon = round(l.lon * 1.022) where l.fornamn not in ("Albus", "Severus", "Minerva", "Hagrid");
+
+-- Vilken är numer den totala lönesumman?
+-- Hur många % har lönesumman ökat från föregående lönesumma? Du kan hårdkoda den ursprungliga lönesumman.
+-- Vilken är numer den totala kompetensen?
+select sum(lon) as 'Lönesumma', ((sum(lon) - 305000) / (305000 / 100)) as 'Lönesumma ökning %', sum(kompetens) as 'Kompetens' from larare;
+
+
+

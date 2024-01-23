@@ -13,3 +13,6 @@ UPDATE larare
     WHERE
         lon IS NULL
 ;
+
+
+select * from larare;
