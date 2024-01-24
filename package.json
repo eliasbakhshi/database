@@ -1,0 +1,23 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliasbakhshi/database.git"
+  },
+  "author": "Elias Bakhshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliasbakhshi/database/issues"
+  },
+  "homepage": "https://github.com/eliasbakhshi/database#readme",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "promise-mysql": "^5.2.0"
+  }
+}

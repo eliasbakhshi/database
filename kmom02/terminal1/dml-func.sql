@@ -1,0 +1,27 @@
+-- Strängfunktioner --
+
+-- Skriv en SELECT-sats som skriver ut förnamn + efternamn + avdelning i samma kolumn enligt följande struktur: förnamn efternamn (avdelning). (Tips: Att slå ihop strängar kallas att konkatenera/concatenate).
+select concat(fornamn, " ", efternamn, " (", avdelning, ")" ) as NamnAvdelning from larare;
+
+-- Gör om samma sak men skriv ut avdelningens namn med små bokstäver och begränsa utskriften till 3 rader.
+select concat(fornamn, " ", efternamn, " (", lower(avdelning), ")" ) as NamnAvdelning from larare limit 3;
+
+
+
+-- Datum och tid --
+
+-- Skriv en SELECT-sats som endast visar dagens datum.
+select fornamn, fodd, DATE_FORMAT(NOW(),"%Y-%m-%d") as 'Dagens datum' from larare;
+
+-- Gör en SELECT-sats som visar samtliga lärare, deras födelseår samt dagens datum och klockslag.
+select fornamn, fodd, DATE_FORMAT(NOW(),"%Y-%m-%d") as "Dagens datum", DATE_FORMAT(NOW(),"%H:%i:%s") as "Klockslag" from larare;
+
+
+
+-- Beräkna ålder --
+
+-- Skriv en SELECT-sats som beräknar lärarens ålder, sortera rapporten för att visa vem som är äldst och yngst.
+select fornamn, fodd, year(NOW()) - year(fodd) as 'Ålder' from larare order by Ålder desc;
+
+-- Visa de lärare som är födda på 40-talet.
+select fornamn, fodd, year(NOW()) - year(fodd) as 'Ålder' from larare where YEAR(fodd) between 1940 and 1950 order by Ålder desc;
