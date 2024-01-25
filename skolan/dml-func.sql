@@ -21,7 +21,23 @@ select fornamn, fodd, DATE_FORMAT(NOW(),"%Y-%m-%d") as "Dagens datum", DATE_FORM
 -- Beräkna ålder --
 
 -- Skriv en SELECT-sats som beräknar lärarens ålder, sortera rapporten för att visa vem som är äldst och yngst.
-select fornamn, fodd, year(NOW()) - year(fodd) as 'Ålder' from larare order by Ålder desc;
+select fornamn, fodd, TIMESTAMPDIFF(YEAR, fodd, CURDATE()) as 'Ålder' from larare order by Ålder desc;
 
 -- Visa de lärare som är födda på 40-talet.
-select fornamn, fodd, year(NOW()) - year(fodd) as 'Ålder' from larare where YEAR(fodd) between 1940 and 1950 order by Ålder desc;
+select fornamn, fodd, TIMESTAMPDIFF(YEAR, fodd, CURDATE()) as 'Ålder' from larare where YEAR(fodd) between 1940 and 1950 order by Ålder desc;
+
+
+
+SELECT
+        akronym,
+        fornamn,
+        efternamn,
+        avdelning,
+        lon,
+        kompetens,
+        DATE_FORMAT(fodd,"%Y-%m-%d") as fodd
+      FROM larare
+      WHERE
+          kompetens BETWEEN 0 AND 20000000
+          OR lon BETWEEN 0 AND 20000000
+      ORDER BY akronym;
