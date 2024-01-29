@@ -7,12 +7,13 @@
 
 const mysql = require("promise-mysql");
 const config = require("./config.json");
+
 /**
  * Main function.
  * @async
  * @returns void
  */
-(async function() {
+(async function () {
     let sql;
     let res;
     const db = await mysql.createConnection(config);

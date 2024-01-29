@@ -7,6 +7,7 @@
 
 const mysql = require("promise-mysql");
 const config = require("./config.json");
+const { table } = require("table");
 
 /**
  * Output resultset as formatted table with details on teachers.
@@ -16,33 +17,19 @@ const config = require("./config.json");
  * @returns {string} Formatted table to print out.
  */
 function getAsTable(res) {
-    let str;
+    let data = [["Akronym", "Namn", "Avdelning", "Lön", "Komp", "Född"]];
 
-    str = "+-----------+---------------------+-----------+----------+----------+------------+\n";
-    str += "| Akronym   | Namn                | Avdelning |   Lön    |   Komp   |    Född    |\n";
-    str += "|-----------|---------------------|-----------|----------|----------|------------|\n";
+    // Add each teacher's information in the array
     for (const row of res) {
-        str += "| ";
-        str += row.akronym.padEnd(10);
-        str += "| ";
-        str += (row.fornamn + " " + row.efternamn).padEnd(20);
-        str += "| ";
-        str += row.avdelning.padEnd(10);
-        str += "| ";
-        str += row.lon.toString().padEnd(9);
-        str += "| ";
-        str += row.kompetens.toString().padEnd(9);
-        str += "| ";
-        str += row.fodd.toString().padEnd(9);
-        str += " |\n";
+        /* eslint-disable max-len */
+        data.push([row.akronym, row.fornamn + " " + row.efternamn, row.avdelning, row.lon.toString(), row.kompetens.toString(), row.fodd.toString()]);
+        /* eslint-enable max-len */
     }
-    str += "+-----------+---------------------+-----------+----------+----------+------------+\n";
-
-    return str;
+    return table(data);
 }
 
 /**
- * Output resultset as formatted table with details on a teacher.
+ * Output result set as formatted table with details on a teacher.
  *
  * @async
  * @param {connection} db     Database connection.
@@ -146,7 +133,7 @@ async function searchAll() {
         ORDER BY akronym;
     `;
     let res = await db.query(sql);
-	
+
     db.end();
     return res;
 }

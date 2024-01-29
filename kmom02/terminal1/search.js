@@ -24,7 +24,7 @@ const rl = readline.createInterface({
     // Ask question and handle answer in async arrow function callback.
     rl.question("What to search for? ", async (search) => {
         const res = await f.searchLike(search);
-		
+
         console.info(await f.getAsTable(res));
 
         rl.close();

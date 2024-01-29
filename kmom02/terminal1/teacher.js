@@ -18,6 +18,6 @@ const f = require("./functions");
  */
 (async function () {
     const res = await f.searchAll();
-	
+
     console.info(await f.getAsTable(res));
 })();

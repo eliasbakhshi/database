@@ -1,7 +1,6 @@
 --
 -- Add teacher staff
 -- Empty first the table
-USE skolan;
 
 DELETE FROM larare;
 

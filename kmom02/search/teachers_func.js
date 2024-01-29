@@ -14,25 +14,25 @@ const config = require("./config.json");
  * @returns {string} Formatted table to print out.
  */
 function teacherAsTable(res) {
-  let str;
+    let str;
 
-  str  = "+-----------+---------------------+-----------+----------+\n";
-  str += "| Akronym   | Namn                | Avdelning |   Lön    |\n";
-  str += "|-----------|---------------------|-----------|----------|\n";
-  for (const row of res) {
-      str += "| ";
-      str += row.akronym.padEnd(10);
-      str += "| ";
-      str += (row.fornamn + " " + row.efternamn).padEnd(20);
-      str += "| ";
-      str += row.avdelning.padEnd(10);
-      str += "| ";
-      str += row.lon.toString().padStart(8);
-      str += " |\n";
-  }
-  str += "+-----------+---------------------+-----------+----------+\n";
+    str = "+-----------+---------------------+-----------+----------+\n";
+    str += "| Akronym   | Namn                | Avdelning |   Lön    |\n";
+    str += "|-----------|---------------------|-----------|----------|\n";
+    for (const row of res) {
+        str += "| ";
+        str += row.akronym.padEnd(10);
+        str += "| ";
+        str += (row.fornamn + " " + row.efternamn).padEnd(20);
+        str += "| ";
+        str += row.avdelning.padEnd(10);
+        str += "| ";
+        str += row.lon.toString().padStart(8);
+        str += " |\n";
+    }
+    str += "+-----------+---------------------+-----------+----------+\n";
 
-  return str;
+    return str;
 }
 
 /**
@@ -44,7 +44,7 @@ function teacherAsTable(res) {
  * @returns {string} Formatted table to print out.
  */
 async function viewTeachers(db) {
-  let sql = `
+    let sql = `
       SELECT
           akronym,
           fornamn,
@@ -54,9 +54,10 @@ async function viewTeachers(db) {
       FROM larare
       ORDER BY akronym;
   `;
-  let res = await db.query(sql);
-  let str = teacherAsTable(res);
-  return str;
+    let res = await db.query(sql);
+    let str = teacherAsTable(res);
+
+    return str;
 }
 
 /**
@@ -65,13 +66,11 @@ async function viewTeachers(db) {
  * @returns void
  */
 (async function () {
+    const db = await mysql.createConnection(config);
 
-  const db = await mysql.createConnection(config);
+    let str = await viewTeachers(db);
 
-  let str = await viewTeachers(db);
-  console.info(str);
+    console.info(str);
 
-  db.end();
+    db.end();
 })();
-
-

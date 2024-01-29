@@ -6,5 +6,5 @@
 
 
 
-    console.log("All ready.");
+    console.log("Welcome to my page.");
 }());

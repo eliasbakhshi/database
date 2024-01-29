@@ -7,15 +7,16 @@
 
 const mysql = require("promise-mysql");
 const config = require("./config.json");
+
 /**
  * Main function.
  * @async
  * @returns void
  */
 (async function () {
-  const db = await mysql.createConnection(config);
+    const db = await mysql.createConnection(config);
 
-  let sql = `
+    let sql = `
         SELECT
             akronym,
             fornamn,
@@ -25,29 +26,29 @@ const config = require("./config.json");
         FROM larare
         ORDER BY akronym;
     `;
-  let res = await db.query(sql);
+    let res = await db.query(sql);
 
-//   res = JSON.stringify(res, null, 4);
-  // Output as formatted text in table
-  let str;
+    //   res = JSON.stringify(res, null, 4);
+    // Output as formatted text in table
+    let str;
 
-  console.log(res);
-  str = "+-----------+---------------------+-----------+----------+\n";
-  str += "| Akronym   | Namn                | Avdelning |   Lön    |\n";
-  str += "|-----------|---------------------|-----------|----------|\n";
-  for (const row of res) {
-    str += "| ";
-    str += row.akronym.padEnd(10);
-    str += "| ";
-    str += (row.fornamn + " " + row.efternamn).padEnd(20);
-    str += "| ";
-    str += row.avdelning.padEnd(10);
-    str += "| ";
-    str += row.lon.toString().padStart(8);
-    str += " |\n";
-  }
-  str += "+-----------+---------------------+-----------+----------+\n";
-  console.info(str);
+    console.log(res);
+    str = "+-----------+---------------------+-----------+----------+\n";
+    str += "| Akronym   | Namn                | Avdelning |   Lön    |\n";
+    str += "|-----------|---------------------|-----------|----------|\n";
+    for (const row of res) {
+        str += "| ";
+        str += row.akronym.padEnd(10);
+        str += "| ";
+        str += (row.fornamn + " " + row.efternamn).padEnd(20);
+        str += "| ";
+        str += row.avdelning.padEnd(10);
+        str += "| ";
+        str += row.lon.toString().padStart(8);
+        str += " |\n";
+    }
+    str += "+-----------+---------------------+-----------+----------+\n";
+    console.info(str);
 
-  db.end();
+    db.end();
 })();

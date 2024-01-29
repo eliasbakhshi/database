@@ -14,49 +14,25 @@ const config = require("./config.json");
  * @returns {string} Formatted table to print out.
  */
 function teacherAsTable(res) {
-  let str;
+    let str;
 
-  str  = "+-----------+---------------------+-----------+----------+\n";
-  str += "| Akronym   | Namn                | Avdelning |   Lön    |\n";
-  str += "|-----------|---------------------|-----------|----------|\n";
-  for (const row of res) {
-      str += "| ";
-      str += row.akronym.padEnd(10);
-      str += "| ";
-      str += (row.fornamn + " " + row.efternamn).padEnd(20);
-      str += "| ";
-      str += row.avdelning.padEnd(10);
-      str += "| ";
-      str += row.lon.toString().padStart(8);
-      str += " |\n";
-  }
-  str += "+-----------+---------------------+-----------+----------+\n";
+    str = "+-----------+---------------------+-----------+----------+\n";
+    str += "| Akronym   | Namn                | Avdelning |   Lön    |\n";
+    str += "|-----------|---------------------|-----------|----------|\n";
+    for (const row of res) {
+        str += "| ";
+        str += row.akronym.padEnd(10);
+        str += "| ";
+        str += (row.fornamn + " " + row.efternamn).padEnd(20);
+        str += "| ";
+        str += row.avdelning.padEnd(10);
+        str += "| ";
+        str += row.lon.toString().padStart(8);
+        str += " |\n";
+    }
+    str += "+-----------+---------------------+-----------+----------+\n";
 
-  return str;
-}
-
-/**
- * Get a report with teacher details, formatted as a text table.
- *
- * @async
- * @param {connection} db Database connection.
- *
- * @returns {string} Formatted table to print out.
- */
-async function viewTeachers(db) {
-  let sql = `
-      SELECT
-          akronym,
-          fornamn,
-          efternamn,
-          avdelning,
-          lon
-      FROM larare
-      ORDER BY akronym;
-  `;
-  let res = await db.query(sql);
-  let str = teacherAsTable(res);
-  return str;
+    return str;
 }
 
 /**
@@ -69,14 +45,14 @@ async function viewTeachers(db) {
  * @returns {string} Formatted table to print out.
  */
 async function searchTeachers(db, search) {
-  let sql;
-  let res;
-  let str;
-  let like = `%${search}%`;
+    let sql;
+    let res;
+    let str;
+    let like = `%${search}%`;
 
-  console.info(`Searching for: ${search}`);
+    console.info(`Searching for: ${search}`);
 
-  sql = `
+    sql = `
       SELECT
           akronym,
           fornamn,
@@ -92,9 +68,9 @@ async function searchTeachers(db, search) {
           OR lon = ?
       ORDER BY akronym;
   `;
-  res = await db.query(sql, [like, like, like, like, search]);
-  str = teacherAsTable(res);
-  return str;
+    res = await db.query(sql, [like, like, like, like, search]);
+    str = teacherAsTable(res);
+    return str;
 }
 
 /**
@@ -103,16 +79,14 @@ async function searchTeachers(db, search) {
  * @async
  * @returns void
  */
-(async function() {
-  const db = await mysql.createConnection(config);
-  let str;
-  let search;
+(async function () {
+    const db = await mysql.createConnection(config);
+    let str;
+    let search;
 
-  search = "al";
-  str = await searchTeachers(db, search);
-  console.info(str);
+    search = "al";
+    str = await searchTeachers(db, search);
+    console.info(str);
 
-  db.end();
+    db.end();
 })();
-
-

@@ -1,6 +1,6 @@
 {
-    "host": "localhost",
-    "user": "elias",
+    "host":     "localhost",
+    "user":     "elias",
     "password": "dbcode",
     "database": "skolan"
 }
