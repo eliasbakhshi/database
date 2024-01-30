@@ -9,6 +9,8 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
+const { table } = require("table");
+
 
 // // Promisify rl.question to question
 // const util = require("util");
@@ -35,7 +37,7 @@ const teacher = new Teacher();
 
     showMenu();
 
-    rl.setPrompt("Your choice: ");
+    rl.setPrompt("\nYour choice: ");
     rl.prompt();
 })();
 
@@ -46,22 +48,29 @@ const teacher = new Teacher();
  *
  * @returns {void}
  */
-function handleInput(line) {
-    line = line.trim();
-    if (line.search("quit") || line.search("exit")) {
+async function handleInput(line) {
+    line = line.trim().split(" ");
+
+    if (line == "quit" || line[0] == "exit") {
         process.exit();
-    } else if (line.search("help") || line.search("menu")) {
+    } else if (line[0] == "help" || line[0] == "menu") {
         showMenu();
-    } else if (line.search("larare") ) {
+    } else if (line[0] == "larare") {
+        console.info(table(await teacher.getAllWithAge()));
+    } else if (line[0] =="kompetens") {
+        console.info(table(await teacher.getCompetenceDiff()));
+    } else if (line[0] == "lon")  {
+        console.info(table(await teacher.getSalaryDiff()));
+    } else if (line[0] == "sok") {
+        console.info(table(await teacher.getInfoByWord(line[1])));
+    } else if (line[0] == "nylon") {
+        let info = await teacher.updateSalary(line[1], line[2]);
 
-    } else if (line.search("kompetens") ) {
-
-    } else if (line.search("lon") ) {
-
-    } else if (line.search("sok") ) {
-
-    } else if (line.search("nylon") ) {
-
+        if (info.affectedRows >= 1) {
+            console.info("Lönen uppdaterades\n\n");
+        } else {
+            console.info("Kunde inte uppdatera lönen\n\n");
+        }
     }
     rl.prompt();
 }
@@ -72,6 +81,7 @@ function handleInput(line) {
  * @returns {void}
  */
 function showMenu() {
+    console.clear();
     console.info(
         ` You can choose from the following commands.\n` +
         `  exit ------------------> quit, ctrl-d - to exit the program.\n` +
