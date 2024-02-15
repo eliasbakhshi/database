@@ -1,0 +1,7 @@
+{
+    "host":     "localhost",
+    "user":     "elias",
+    "password": "dbcode",
+    "database": "skolan",
+    "multipleStatements": true
+}

@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.6.16-MariaDB, for debian-linux-gnu (x86_64)
+-- MariaDB dump 10.19  Distrib 10.11.6-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: skolan
 -- ------------------------------------------------------
--- Server version	10.6.16-MariaDB-0ubuntu0.22.04.1
+-- Server version	10.11.6-MariaDB-0ubuntu0.23.10.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,18 @@ CREATE TABLE `kurs` (
 
 LOCK TABLES `kurs` WRITE;
 /*!40000 ALTER TABLE `kurs` DISABLE KEYS */;
-INSERT INTO `kurs` VALUES ('AST101','Astronomi',5,'G1N'),('DJU101','Skötsel och vård av magiska djur',4,'G1F'),('DRY101','Trolldryckslära',6,'G1N'),('DRY102','Trolldryckslära',6,'G1F'),('KVA101','Kvastflygning',4,'G1N'),('MUG101','Mugglarstudier',6,'G1F'),('SVT101','Försvar mot svartkonster',8,'G1N'),('SVT201','Försvar mot svartkonster',6,'G1F'),('SVT202','Försvar mot svartkonster',6,'G1F'),('SVT401','Försvar mot svartkonster',6,'G2F'),('VAN101','Förvandlingskonst',5,'G1F');
+INSERT INTO `kurs` VALUES
+('AST101','Astronomi',5,'G1N'),
+('DJU101','Skötsel och vård av magiska djur',4,'G1F'),
+('DRY101','Trolldryckslära',6,'G1N'),
+('DRY102','Trolldryckslära',6,'G1F'),
+('KVA101','Kvastflygning',4,'G1N'),
+('MUG101','Mugglarstudier',6,'G1F'),
+('SVT101','Försvar mot svartkonster',8,'G1N'),
+('SVT201','Försvar mot svartkonster',6,'G1F'),
+('SVT202','Försvar mot svartkonster',6,'G1F'),
+('SVT401','Försvar mot svartkonster',6,'G2F'),
+('VAN101','Förvandlingskonst',5,'G1F');
 /*!40000 ALTER TABLE `kurs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +78,17 @@ CREATE TABLE `kurstillfalle` (
 
 LOCK TABLES `kurstillfalle` WRITE;
 /*!40000 ALTER TABLE `kurstillfalle` DISABLE KEYS */;
-INSERT INTO `kurstillfalle` VALUES (1,'SVT101','gyl',1),(2,'SVT101','gyl',3),(3,'SVT201','ala',1),(4,'SVT202','ala',2),(5,'SVT401','sna',1),(6,'KVA101','hoc',1),(7,'DJU101','hag',3),(8,'DRY101','sna',2),(9,'DRY102','sna',3),(10,'MUG101','min',4);
+INSERT INTO `kurstillfalle` VALUES
+(1,'SVT101','gyl',1),
+(2,'SVT101','gyl',3),
+(3,'SVT201','ala',1),
+(4,'SVT202','ala',2),
+(5,'SVT401','sna',1),
+(6,'KVA101','hoc',1),
+(7,'DJU101','hag',3),
+(8,'DRY101','sna',2),
+(9,'DRY102','sna',3),
+(10,'MUG101','min',4);
 /*!40000 ALTER TABLE `kurstillfalle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +118,15 @@ CREATE TABLE `larare` (
 
 LOCK TABLES `larare` WRITE;
 /*!40000 ALTER TABLE `larare` DISABLE KEYS */;
-INSERT INTO `larare` VALUES ('ala','DIPT','Alastor','Moody','M',27594,'1943-04-03',1),('dum','ADM','Albus','Dumbledore','M',85000,'1941-04-01',7),('fil','ADM','Argus','Filch','M',27594,'1946-04-06',3),('gyl','DIPT','Gyllenroy','Lockman','M',27594,'1952-05-02',1),('hag','ADM','Hagrid','Rubeus','M',30000,'1956-05-06',2),('hoc','DIDD','Madam','Hooch','K',37580,'1948-04-08',1),('min','DIDD','Minerva','McGonagall','K',49880,'1955-05-05',2),('sna','DIPT','Severus','Snape','M',45000,'1951-05-01',2);
+INSERT INTO `larare` VALUES
+('ala','DIPT','Alastor','Moody','M',27594,'1943-04-03',1),
+('dum','ADM','Albus','Dumbledore','M',85000,'1941-04-01',7),
+('fil','ADM','Argus','Filch','M',27594,'1946-04-06',3),
+('gyl','DIPT','Gyllenroy','Lockman','M',27594,'1952-05-02',1),
+('hag','ADM','Hagrid','Rubeus','M',30000,'1956-05-06',2),
+('hoc','DIDD','Madam','Hooch','K',37580,'1948-04-08',1),
+('min','DIDD','Minerva','McGonagall','K',49880,'1955-05-05',2),
+('sna','DIPT','Severus','Snape','M',45000,'1951-05-01',2);
 /*!40000 ALTER TABLE `larare` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +156,15 @@ CREATE TABLE `larare_pre` (
 
 LOCK TABLES `larare_pre` WRITE;
 /*!40000 ALTER TABLE `larare_pre` DISABLE KEYS */;
-INSERT INTO `larare_pre` VALUES ('ala','DIPT','Alastor','Moody','M',30000,'1943-04-03',1),('dum','ADM','Albus','Dumbledore','M',80000,'1941-04-01',1),('fil','ADM','Argus','Filch','M',25000,'1946-04-06',1),('gyl','DIPT','Gyllenroy','Lockman','M',30000,'1952-05-02',1),('hag','ADM','Hagrid','Rubeus','M',25000,'1956-05-06',1),('hoc','DIDD','Madam','Hooch','K',35000,'1948-04-08',1),('min','DIDD','Minerva','McGonagall','K',40000,'1955-05-05',1),('sna','DIPT','Severus','Snape','M',40000,'1951-05-01',1);
+INSERT INTO `larare_pre` VALUES
+('ala','DIPT','Alastor','Moody','M',30000,'1943-04-03',1),
+('dum','ADM','Albus','Dumbledore','M',80000,'1941-04-01',1),
+('fil','ADM','Argus','Filch','M',25000,'1946-04-06',1),
+('gyl','DIPT','Gyllenroy','Lockman','M',30000,'1952-05-02',1),
+('hag','ADM','Hagrid','Rubeus','M',25000,'1956-05-06',1),
+('hoc','DIDD','Madam','Hooch','K',35000,'1948-04-08',1),
+('min','DIDD','Minerva','McGonagall','K',40000,'1955-05-05',1),
+('sna','DIPT','Severus','Snape','M',40000,'1951-05-01',1);
 /*!40000 ALTER TABLE `larare_pre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,7 +262,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb3 */;
 /*!50001 SET collation_connection      = utf8mb3_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`elias`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`maria`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_all_with_age` AS select `larare`.`akronym` AS `akronym`,`larare`.`avdelning` AS `avdelning`,`larare`.`fornamn` AS `fornamn`,`larare`.`efternamn` AS `efternamn`,`larare`.`kon` AS `kon`,`larare`.`lon` AS `lon`,`larare`.`fodd` AS `fodd`,`larare`.`kompetens` AS `kompetens`,timestampdiff(YEAR,`larare`.`fodd`,curdate()) AS `Ålder` from `larare` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -243,7 +280,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb3 */;
 /*!50001 SET collation_connection      = utf8mb3_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`elias`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`maria`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_last_3_larare` AS select `l`.`akronym` AS `akronym`,timestampdiff(YEAR,`l`.`fodd`,curdate()) AS `Ålder` from (`larare` `l` join `v_planering` `vp` on(`vp`.`kursansvarig` = `l`.`akronym`)) group by `l`.`akronym` order by timestampdiff(YEAR,`l`.`fodd`,curdate()) desc limit 3 */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -261,7 +298,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb3 */;
 /*!50001 SET collation_connection      = utf8mb3_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`elias`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`maria`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_lonerevision` AS select `l`.`akronym` AS `akronym`,`l`.`fornamn` AS `fornamn`,`l`.`efternamn` AS `efternamn`,`p`.`lon` AS `pre`,`l`.`lon` AS `nu`,`l`.`lon` - `p`.`lon` AS `diff`,round((`l`.`lon` - `p`.`lon`) / (`p`.`lon` / 100),2) AS `proc`,`p`.`kompetens` AS `prekomp`,`l`.`kompetens` AS `nukomp`,`l`.`kompetens` - `p`.`kompetens` AS `diffkomp`,case when (`l`.`lon` - `p`.`lon`) / (`p`.`lon` / 100) > 3 then 'ok' else 'nok' end AS `mini` from (`larare` `l` join `larare_pre` `p` on(`l`.`akronym` = `p`.`akronym`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -279,7 +316,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb3 */;
 /*!50001 SET collation_connection      = utf8mb3_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`elias`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`maria`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_planering` AS select `k`.`kod` AS `kod`,`k`.`namn` AS `namn`,`k`.`poang` AS `poang`,`k`.`niva` AS `niva`,`kt`.`id` AS `id`,`kt`.`kurskod` AS `kurskod`,`kt`.`kursansvarig` AS `kursansvarig`,`kt`.`lasperiod` AS `lasperiod`,`l`.`akronym` AS `akronym`,`l`.`avdelning` AS `avdelning`,`l`.`fornamn` AS `fornamn`,`l`.`efternamn` AS `efternamn`,`l`.`kon` AS `kon`,`l`.`lon` AS `lon`,`l`.`fodd` AS `fodd`,`l`.`kompetens` AS `kompetens` from ((`kurs` `k` join `kurstillfalle` `kt` on(`k`.`kod` = `kt`.`kurskod`)) join `larare` `l` on(`l`.`akronym` = `kt`.`kursansvarig`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -294,4 +331,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-28 14:30:20
+-- Dump completed on 2024-02-15 10:45:59
