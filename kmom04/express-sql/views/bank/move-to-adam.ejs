@@ -1,10 +1,5 @@
 <%- include("header", {title: title}); %>
 
 <h1>Moving 1.5 peng to Adam</h1>
-
-<% if(res) { %>
-<p>Adam got 1.5 pengar, he is currently checking out her account blance.</p>
-<% } else { %>
-<p>Eva has not enough money to transfer to Adam.</p>
-
-<% } %> <%- include("footer"); %>
+<p><%- message %></p>
+<%- include("footer"); %>
