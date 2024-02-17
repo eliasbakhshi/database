@@ -47,8 +47,12 @@ async function MoveMoney(from, to, amount) {
     let info = await findAllInTable("account");
     let fromAccount = info.find((o) => o.name === from);
     let toAccount = info.find((o) => o.name === to);
+    let res = await startTransaction(fromAccount, toAccount, amount);
 
-    return startTransaction(fromAccount, toAccount, amount);
+    if (res) {
+        return { fromAccount, toAccount, successful : true };
+    }
+        return { fromAccount, toAccount, successful : false };
 }
 
 /**

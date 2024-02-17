@@ -26,7 +26,7 @@ const { move } = require("./route/bank.js");
 
     showMenu();
 
-    rl.setPrompt("\nYour choice: ");
+    rl.setPrompt("\nBank: ");
     rl.prompt();
 })();
 
@@ -45,13 +45,14 @@ async function handleInput(line) {
     } else if (line[0] == "help" || line[0] == "menu") {
         showMenu();
     } else if (line[0] == "move") {
-        // let res = await bank.MoveMoney("Adam", "Eva", 1.5);
+        let {fromAccount, toAccount, successful} = await bank.MoveMoney("Adam", "Eva", 1.5);
 
-        // if (res) {
-        //     console.info(`Adam got 1.5 pengar, Adam is currently checking out her account blance.`);
-        // } else {
-        //     console.info(`Eva has not enough money to transfer to Adam`);
-        // }
+        if (successful) {
+            console.info(`(Move 1.5 money from ${fromAccount.id} to ${toAccount.id}.)`);
+            console.info(`${toAccount.name} got 1.5 pengar, ${toAccount.name} is currently checking out her account balance.`);
+        } else {
+            console.info(`${fromAccount.name} has not enough money to transfer to ${toAccount.name}`);
+        }
     }
 
     rl.prompt();

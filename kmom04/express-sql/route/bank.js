@@ -31,7 +31,7 @@ router.get("/move-to-adam", async (req, res) => {
     };
 
     data.res = await bank.MoveMoney("Eva", "Adam");
-    if (data.res) {
+    if (data.res.successful) {
         data.message = `Adam got 1.5 pengar, Adam is currently checking out her account blance.`;
     } else {
         data.message = `Eva has not enough money to transfer to Adam`;
