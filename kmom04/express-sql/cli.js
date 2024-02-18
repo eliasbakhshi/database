@@ -10,10 +10,6 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 const bank = require("./src/bank.js");
-const { move } = require("./route/bank.js");
-
-
-
 
 /**
  * Main function.
@@ -45,13 +41,38 @@ async function handleInput(line) {
     } else if (line[0] == "help" || line[0] == "menu") {
         showMenu();
     } else if (line[0] == "move") {
-        let {fromAccount, toAccount, successful} = await bank.MoveMoney("Adam", "Eva", 1.5);
+        let amount = 1.5,
+            from = "",
+            to = "",
+            ok = false;
 
-        if (successful) {
-            console.info(`(Move 1.5 money from ${fromAccount.id} to ${toAccount.id}.)`);
-            console.info(`${toAccount.name} got 1.5 pengar, ${toAccount.name} is currently checking out her account balance.`);
-        } else {
-            console.info(`${fromAccount.name} has not enough money to transfer to ${toAccount.name}`);
+        if ((line.length == 3 || line.length > 4)) { // if the length does not matches.
+            console.info("Arguments are not right.");
+        } else if (line.length == 1) { // if the length is 1
+            from = "Adam",
+            to = "Eva",
+            ok = true;
+        } else if (line.length == 2) { // if the length is 2
+            amount = parseFloat(line[1]);
+            from = "Adam",
+            to = "Eva",
+            ok = true;
+        } else if (line.length == 4) { // if the length is more than 4
+            amount = parseFloat(line[1]);
+            from = line[2];
+            to = line[3];
+            ok = true;
+        }
+
+        if (ok) {
+            let { fromAccount : f, toAccount : t, successful } = await bank.MoveMoney(from, to, amount);
+
+            if (successful) {
+                console.info(`(Move ${amount} money from ${f.id} to ${t.id}.)`);
+                console.info(`${t.name} got ${amount} pengar, ${t.name} is currently checking out her account balance.`);
+            } else {
+                console.info(`${f.name} has not enough money to transfer to ${t.name}`);
+            }
         }
     }
 
@@ -67,9 +88,11 @@ function showMenu() {
     console.clear();
     console.info(
         ` You can choose from the following commands.\n` +
-        `  exit ------------------> quit, ctrl-d - to exit the program.\n` +
-        `  help, menu ------------> to show this menu.\n` +
-        `  move ------------------> Move 1.5 peng to Eva.\n`);
+        `  exit ------------------------> quit, ctrl-d - to exit the program.\n` +
+        `  help, menu ------------------> to show this menu.\n` +
+        `  move ------------------------> Move 1.5 peng to Eva.\n` +
+        `  move <amount> ---------------> Move amount peng to Eva.\n` +
+        `  move <amount> <from> <to> ---> Move amount peng from one person to another.\n`);
 }
 
 

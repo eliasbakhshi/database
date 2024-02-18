@@ -42,17 +42,19 @@ async function showBalance() {
  */
 async function MoveMoney(from, to, amount) {
     amount = amount || 1.5;
-    if (amount < 0) amount = 0;
+    if (amount < 0) {
+        amount = 0;
+    }
 
     let info = await findAllInTable("account");
-    let fromAccount = info.find((o) => o.name === from);
-    let toAccount = info.find((o) => o.name === to);
+    let fromAccount = info.find((o) => o.name.toLowerCase() === from.toLowerCase());
+    let toAccount = info.find((o) => o.name.toLowerCase() === to.toLowerCase());
     let res = await startTransaction(fromAccount, toAccount, amount);
 
     if (res) {
-        return { fromAccount, toAccount, successful : true };
+        return { fromAccount, toAccount, successful: true };
     }
-        return { fromAccount, toAccount, successful : false };
+    return { fromAccount, toAccount, successful: false };
 }
 
 /**
@@ -102,8 +104,11 @@ async function startTransaction(fromAccount, toAccount, amount) {
             id = ?;
 
         COMMIT;`;
+
         res = await db.query(sql, [amount, fromAccount.id, amount, toAccount.id]);
-        if (res) res = true;
+        if (res) {
+            res = true;
+        }
     }
 
     return res;

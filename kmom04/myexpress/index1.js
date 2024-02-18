@@ -4,14 +4,13 @@
 "use strict";
 
 // Set upp Express server
-require("dotenv").config({path:__dirname+'/./../../.env'});
+require("dotenv").config({ path: __dirname + "/./../../.env" });
 const express = require("express");
 const app = express();
 
 // Enable server to run on port selected by the user selected
 // environment variable DBWEBB_PORT
 const port = process.env.DBWEBB_PORT;
-
 
 // This is middleware called for all routes.
 // Middleware takes three parameters.

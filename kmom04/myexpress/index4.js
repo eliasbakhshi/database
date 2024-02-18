@@ -3,17 +3,16 @@
  */
 "use strict";
 
-
 // Set upp Express server
 const path = require("path");
-require("dotenv").config({path:__dirname+'/./../../.env'});
 const express = require("express");
 const app = express();
-
 const routeIndex = require("./route/index.js");
 const middleware = require("./middleware/index.js");
 const routeToday = require("./route/today.js");
 const routeBank = require("./route/bank.js");
+
+require("dotenv").config({ path: __dirname + "/./../../.env" });
 
 // Enable server to run on port selected by the user selected
 // environment variable DBWEBB_PORT
@@ -41,10 +40,10 @@ function logStartUpDetailsToConsole() {
 
     // Find what routes are supported
     app._router.stack.forEach((middleware) => {
-        if (middleware.route){
+        if (middleware.route) {
             // Routes registered directly on the app
             routes.push(middleware.route);
-        } else if(middleware.name === "router") {
+        } else if (middleware.name === "router") {
             // Routes added as router middleware
             middleware.handle.stack.forEach((handler) => {
                 let route;
