@@ -46,18 +46,18 @@ async function handleInput(line) {
             to = "",
             ok = false;
 
-        if ((line.length == 3 || line.length > 4)) { // if the length does not matches.
+        if (line.length == 3 || line.length > 4) {
+            // if the length does not matches.
             console.info("Arguments are not right.");
-        } else if (line.length == 1) { // if the length is 1
-            from = "Adam",
-            to = "Eva",
-            ok = true;
-        } else if (line.length == 2) { // if the length is 2
+        } else if (line.length == 1) {
+            // if the length is 1
+            (from = "Adam"), (to = "Eva"), (ok = true);
+        } else if (line.length == 2) {
+            // if the length is 2
             amount = parseFloat(line[1]);
-            from = "Adam",
-            to = "Eva",
-            ok = true;
-        } else if (line.length == 4) { // if the length is more than 4
+            (from = "Adam"), (to = "Eva"), (ok = true);
+        } else if (line.length == 4) {
+            // if the length is more than 4
             amount = parseFloat(line[1]);
             from = line[2];
             to = line[3];
@@ -65,7 +65,8 @@ async function handleInput(line) {
         }
 
         if (ok) {
-            let { fromAccount : f, toAccount : t, successful } = await bank.MoveMoney(from, to, amount);
+            /* eslint-disable max-len */
+            let { fromAccount: f, toAccount: t, successful } = await bank.MoveMoney(from, to, amount);
 
             if (successful) {
                 console.info(`(Move ${amount} money from ${f.id} to ${t.id}.)`);
@@ -73,6 +74,7 @@ async function handleInput(line) {
             } else {
                 console.info(`${f.name} has not enough money to transfer to ${t.name}`);
             }
+            /* eslint-enable max-len */
         }
     }
 
@@ -94,7 +96,6 @@ function showMenu() {
         `  move <amount> ---------------> Move amount peng to Eva.\n` +
         `  move <amount> <from> <to> ---> Move amount peng from one person to another.\n`);
 }
-
 
 /**
  * Close down program and exit with a status code.
