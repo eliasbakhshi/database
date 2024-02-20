@@ -12,7 +12,7 @@ module.exports = {
 };
 
 const mysql  = require("promise-mysql");
-const config = require("../config/db/bank.json");
+const config = require("../config/db/eshop.json");
 let db;
 
 
