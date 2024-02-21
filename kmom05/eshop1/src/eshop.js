@@ -7,20 +7,21 @@ module.exports = {
     getCategories: getCategories,
     getProducts: getProducts,
     getProduct: getProduct,
+    createProduct: createProduct,
+    editProduct: editProduct,
     deleteProduct: deleteProduct,
 };
 
-const mysql  = require("promise-mysql");
+const mysql = require("promise-mysql");
 const config = require("../config/db/eshop.json");
 let db;
-
 
 /**
  * Main function.
  * @async
  * @returns void
  */
-(async function() {
+(async function () {
     db = await mysql.createConnection(config);
 
     process.on("exit", () => {
@@ -37,65 +38,90 @@ let db;
  */
 async function getCategories() {
     let sql = `CALL get_categories();`;
-    let res;
-
-    res = await db.query(sql);
-    console.info(`SQL: ${sql} got ${res.length} rows.`);
+    let res = await db.query(sql);
 
     return res[0];
 }
 
 /**
- * Create a new account.
+ * Get all products.
  *
  * @async
  *
- * @returns {void}
+ * @returns {RowDataPacket} Resultset from the query.
  */
 async function getProducts() {
     let sql = `CALL get_products();`;
-    let res;
-
-    res = await db.query(sql);
+    let res = await db.query(sql);
     console.info(`SQL: ${sql} got ${res.length} rows.`);
 
     return res[0];
 }
 
-
-
 /**
- * Edit details on an account.
+ * Get details on an product.
  *
  * @async
- * @param {string} id      The id of the account to be updated.
- * @param {string} name    The updated name of the account holder.
- * @param {string} balance The updated amount in the account.
  *
- * @returns {void}
+ * @param {string} id      The id of the product.
+ *
+ * @returns {RowDataPacket} Resultset from the query.
  */
 async function getProduct(id) {
     let sql = `CALL get_product(?);`;
-    let res;
+    let res = await db.query(sql, [id]);
 
-    res = await db.query(sql, [id]);
-    //console.log(res);
-    console.info(`SQL: ${sql} got ${res.length} rows.`);
+    return res[0][0];
 }
 
 /**
- * Delete an account.
+ * Edit details of a product.
  *
  * @async
- * @param {string} id      The id of the account to be updated.
+ * @param {string} id      The id of the product to be updated.
+ * @param {string} name    The updated name of the product.
+ * @param {string} price   The updated price in the product.
+ * @param {string} stock   The updated stock in the product.
+ *
+ * @returns {RowDataPacket} Resultset from the query.
+ */
+async function editProduct(id, name, description, price, stock) {
+    let sql = `CALL edit_product(?, ?, ?, ?, ?);`;
+    let res = await db.query(sql, [id, name, description, price, stock]);
+
+    return res;
+}
+
+/**
+ * Create a product.
+ *
+ * @async
+ * @param {string} name             The name of the product.
+ * @param {string} description      The description of the product.
+ * @param {string} price            The price in the product.
+ * @param {string} stock            The stock in the product.
+ *
+ * @returns {RowDataPacket} Resultset from the query.
+ */
+async function createProduct(name, description, price, stock) {
+    let sql = `CALL create_product(?, ?, ?, ?);`;
+    let res = await db.query(sql, [name, description, price, stock]);
+
+    return res;
+}
+
+/**
+ * Delete an product.
+ *
+ * @async
+ * @param {string} id      The id of the product to be updated.
  *
  * @returns {RowDataPacket} Resultset from the query.
  */
 async function deleteProduct(id) {
     let sql = `CALL delete_product(?);`;
-    let res;
-
-    res = await db.query(sql, [id]);
-    //console.log(res);
+    let res = await db.query(sql, [id]);
+    console.log("2", res);
     console.info(`SQL: ${sql} got ${res.length} rows.`);
+    return res;
 }

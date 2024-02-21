@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
-  `category_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -73,7 +73,7 @@ DROP TABLE IF EXISTS `customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `customer` (
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -104,7 +104,7 @@ DROP TABLE IF EXISTS `delivery`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `delivery` (
-  `delivery_id` int(11) NOT NULL,
+  `delivery_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) DEFAULT NULL,
   `delivery_date` datetime DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
@@ -134,7 +134,7 @@ DROP TABLE IF EXISTS `inventory_log`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `inventory_log` (
-  `log_id` int(11) NOT NULL,
+  `log_id` int(11) NOT NULL AUTO_INCREMENT,
   `event_instance_id` varchar(36) NOT NULL,
   `event_description` text DEFAULT NULL,
   `event_date` datetime DEFAULT NULL,
@@ -164,7 +164,7 @@ DROP TABLE IF EXISTS `invoice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `invoice` (
-  `invoice_id` int(11) NOT NULL,
+  `invoice_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) DEFAULT NULL,
   `invoice_date` datetime DEFAULT NULL,
   `total_price` decimal(10,2) DEFAULT NULL,
@@ -194,7 +194,7 @@ DROP TABLE IF EXISTS `order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `order` (
-  `order_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_date` datetime DEFAULT NULL,
   `total_price` decimal(10,2) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
@@ -225,7 +225,7 @@ DROP TABLE IF EXISTS `order_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `order_item` (
-  `order_item_id` int(11) NOT NULL,
+  `order_item_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
@@ -234,7 +234,7 @@ CREATE TABLE `order_item` (
   KEY `order_id` (`order_id`),
   KEY `product_id` (`product_id`),
   CONSTRAINT `order_item_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
-  CONSTRAINT `order_item_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`produkt_id`)
+  CONSTRAINT `order_item_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -259,12 +259,12 @@ DROP TABLE IF EXISTS `product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product` (
-  `produkt_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` text DEFAULT NULL,
   `product_name` varchar(255) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
-  PRIMARY KEY (`produkt_id`)
+  PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -316,11 +316,11 @@ DROP TABLE IF EXISTS `product_category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_category` (
-  `produkt_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
-  PRIMARY KEY (`produkt_id`,`category_id`),
+  PRIMARY KEY (`product_id`,`category_id`),
   KEY `category_id` (`category_id`),
-  CONSTRAINT `product_category_ibfk_1` FOREIGN KEY (`produkt_id`) REFERENCES `product` (`produkt_id`),
+  CONSTRAINT `product_category_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
   CONSTRAINT `product_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -365,7 +365,7 @@ CREATE TABLE `warehouse` (
   `shelf_location` varchar(255) DEFAULT NULL,
   `stock_quantity` int(11) DEFAULT NULL,
   PRIMARY KEY (`product_id`),
-  CONSTRAINT `warehouse_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`produkt_id`)
+  CONSTRAINT `warehouse_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -478,7 +478,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `addProductProcedure`(
     IN pstockQuantity INT
 )
 BEGIN
-    INSERT INTO Product (produkt_id, description, product_name, price, stock)
+    INSERT INTO Product (product_id, description, product_name, price, stock)
     VALUES (pProductId, pdescription, pProductName, pprice, pstockQuantity);
 END ;;
 DELIMITER ;
@@ -598,7 +598,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `delete_product`(
     IN p_id INT
 )
 BEGIN
-    DELETE FROM Product WHERE produkt_id = p_id;
+    DELETE FROM Product WHERE product_id = p_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -617,9 +617,9 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayInventoryProcedure`()
 BEGIN
-    SELECT p.produkt_id, p.product_name, w.shelf_location, w.stock_quantity
+    SELECT p.product_id, p.product_name, w.shelf_location, w.stock_quantity
     FROM Product p
-    JOIN Warehouse w ON p.produkt_id = w.product_id;
+    JOIN Warehouse w ON p.product_id = w.product_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -661,7 +661,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayProductsOnShelvesProcedure`()
 BEGIN
     SELECT p.product_name, w.shelf_location, w.stock_quantity
     FROM Product p
-    JOIN Warehouse w ON p.produkt_id = w.product_id;
+    JOIN Warehouse w ON p.product_id = w.product_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -680,7 +680,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayProductsProcedure`()
 BEGIN
-    SELECT produkt_id, product_name FROM Product;
+    SELECT product_id, product_name FROM Product;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -739,10 +739,10 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `filterInventoryProcedure`(
     IN pFilterString VARCHAR(255)
 )
 BEGIN
-    SELECT p.produkt_id, p.product_name, w.shelf_location, w.stock_quantity
+    SELECT p.product_id, p.product_name, w.shelf_location, w.stock_quantity
     FROM Product p
-    JOIN Warehouse w ON p.produkt_id = w.product_id
-    WHERE p.produkt_id LIKE CONCAT('%', pFilterString, '%')
+    JOIN Warehouse w ON p.product_id = w.product_id
+    WHERE p.product_id LIKE CONCAT('%', pFilterString, '%')
     OR p.product_name LIKE CONCAT('%', pFilterString, '%')
     OR w.shelf_location LIKE CONCAT('%', pFilterString, '%');
 END ;;
@@ -873,7 +873,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_product`(
     IN p_id INT
 )
 BEGIN
-    SELECT * FROM Product WHERE produkt_id = p_id;
+    SELECT * FROM Product WHERE product_id = p_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -919,7 +919,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `update_product`(
 BEGIN
     UPDATE Product
     SET description = p_description, product_name = p_product_name, price = p_price, stock = p_stock
-    WHERE produkt_id = p_id;
+    WHERE product_id = p_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;

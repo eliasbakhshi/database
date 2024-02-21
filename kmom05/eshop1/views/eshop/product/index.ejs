@@ -1,24 +1,27 @@
 <%- include("../header", {title: title}); %>
 
+<a href="/eshop/product/create" style="margin-top: 2em;">Create product</a>
 <h1>Product list</h1>
 
 <table>
     <tr>
-        <th>Id</th>
         <th>Name</th>
-        <th>Balance</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Stock</th>
         <th>Action</th>
     </tr>
     <% for (const row of res) { %>
     <tr>
-        <td><a href="/eshop/account/<%= row.id %>"><%= row.id %></a></td>
-        <td><%= row.name %></td>
-        <td class="right"><%= row.balance %></td>
+        <td><%= row.product_name %></td>
+        <td><%= row.description %></td>
+        <td class="right"><%= row.price %></td>
+        <td class="right"><%= row.stock %></td>
         <td class="right">
-            <a href="/eshop/edit/<%= row.id %>">
+            <a href="/eshop/product/edit/<%= row.product_id %>">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>
-            <a href="/eshop/delete/<%= row.id %>">
+            <a href="/eshop/product/delete/<%= row.product_id %>">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
             </a>
         </td>

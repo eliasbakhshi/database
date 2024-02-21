@@ -9,7 +9,7 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n';
 
 -- Export the product table to a CSV file
-SELECT 'produkt_id', 'description', 'product_name', 'price', 'stock'
+SELECT 'product_id', 'description', 'product_name', 'price', 'stock'
 UNION ALL
 SELECT *
 FROM product
@@ -19,7 +19,7 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n';
 
 -- Export the product_category table to a CSV file
-SELECT 'produkt_id', 'category_id'
+SELECT 'product_id', 'category_id'
 UNION ALL
 SELECT *
 FROM product_category

@@ -4,14 +4,14 @@
 "use strict";
 
 const express = require("express");
-const router  = express.Router();
-const eShop    = require("../src/eshop.js");
+const router = express.Router();
+const eShop = require("../src/eshop.js");
 const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 router.get("/index", (req, res) => {
     let data = {
-        title: "Welcome | eShop"
+        title: "Welcome | eShop",
     };
 
     res.render("eshop/index", data);
@@ -19,7 +19,7 @@ router.get("/index", (req, res) => {
 
 router.get("/about", async (req, res) => {
     let data = {
-        title: "About | eShop"
+        title: "About | eShop",
     };
 
     res.render("eshop/about", data);
@@ -27,57 +27,85 @@ router.get("/about", async (req, res) => {
 
 router.get("/category", async (req, res) => {
     let data = {
-        title: "Category | eShop"
+        title: "Category | eShop",
     };
 
     data.res = await eShop.getCategories();
-
+    console.log(data.res);
     res.render("eshop/category", data);
 });
 
 router.get("/product", async (req, res) => {
     let data = {
-        title: "Products | eShop"
+        title: "Products | eShop",
     };
 
     data.res = await eShop.getProducts();
-
+    console.log(data.res);
     res.render("eshop/product/index", data);
 });
 
-router.get("/product/edit", async (req, res) => {
+router.get("/product/edit/:id&:edited", async (req, res) => {
+    let id = req.params.id;
+    let edited = req.params.edited;
     let data = {
-        title: "Edit product balance | eShop"
+        title: "Edit product balance | eShop",
     };
-    
-    data.res = await eShop.getProduct(req.body.id);
+
+    if (edited) {
+        data.edited = true;
+    }
+    data.res = await eShop.getProduct(id);
     res.render("eshop/product/edit", data);
 });
 
-router.get("/product/delete", async (req, res) => {
+router.get("/product/edit/:id", async (req, res) => {
+    let id = req.params.id;
     let data = {
-        title: "Delete product | eShop"
+        title: "Edit product balance | eShop",
+        edited: false,
     };
 
-    data.res = await eShop.getProduct(req.body.id);
+    data.res = await eShop.getProduct(id);
+    res.render("eshop/product/edit", data);
+});
+
+router.get("/product/delete/:id", async (req, res) => {
+    let id = req.params.id;
+    let data = {
+        title: "Delete product | eShop",
+    };
+
+    data.res = await eShop.getProduct(id);
     res.render("eshop/product/delete", data);
 });
 
-router.post("/product/edit", async (req, res) => {
-    await eShop.editProduct(req.body.id);
-    res.redirect(`/product/edit/${req.body.id}`);
+router.get("/product/create", async (req, res) => {
+    let data = {
+        title: "Create a product | eShop",
+    };
+
+    res.render("eshop/product/create", data);
 });
 
-router.post("/product/delete", async (req, res) => {
-    data.res = await eShop.deleteProduct(res.body.id);
-    if (data.res === 0) {
+router.post("/product/create", urlencodedParser, async (req, res) => {
+    await eShop.createProduct(req.body.name, req.body.description, req.body.price, req.body.stock);
+    res.redirect(`/eshop/product`);
+});
+
+router.post("/product/edit", urlencodedParser, async (req, res) => {
+    let result = await eShop.editProduct(req.body.id, req.body.name, req.body.description, req.body.price, req.body.stock);
+    res.redirect(`/eshop/product/edit/${req.body.id}&edited=true`);
+});
+
+router.post("/product/delete", urlencodedParser, async (req, res) => {
+    let result = await eShop.deleteProduct(req.body.id);
+
+    if (result.serverStatus !== 2) {
         console.info("Product not found.");
-    } else {
-        res.redirect("/product/index");
     }
+    res.redirect("/eshop/product");
 });
-
-
-
 
 module.exports = router;
+ 

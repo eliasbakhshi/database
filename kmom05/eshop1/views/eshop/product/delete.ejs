@@ -1,21 +1,24 @@
 <%- include("../header", {title: title}); %>
 
-
-<% res = res[0] %>
-<form class="label-left" method="post" action="/eshop/delete">
+<form class="label-left" method="post" action="/eshop/product/delete">
     <fieldset>
-        <legend>Edit account</legend>
+        <legend>Delete product</legend>
 
-        <label for="id">Id</label>
-        <input id="id" readonly type="text" name="id" readonly value="<%= res.id %>">
+        <input type="hidden" readonly id="id" name="id" value="<%= res.product_id %>" />
 
-        <label for="name">Name</label>
-        <input id="name" readonly type="text" name="name" value="<%= res.name %>">
+        <label for="product_name">Name</label>
+        <input id="product_name" readonly type="text" name="name" value="<%= res.product_name %>" />
 
-        <label for="balance">Balance</label>
-        <input id="balance" readonly type="number" name="balance" value="<%= res.balance %>">
+        <label for="description">Description</label>
+        <input id="description" readonly type="text" name="description" value="<%= res.description %>" />
 
-        <input type="submit" name="doit" value="Delete <%= res.name %>">
+        <label for="price">Price</label>
+        <input id="price" readonly type="number" name="price" step=".01" value="<%= res.price %>" />
+
+        <label for="stock">Stock</label>
+        <input id="stock" readonly type="number" name="stock" value="<%= res.stock %>" />
+
+        <input type="submit" name="doit" value="Delete" />
     </fieldset>
 </form>
 

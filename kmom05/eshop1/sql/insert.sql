@@ -24,7 +24,7 @@ FIELDS
 LINES
     TERMINATED BY '\n'
 IGNORE 1 LINES
-(`produkt_id`, `description`, `product_name`, `price`, `stock`);
+(`product_id`, `description`, `product_name`, `price`, `stock`);
 
 --
 -- Insert into category table
@@ -52,7 +52,7 @@ FIELDS
 LINES
     TERMINATED BY '\n'
 IGNORE 1 LINES
-(`produkt_id`, `category_id`);
+(`product_id`, `category_id`);
 
 --
 -- Insert into warehouse table
