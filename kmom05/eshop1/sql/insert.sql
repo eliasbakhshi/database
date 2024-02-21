@@ -27,6 +27,20 @@ IGNORE 1 LINES
 (`produkt_id`, `description`, `product_name`, `price`, `stock`);
 
 --
+-- Insert into category table
+--
+LOAD DATA LOCAL INFILE 'category.csv'
+INTO TABLE category
+CHARSET utf8
+FIELDS
+    TERMINATED BY ','
+    ENCLOSED BY '"'
+LINES
+    TERMINATED BY '\n'
+IGNORE 1 LINES
+(`category_id`, `name`);
+
+--
 -- Insert into product_category table
 --
 LOAD DATA LOCAL INFILE 'product_category.csv'
@@ -38,7 +52,7 @@ FIELDS
 LINES
     TERMINATED BY '\n'
 IGNORE 1 LINES
-(`produkt_id`, `category`);
+(`produkt_id`, `category_id`);
 
 --
 -- Insert into warehouse table
@@ -52,4 +66,4 @@ FIELDS
 LINES
     TERMINATED BY '\n'
 IGNORE 1 LINES
-(`product_id`, 'shelf_location', 'stock_quantity');
+(`product_id`, `shelf_location`, `stock_quantity`);

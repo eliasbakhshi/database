@@ -7,12 +7,14 @@ const port    = process.env.DBWEBB_PORT || 1337;
 const path    = require("path");
 const express = require("express");
 const app     = express();
-const routeShop  = require("./route/shop.js");
+const routeEShop  = require("./routes/eshop.js");
+const routeHome  = require("./routes/home.js");
 
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/bank", routeShop);
+app.use("/eshop", routeEShop);
+app.use("/", routeHome);
 app.listen(port, logStartUpDetailsToConsole);
 
 

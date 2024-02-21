@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.6.12-MariaDB, for debian-linux-gnu (x86_64)
+-- MariaDB dump 10.19  Distrib 10.11.6-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: HP.local    Database: eshop
+-- Host: localhost    Database: eshop
 -- ------------------------------------------------------
--- Server version	11.4.0-MariaDB
+-- Server version	10.11.6-MariaDB-0ubuntu0.23.10.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,7 +35,33 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Category 1'),(2,'Category 2');
+INSERT INTO `category` VALUES
+(1,'Category 1'),
+(2,'Category 2'),
+(3,'Category 3\"\r\n\"4'),
+(5,'Category 5\"\r\n\"6'),
+(7,'Category 7\"\r\n\"8'),
+(9,'Category 9\"\r\n\"10'),
+(11,'Category 11\"\r'),
+(12,'Category 12\"\r'),
+(13,'Category 13\"\r'),
+(14,'Category 14\"\r'),
+(15,'Category 15\"\r'),
+(16,'Category 16\"\r'),
+(17,'Category 17\"\r'),
+(18,'Category 18\"\r'),
+(19,'Category 19\"\r'),
+(20,'Category 20\"\r'),
+(21,'Category 21\"\r'),
+(22,'Category 22\"\r'),
+(23,'Category 23\"\r'),
+(24,'Category 24\"\r'),
+(25,'Category 25\"\r'),
+(26,'Category 26\"\r'),
+(27,'Category 27\"\r'),
+(28,'Category 28\"\r'),
+(29,'Category 29\"\r'),
+(30,'Category 30\"\r');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,7 +90,9 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'John','Doe','john@example.com','password123','123 Main St','123-456-7890'),(2,'Jane','Smith','jane@example.com','password456','456 Elm St','456-789-0123');
+INSERT INTO `customer` VALUES
+(1,'John','Doe','john@example.com','password123','123 Main St','123-456-7890'),
+(2,'Jane','Smith','jane@example.com','password456','456 Elm St','456-789-0123');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +120,9 @@ CREATE TABLE `delivery` (
 
 LOCK TABLES `delivery` WRITE;
 /*!40000 ALTER TABLE `delivery` DISABLE KEYS */;
-INSERT INTO `delivery` VALUES (1,1,'2024-02-15 12:00:00','Delivered'),(2,2,'2024-02-16 13:00:00','Shipped');
+INSERT INTO `delivery` VALUES
+(1,1,'2024-02-15 12:00:00','Delivered'),
+(2,2,'2024-02-16 13:00:00','Shipped');
 /*!40000 ALTER TABLE `delivery` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +148,11 @@ CREATE TABLE `inventory_log` (
 
 LOCK TABLES `inventory_log` WRITE;
 /*!40000 ALTER TABLE `inventory_log` DISABLE KEYS */;
-INSERT INTO `inventory_log` VALUES (1,'1','Inventory updated for Product 1','2024-02-16 17:03:44'),(2,'0357ba68-d09e-4105-9f83-94ba0d011fda','Detaljer om produkt med iD \'2\' ändrades','2024-02-17 12:27:57'),(2,'2','Inventory updated for Product 2','2024-02-16 17:03:44'),(2,'43225a16-1f64-405f-93fc-53abaa5fa157','Detaljer om produkt med iD \'2\' ändrades','2024-02-17 12:27:38');
+INSERT INTO `inventory_log` VALUES
+(1,'1','Inventory updated for Product 1','2024-02-16 17:03:44'),
+(2,'0357ba68-d09e-4105-9f83-94ba0d011fda','Detaljer om produkt med iD \'2\' ändrades','2024-02-17 12:27:57'),
+(2,'2','Inventory updated for Product 2','2024-02-16 17:03:44'),
+(2,'43225a16-1f64-405f-93fc-53abaa5fa157','Detaljer om produkt med iD \'2\' ändrades','2024-02-17 12:27:38');
 /*!40000 ALTER TABLE `inventory_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +180,9 @@ CREATE TABLE `invoice` (
 
 LOCK TABLES `invoice` WRITE;
 /*!40000 ALTER TABLE `invoice` DISABLE KEYS */;
-INSERT INTO `invoice` VALUES (1,1,'2024-02-15 12:00:00',35.98),(2,2,'2024-02-16 13:00:00',20.99);
+INSERT INTO `invoice` VALUES
+(1,1,'2024-02-15 12:00:00',35.98),
+(2,2,'2024-02-16 13:00:00',20.99);
 /*!40000 ALTER TABLE `invoice` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +211,9 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (1,'2024-02-15 10:00:00',35.98,1,'Completed'),(2,'2024-02-16 11:00:00',20.99,2,'Pending');
+INSERT INTO `order` VALUES
+(1,'2024-02-15 10:00:00',35.98,1,'Completed'),
+(2,'2024-02-16 11:00:00',20.99,2,'Pending');
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +244,10 @@ CREATE TABLE `order_item` (
 
 LOCK TABLES `order_item` WRITE;
 /*!40000 ALTER TABLE `order_item` DISABLE KEYS */;
-INSERT INTO `order_item` VALUES (1,1,1,2,21.98),(2,1,2,1,14.00),(3,2,2,1,20.99);
+INSERT INTO `order_item` VALUES
+(1,1,1,2,21.98),
+(2,1,2,1,14.00),
+(3,2,2,1,20.99);
 /*!40000 ALTER TABLE `order_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,7 +274,37 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'description of Product 1','Product 1',10.99,100),(2,'description of Product 2','Product 2',51.00,151);
+INSERT INTO `product` VALUES
+(1,'description of Product 1','Product 1',10.99,100),
+(2,'description of Product 2','Product 2',51.00,151),
+(3,'description of Product 3','Product 3',91.01,202),
+(4,'description of Product 4','Product 4',131.02,253),
+(5,'description of Product 5','Product 5',171.03,304),
+(6,'description of Product 6','Product 6',211.04,355),
+(7,'description of Product 7','Product 7',251.05,406),
+(8,'description of Product 8','Product 8',291.06,457),
+(9,'description of Product 9','Product 9',331.07,508),
+(10,'description of Product 10','Product 10',371.08,559),
+(11,'description of Product 11','Product 11',411.09,610),
+(12,'description of Product 12','Product 12',451.10,661),
+(13,'description of Product 13','Product 13',491.11,712),
+(14,'description of Product 14','Product 14',531.12,763),
+(15,'description of Product 15','Product 15',571.13,814),
+(16,'description of Product 16','Product 16',611.14,865),
+(17,'description of Product 17','Product 17',651.15,916),
+(18,'description of Product 18','Product 18',691.16,967),
+(19,'description of Product 19','Product 19',731.17,1018),
+(20,'description of Product 20','Product 20',771.18,1069),
+(21,'description of Product 21','Product 21',811.19,1120),
+(22,'description of Product 22','Product 22',851.20,1171),
+(23,'description of Product 23','Product 23',891.21,1222),
+(24,'description of Product 24','Product 24',931.22,1273),
+(25,'description of Product 25','Product 25',971.23,1324),
+(26,'description of Product 26','Product 26',1011.24,1375),
+(27,'description of Product 27','Product 27',1051.25,1426),
+(28,'description of Product 28','Product 28',1091.26,1477),
+(29,'description of Product 29','Product 29',1131.27,1528),
+(30,'description of Product 30','Product 30',1171.28,1579);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,7 +331,25 @@ CREATE TABLE `product_category` (
 
 LOCK TABLES `product_category` WRITE;
 /*!40000 ALTER TABLE `product_category` DISABLE KEYS */;
-INSERT INTO `product_category` VALUES (1,1),(2,2);
+INSERT INTO `product_category` VALUES
+(1,1),
+(2,2),
+(2,19),
+(3,3),
+(3,17),
+(5,5),
+(7,7),
+(9,9),
+(11,11),
+(13,13),
+(15,15),
+(17,17),
+(19,19),
+(21,21),
+(23,23),
+(25,25),
+(27,27),
+(29,29);
 /*!40000 ALTER TABLE `product_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +375,37 @@ CREATE TABLE `warehouse` (
 
 LOCK TABLES `warehouse` WRITE;
 /*!40000 ALTER TABLE `warehouse` DISABLE KEYS */;
-INSERT INTO `warehouse` VALUES (1,'A1',50),(2,'B2',75);
+INSERT INTO `warehouse` VALUES
+(1,'A1',50),
+(2,'B2',75),
+(3,'A2',100),
+(4,'B3',125),
+(5,'A3',150),
+(6,'B4',175),
+(7,'A4',200),
+(8,'B5',225),
+(9,'A5',250),
+(10,'B6',275),
+(11,'A6',300),
+(12,'B7',325),
+(13,'A7',350),
+(14,'B8',375),
+(15,'A8',400),
+(16,'B9',425),
+(17,'A9',450),
+(18,'B10',475),
+(19,'A10',500),
+(20,'B11',525),
+(21,'A11',550),
+(22,'B12',575),
+(23,'A2',600),
+(24,'B3',625),
+(25,'A3',650),
+(26,'A3',675),
+(27,'B4',700),
+(28,'A4',725),
+(29,'A4',750),
+(30,'A4',775);
 /*!40000 ALTER TABLE `warehouse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -817,4 +936,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-18 15:40:50
+-- Dump completed on 2024-02-20 18:40:36
