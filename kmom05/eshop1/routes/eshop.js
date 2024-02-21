@@ -32,8 +32,74 @@ router.get("/category", async (req, res) => {
 
     data.res = await eShop.getCategories();
     console.log(data.res);
-    res.render("eshop/category", data);
+    res.render("eshop/category/index", data);
 });
+
+router.get("/category/create", async (req, res) => {
+    let data = {
+        title: "Create a category | eShop",
+    };
+
+    res.render("eshop/category/create", data);
+});
+
+router.get("/category/edit/:id&:edited", async (req, res) => {
+    let id = req.params.id;
+    let edited = req.params.edited;
+    let data = {
+        title: "Edit category balance | eShop",
+    };
+
+    if (edited) {
+        data.edited = true;
+    }
+    data.res = await eShop.getCategory(id);
+    res.render("eshop/category/edit", data);
+});
+
+router.get("/category/edit/:id", async (req, res) => {
+    let id = req.params.id;
+    let data = {
+        title: "Edit category balance | eShop",
+        edited: false,
+    };
+
+    data.res = await eShop.getCategory(id);
+    res.render("eshop/category/edit", data);
+});
+
+router.get("/category/delete/:id", async (req, res) => {
+    let id = req.params.id;
+    let data = {
+        title: "Delete category | eShop",
+    };
+
+    data.res = await eShop.getCategory(id);
+    res.render("eshop/category/delete", data);
+});
+
+
+router.post("/category/create", urlencodedParser, async (req, res) => {
+    await eShop.createCategory(req.body.name, req.body.description, req.body.price, req.body.stock);
+    res.redirect(`/eshop/category`);
+});
+
+router.post("/category/edit", urlencodedParser, async (req, res) => {
+    let result = await eShop.editCategory(req.body.id, req.body.name, req.body.description, req.body.price, req.body.stock);
+    res.redirect(`/eshop/category/edit/${req.body.id}&edited=true`);
+});
+
+router.post("/category/delete", urlencodedParser, async (req, res) => {
+    let result = await eShop.deleteCategory(req.body.id);
+
+    if (result.serverStatus !== 2) {
+        console.info("category not found.");
+    }
+    res.redirect("/eshop/category");
+});
+
+
+
 
 router.get("/product", async (req, res) => {
     let data = {
@@ -43,6 +109,14 @@ router.get("/product", async (req, res) => {
     data.res = await eShop.getProducts();
     console.log(data.res);
     res.render("eshop/product/index", data);
+});
+
+router.get("/product/create", async (req, res) => {
+    let data = {
+        title: "Create a product | eShop",
+    };
+
+    res.render("eshop/product/create", data);
 });
 
 router.get("/product/edit/:id&:edited", async (req, res) => {
@@ -80,13 +154,6 @@ router.get("/product/delete/:id", async (req, res) => {
     res.render("eshop/product/delete", data);
 });
 
-router.get("/product/create", async (req, res) => {
-    let data = {
-        title: "Create a product | eShop",
-    };
-
-    res.render("eshop/product/create", data);
-});
 
 router.post("/product/create", urlencodedParser, async (req, res) => {
     await eShop.createProduct(req.body.name, req.body.description, req.body.price, req.body.stock);
@@ -108,4 +175,3 @@ router.post("/product/delete", urlencodedParser, async (req, res) => {
 });
 
 module.exports = router;
- 

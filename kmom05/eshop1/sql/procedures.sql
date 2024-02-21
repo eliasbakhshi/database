@@ -1,11 +1,80 @@
 --
--- Create procedure for getting all producers.
+-- Create procedure for creating a category.
+--
+DROP PROCEDURE IF EXISTS create_category;
+DELIMITER ;;
+CREATE PROCEDURE create_category(
+    IN name VARCHAR(100),
+)
+BEGIN
+    INSERT INTO category (name) VALUES (name);
+END;;
+DELIMITER ;
+
+--
+-- Create procedure for getting all categories.
 --
 DROP PROCEDURE IF EXISTS get_categories;
 DELIMITER ;;
 CREATE PROCEDURE get_categories()
 BEGIN
     SELECT * FROM category;
+END;;
+DELIMITER ;
+
+--
+-- Create procedure for getting a category.
+--
+DROP PROCEDURE IF EXISTS get_category;
+DELIMITER ;;
+CREATE PROCEDURE get_category(
+    IN id INT
+)
+BEGIN
+    SELECT * FROM category where category_id = id;
+END;;
+DELIMITER ;
+
+--
+-- Create procedure for getting a category.
+--
+DROP PROCEDURE IF EXISTS edit_category;
+DELIMITER ;;
+CREATE PROCEDURE edit_category(
+    IN id INT,
+    IN the_name VARCHAR(100)
+)
+BEGIN
+    UPDATE category SET name = the_name, category_id = id;
+END;;
+DELIMITER ;
+
+--
+-- Create procedure for deleting a category.
+--
+DROP PROCEDURE IF EXISTS delete_category;
+DELIMITER ;;
+CREATE PROCEDURE delete_category(
+    IN id INT
+)
+BEGIN
+    DELETE FROM category WHERE category_id = id;
+END;;
+DELIMITER ;
+
+--
+-- Create procedure for creating a product.
+--
+DROP PROCEDURE IF EXISTS create_product;
+DELIMITER ;;
+CREATE PROCEDURE create_product(
+    IN name VARCHAR(100),
+    IN description TEXT,
+    IN price DECIMAL(10,2),
+    IN stock INT
+)
+BEGIN
+    INSERT INTO product (product_name, description, price, stock) VALUES (name, description, price, stock);
 END;;
 DELIMITER ;
 
@@ -34,7 +103,7 @@ END;;
 DELIMITER ;
 
 --
--- Create procedure for getting a product.
+-- Create procedure for editing a product.
 --
 DROP PROCEDURE IF EXISTS edit_product;
 DELIMITER ;;
@@ -60,22 +129,6 @@ CREATE PROCEDURE delete_product(
 )
 BEGIN
     DELETE FROM product WHERE product_id = id;
-END;;
-DELIMITER ;
-
---
--- Create procedure for creating a product.
---
-DROP PROCEDURE IF EXISTS create_product;
-DELIMITER ;;
-CREATE PROCEDURE create_product(
-    IN name VARCHAR(100),
-    IN description TEXT,
-    IN price DECIMAL(10,2),
-    IN stock INT
-)
-BEGIN
-    INSERT INTO product (product_name, description, price, stock) VALUES (name, description, price, stock);
 END;;
 DELIMITER ;
 

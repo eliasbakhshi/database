@@ -1,0 +1,25 @@
+<%- include("../header", {title: title}); %>
+
+<form class="label-left" method="post" action="/eshop/product/delete">
+    <fieldset>
+        <legend>Delete product</legend>
+
+        <input type="hidden" readonly id="id" name="id" value="<%= res.product_id %>" />
+
+        <label for="product_name">Name</label>
+        <input id="product_name" readonly type="text" name="name" value="<%= res.product_name %>" />
+
+        <label for="description">Description</label>
+        <input id="description" readonly type="text" name="description" value="<%= res.description %>" />
+
+        <label for="price">Price</label>
+        <input id="price" readonly type="number" name="price" step=".01" value="<%= res.price %>" />
+
+        <label for="stock">Stock</label>
+        <input id="stock" readonly type="number" name="stock" value="<%= res.stock %>" />
+
+        <input type="submit" name="doit" value="Delete" />
+    </fieldset>
+</form>
+
+<%- include("../footer"); %>

@@ -1,0 +1,24 @@
+<%- include("../header", {title: title}); %>
+
+<form class="label-left" method="post" action="/eshop/product/create">
+    <fieldset>
+        <legend>Create product</legend>
+
+        <label for="product_name">Name</label>
+        <input id="product_name" type="text" name="name" value="" />
+
+        <label for="description">Description</label>
+        <input id="description" type="text" name="description" value="" />
+
+        <label for="price">Price</label>
+        <input id="price" type="number" name="price" step=".01" value="" />
+
+        <label for="stock">Stock</label>
+        <input id="stock" type="number" name="stock" value="" />
+
+        <input type="submit" name="doit" value="Create" />
+
+    </fieldset>
+</form>
+
+<%- include("../footer"); %>
