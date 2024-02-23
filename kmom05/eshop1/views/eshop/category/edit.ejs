@@ -1,18 +1,18 @@
 <%- include("../header", {title: title}); %>
 
-<form class="label-left" method="post" action="/eshop/product/edit">
+<form class="label-left" method="post" action="/eshop/category/edit">
     <fieldset>
-        <legend>Edit product</legend>
+        <legend>Edit category</legend>
 
-        <input type="hidden" id="id" name="id" value="<%= res.product_id %>" />
+        <input type="hidden" id="id" name="id" value="<%= res.category_id %>" />
 
-        <label for="product_name">Name</label>
-        <input id="product_name" type="text" name="name" value="<%= res.product_name %>" />
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" value="<%= res.name %>" />
 
         <input type="submit" name="doit" value="Edit" />
 
         <% if (edited){ %>
-        <p>Product is updated.</p>
+        <p>Category is updated.</p>
 
         <% }; %>
     </fieldset>

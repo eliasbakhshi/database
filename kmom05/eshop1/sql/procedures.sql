@@ -4,10 +4,10 @@
 DROP PROCEDURE IF EXISTS create_category;
 DELIMITER ;;
 CREATE PROCEDURE create_category(
-    IN name VARCHAR(100),
+    IN the_name VARCHAR(100)
 )
 BEGIN
-    INSERT INTO category (name) VALUES (name);
+    INSERT INTO category (name) VALUES (the_name);
 END;;
 DELIMITER ;
 
@@ -18,7 +18,7 @@ DROP PROCEDURE IF EXISTS get_categories;
 DELIMITER ;;
 CREATE PROCEDURE get_categories()
 BEGIN
-    SELECT * FROM category;
+    SELECT * FROM category WHERE deleted IS NULL;
 END;;
 DELIMITER ;
 
@@ -31,12 +31,12 @@ CREATE PROCEDURE get_category(
     IN id INT
 )
 BEGIN
-    SELECT * FROM category where category_id = id;
+    SELECT * FROM category where category_id = id AND deleted IS NULL;
 END;;
 DELIMITER ;
 
 --
--- Create procedure for getting a category.
+-- Create procedure for editing a category.
 --
 DROP PROCEDURE IF EXISTS edit_category;
 DELIMITER ;;
@@ -45,7 +45,7 @@ CREATE PROCEDURE edit_category(
     IN the_name VARCHAR(100)
 )
 BEGIN
-    UPDATE category SET name = the_name, category_id = id;
+    UPDATE category SET name = the_name WHERE category_id = id AND deleted IS NULL;
 END;;
 DELIMITER ;
 
@@ -58,7 +58,7 @@ CREATE PROCEDURE delete_category(
     IN id INT
 )
 BEGIN
-    DELETE FROM category WHERE category_id = id;
+    UPDATE category SET deleted = NOW() WHERE category_id = id AND deleted IS NULL;
 END;;
 DELIMITER ;
 
@@ -85,7 +85,7 @@ DROP PROCEDURE IF EXISTS get_products;
 DELIMITER ;;
 CREATE PROCEDURE get_products()
 BEGIN
-    SELECT * FROM product;
+    SELECT * FROM product WHERE deleted IS NULL;
 END;;
 DELIMITER ;
 
@@ -98,7 +98,7 @@ CREATE PROCEDURE get_product(
     IN id INT
 )
 BEGIN
-    SELECT * FROM product WHERE product_id = id;
+    SELECT * FROM product WHERE product_id = id AND deleted IS NULL;
 END;;
 DELIMITER ;
 
@@ -115,7 +115,7 @@ CREATE PROCEDURE edit_product(
     IN stock INT
 )
 BEGIN
-    UPDATE product SET product_name = name, description = description, price = price, stock = stock WHERE product_id = id;
+    UPDATE product SET product_name = name, description = description, price = price, stock = stock WHERE product_id = id AND deleted IS NULL;
 END;;
 DELIMITER ;
 
@@ -128,30 +128,6 @@ CREATE PROCEDURE delete_product(
     IN id INT
 )
 BEGIN
-    DELETE FROM product WHERE product_id = id;
+    UPDATE product SET deleted = NOW() WHERE product_id = id AND deleted IS NULL;
 END;;
 DELIMITER ;
-
-
-
-
-/* --- Triggers --- */
-
-
---
--- Create a Trigger for deleting a product and rows that product is connected to.
---
-DROP TRIGGER IF EXISTS delete_product_trigger;
-DELIMITER ;;
-CREATE TRIGGER delete_product_trigger
-BEFORE DELETE ON product
-FOR EACH ROW
-BEGIN
-    DELETE FROM product_category WHERE product_id = OLD.product_id;
-    DELETE FROM order_item WHERE product_id = OLD.product_id;
-    DELETE FROM warehouse WHERE product_id = OLD.product_id;
-END;;
-DELIMITER ;
-
-
-

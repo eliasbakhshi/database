@@ -1,5 +1,5 @@
 -- Export the customer table to a CSV file
-SELECT 'customer_id', 'firstname', 'lastname', 'email', 'password', 'address', 'phone_number'
+SELECT 'customer_id', 'firstname', 'lastname', 'email', 'password', 'address', 'phone_number', 'created', 'updated', 'deleted'
 UNION ALL
 SELECT *
 FROM customer
@@ -9,7 +9,7 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n';
 
 -- Export the product table to a CSV file
-SELECT 'product_id', 'description', 'product_name', 'price', 'stock'
+SELECT 'product_id', 'description', 'product_name', 'price', 'stock', 'created', 'updated', 'deleted'
 UNION ALL
 SELECT *
 FROM product
@@ -19,7 +19,7 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n';
 
 -- Export the product_category table to a CSV file
-SELECT 'product_id', 'category_id'
+SELECT 'product_id', 'category_id', 'created', 'updated', 'deleted'
 UNION ALL
 SELECT *
 FROM product_category
@@ -29,7 +29,7 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n';
 
 -- Export the warehouse table to a CSV file
-SELECT 'product_id', 'shelf_location', 'stock_quantity'
+SELECT 'product_id', 'shelf_location', 'stock_quantity', 'created', 'updated', 'deleted'
 UNION ALL
 SELECT *
 FROM warehouse
@@ -39,7 +39,7 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n';
 
 -- Export the category table to a CSV file
-SELECT 'category_id', 'name'
+SELECT 'category_id', 'name', 'created', 'updated', 'deleted'
 UNION ALL
 SELECT *
 FROM category

@@ -25,6 +25,9 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
+  `created` datetime DEFAULT NOW(),
+  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -35,7 +38,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES
+INSERT INTO `category` (`category_id`, `name`) VALUES
 (1,'Category 1'),
 (2,'Category 2'),
 (3,'Category 3\"\r\n\"4'),
@@ -80,6 +83,9 @@ CREATE TABLE `customer` (
   `password` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `phone_number` varchar(20) DEFAULT NULL,
+  `created` datetime DEFAULT NOW(),
+  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -90,7 +96,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES
+INSERT INTO `customer` (`customer_id`, `firstname`, `lastname`, `email`, `password`, `address`, `phone_number`) VALUES
 (1,'John','Doe','john@example.com','password123','123 Main St','123-456-7890'),
 (2,'Jane','Smith','jane@example.com','password456','456 Elm St','456-789-0123');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
@@ -108,6 +114,9 @@ CREATE TABLE `delivery` (
   `order_id` int(11) DEFAULT NULL,
   `delivery_date` datetime DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
+  `created` datetime DEFAULT NOW(),
+  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`delivery_id`),
   KEY `order_id` (`order_id`),
   CONSTRAINT `delivery_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`)
@@ -120,7 +129,7 @@ CREATE TABLE `delivery` (
 
 LOCK TABLES `delivery` WRITE;
 /*!40000 ALTER TABLE `delivery` DISABLE KEYS */;
-INSERT INTO `delivery` VALUES
+INSERT INTO `delivery` (`delivery_id`, `order_id`, `delivery_date`, `status`) VALUES
 (1,1,'2024-02-15 12:00:00','Delivered'),
 (2,2,'2024-02-16 13:00:00','Shipped');
 /*!40000 ALTER TABLE `delivery` ENABLE KEYS */;
@@ -138,6 +147,9 @@ CREATE TABLE `inventory_log` (
   `event_instance_id` varchar(36) NOT NULL,
   `event_description` text DEFAULT NULL,
   `event_date` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NOW(),
+  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`log_id`,`event_instance_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -148,7 +160,7 @@ CREATE TABLE `inventory_log` (
 
 LOCK TABLES `inventory_log` WRITE;
 /*!40000 ALTER TABLE `inventory_log` DISABLE KEYS */;
-INSERT INTO `inventory_log` VALUES
+INSERT INTO `inventory_log` (`log_id`, `event_instance_id`, `event_description`, `event_date`) VALUES
 (1,'1','Inventory updated for Product 1','2024-02-16 17:03:44'),
 (2,'0357ba68-d09e-4105-9f83-94ba0d011fda','Detaljer om produkt med iD \'2\' ändrades','2024-02-17 12:27:57'),
 (2,'2','Inventory updated for Product 2','2024-02-16 17:03:44'),
@@ -168,6 +180,9 @@ CREATE TABLE `invoice` (
   `order_id` int(11) DEFAULT NULL,
   `invoice_date` datetime DEFAULT NULL,
   `total_price` decimal(10,2) DEFAULT NULL,
+  `created` datetime DEFAULT NOW(),
+  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`invoice_id`),
   KEY `order_id` (`order_id`),
   CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`)
@@ -180,7 +195,7 @@ CREATE TABLE `invoice` (
 
 LOCK TABLES `invoice` WRITE;
 /*!40000 ALTER TABLE `invoice` DISABLE KEYS */;
-INSERT INTO `invoice` VALUES
+INSERT INTO `invoice` (`invoice_id`, `order_id`, `invoice_date`, `total_price`) VALUES
 (1,1,'2024-02-15 12:00:00',35.98),
 (2,2,'2024-02-16 13:00:00',20.99);
 /*!40000 ALTER TABLE `invoice` ENABLE KEYS */;
@@ -199,6 +214,9 @@ CREATE TABLE `order` (
   `total_price` decimal(10,2) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
+  `created` datetime DEFAULT NOW(),
+  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`order_id`),
   KEY `customer_id` (`customer_id`),
   CONSTRAINT `order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
@@ -211,7 +229,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES
+INSERT INTO `order` (`order_id`, `order_date`, `total_price`, `customer_id`, `status`) VALUES
 (1,'2024-02-15 10:00:00',35.98,1,'Completed'),
 (2,'2024-02-16 11:00:00',20.99,2,'Pending');
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
@@ -230,6 +248,9 @@ CREATE TABLE `order_item` (
   `product_id` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
+  `created` datetime DEFAULT NOW(),
+  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`order_item_id`),
   KEY `order_id` (`order_id`),
   KEY `product_id` (`product_id`),
@@ -244,7 +265,7 @@ CREATE TABLE `order_item` (
 
 LOCK TABLES `order_item` WRITE;
 /*!40000 ALTER TABLE `order_item` DISABLE KEYS */;
-INSERT INTO `order_item` VALUES
+INSERT INTO `order_item` (`order_item_id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
 (1,1,1,2,21.98),
 (2,1,2,1,14.00),
 (3,2,2,1,20.99);
@@ -264,6 +285,9 @@ CREATE TABLE `product` (
   `product_name` varchar(255) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NOW(),
+  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -274,7 +298,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES
+INSERT INTO `product` (`product_id`, `description`, `product_name`, `price`, `stock`) VALUES
 (1,'description of Product 1','Product 1',10.99,100),
 (2,'description of Product 2','Product 2',51.00,151),
 (3,'description of Product 3','Product 3',91.01,202),
@@ -318,6 +342,9 @@ DROP TABLE IF EXISTS `product_category`;
 CREATE TABLE `product_category` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
+  `created` datetime DEFAULT NOW(),
+  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`product_id`,`category_id`),
   KEY `category_id` (`category_id`),
   CONSTRAINT `product_category_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
@@ -331,7 +358,7 @@ CREATE TABLE `product_category` (
 
 LOCK TABLES `product_category` WRITE;
 /*!40000 ALTER TABLE `product_category` DISABLE KEYS */;
-INSERT INTO `product_category` VALUES
+INSERT INTO `product_category` (`product_id`, `category_id`) VALUES
 (1,1),
 (2,2),
 (2,19),
@@ -364,6 +391,9 @@ CREATE TABLE `warehouse` (
   `product_id` int(11) NOT NULL,
   `shelf_location` varchar(255) DEFAULT NULL,
   `stock_quantity` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NOW(),
+  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`product_id`),
   CONSTRAINT `warehouse_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -375,7 +405,7 @@ CREATE TABLE `warehouse` (
 
 LOCK TABLES `warehouse` WRITE;
 /*!40000 ALTER TABLE `warehouse` DISABLE KEYS */;
-INSERT INTO `warehouse` VALUES
+INSERT INTO `warehouse` (`product_id`, `shelf_location`, `stock_quantity`) VALUES
 (1,'A1',50),
 (2,'B2',75),
 (3,'A2',100),

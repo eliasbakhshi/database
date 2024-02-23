@@ -78,14 +78,13 @@ router.get("/category/delete/:id", async (req, res) => {
     res.render("eshop/category/delete", data);
 });
 
-
 router.post("/category/create", urlencodedParser, async (req, res) => {
-    await eShop.createCategory(req.body.name, req.body.description, req.body.price, req.body.stock);
+    await eShop.createCategory(req.body.name);
     res.redirect(`/eshop/category`);
 });
 
 router.post("/category/edit", urlencodedParser, async (req, res) => {
-    let result = await eShop.editCategory(req.body.id, req.body.name, req.body.description, req.body.price, req.body.stock);
+    await eShop.editCategory(req.body.id, req.body.name);
     res.redirect(`/eshop/category/edit/${req.body.id}&edited=true`);
 });
 
@@ -97,9 +96,6 @@ router.post("/category/delete", urlencodedParser, async (req, res) => {
     }
     res.redirect("/eshop/category");
 });
-
-
-
 
 router.get("/product", async (req, res) => {
     let data = {
@@ -153,7 +149,6 @@ router.get("/product/delete/:id", async (req, res) => {
     data.res = await eShop.getProduct(id);
     res.render("eshop/product/delete", data);
 });
-
 
 router.post("/product/create", urlencodedParser, async (req, res) => {
     await eShop.createProduct(req.body.name, req.body.description, req.body.price, req.body.stock);

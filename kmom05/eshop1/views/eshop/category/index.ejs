@@ -1,5 +1,7 @@
 <%- include("../header", {title: title}); %>
 
+<a href="/eshop/category/create">Create category</a>
+
 <h1>Product list</h1>
 
 <table>
@@ -11,10 +13,10 @@
     <tr>
         <td><%= row.name %></td>
         <td class="right">
-            <a href="/eshop/product/edit/<%= row.category_id %>">
+            <a href="/eshop/category/edit/<%= row.category_id %>">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>
-            <a href="/eshop/product/delete/<%= row.category_id %>">
+            <a href="/eshop/category/delete/<%= row.category_id %>">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
             </a>
         </td>
