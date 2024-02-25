@@ -97,7 +97,7 @@ async function editCategory(id, name) {
     let res = await db.query(sql, [id, name]);
 
     return res;
-}
+} 
 
 /**
  * Delete an category.

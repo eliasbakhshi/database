@@ -1,30 +1,38 @@
 <%- include("../header", {title: title}); %>
 
-<form class="label-left" method="post" action="/eshop/product/edit">
-    <fieldset>
-        <legend>Edit product</legend>
+<div class="card my-5">
+    <h5 class="card-header">Edit product</h5>
+    <div class="card-body">
+        <form class="my-3" method="post" action="/eshop/product/edit">
+            <input type="hidden" id="id" readonly name="id" value="<%= res.product_id %>" />
 
-        <input type="hidden" id="id" name="id" value="<%= res.product_id %>" />
+            <div class="mb-3">
+                <label for="product_name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" id="product_name" aria-describedby="product_name" value="<%= res.product_name %>" />
+            </div>
 
-        <label for="product_name">Name</label>
-        <input id="product_name" type="text" name="name" value="<%= res.product_name %>" />
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" name="description" id="description" description="description" aria-describedby="description" value="<%= res.description %>" />
+            </div>
 
-        <label for="description">Description</label>
-        <input id="description" type="text" name="description" value="<%= res.description %>" />
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" name="price" step=".01" id="price" price="price" aria-describedby="price" value="<%= res.price %>" />
+            </div>
 
-        <label for="price">Price</label>
-        <input id="price" type="number" name="price" step=".01" value="<%= res.price %>" />
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" class="form-control" name="stock" id="stock" stock="stock" aria-describedby="stock" value="<%= res.stock %>" />
+            </div>
 
-        <label for="stock">Stock</label>
-        <input id="stock" type="number" name="stock" value="<%= res.stock %>" />
-
-        <input type="submit" name="doit" value="Edit" />
-
-        <% if (edited){ %>
-        <p>Product is updated.</p>
-
-        <% }; %>
-    </fieldset>
-</form>
+            <% if (edited){ %>
+            <p>Product is updated.</p>
+            <a href="/eshop/product" class="btn btn-primary me-3">Back</a>
+            <% }; %>
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+    </div>
+</div>
 
 <%- include("../footer"); %>

@@ -1,15 +1,16 @@
 <%- include("../header", {title: title}); %>
 
-<form class="label-left" method="post" action="/eshop/category/create">
-    <fieldset>
-        <legend>Create product</legend>
+<div class="card my-5">
+    <h5 class="card-header">Create a new category</h5>
+    <div class="card-body">
+        <form class="my-3" method="post" action="/eshop/category/create">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" aria-describedby="name" value="" />
+            </div>
 
-        <label for="product_name">Name</label>
-        <input id="product_name" type="text" name="name" value="" />
-
-        <input type="submit" name="doit" value="Create" />
-
-    </fieldset>
-</form>
-
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</div>
 <%- include("../footer"); %>

@@ -98,7 +98,7 @@ router.post("/category/delete", urlencodedParser, async (req, res) => {
 });
 
 router.get("/product", async (req, res) => {
-    let data = {
+    let data = { 
         title: "Products | eShop",
     };
 
