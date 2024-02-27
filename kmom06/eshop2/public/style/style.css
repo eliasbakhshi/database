@@ -1,0 +1,14 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+body footer {
+  text-align: center;
+  width: 100%;
+  background-color: aqua;
+  margin-top: auto;
+}
+body footer p {
+  margin-top: 1em;
+}/*# sourceMappingURL=style.css.map */
