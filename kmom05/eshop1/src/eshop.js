@@ -2,6 +2,7 @@
  * A module exporting functions to access the eshop database.
  */
 "use strict";
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
     createCategory: createCategory,
@@ -14,6 +15,8 @@ module.exports = {
     getProduct: getProduct,
     editProduct: editProduct,
     deleteProduct: deleteProduct,
+    addInventoryLog: addInventoryLog,
+    getProductIDByProductName: getProductIDByProductName
 };
 
 const mysql = require("promise-mysql");
@@ -195,3 +198,39 @@ async function deleteProduct(id) {
     console.info(`SQL: ${sql} got ${res.length} rows.`);
     return res;
 }
+
+function generateUUID() {
+    return uuidv4();
+}
+
+async function generateEventInstanceId() {
+    return generateUUID();
+}
+async function addInventoryLog(id, eventDescription, eventDate) {
+    // Generate Event_instance_id
+    const eventInstanceId = await generateEventInstanceId(id);
+    const sql = 'CALL addInventoryLogProcedure(?, ?, ?)';
+
+    const result = await db.query(sql, [ eventInstanceId, eventDescription, eventDate]);
+
+    return result;
+}
+
+function getProductIDByProductName(productName) {
+    return new Promise((resolve, reject) => {
+      // Prepare SQL query
+      const query = 'SELECT product_id FROM product WHERE product_name = ?';
+      // Execute the query
+      db.query(query, [productName], (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          // If results are found, resolve with product_id, otherwise resolve with null
+          const productId = results.length > 0 ? results[0].product_id : null;
+          resolve(productId);
+        }
+      });
+    });
+  }
+  
+  
