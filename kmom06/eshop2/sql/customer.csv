@@ -1,0 +1,3 @@
+"customer_id","firstname","lastname","email","password","address","phone_number","created","updated","deleted"
+"1","John","Doe","john@example.com","password123","123 Main St","123-456-7890","2024-02-23 20:34:33","2024-02-23 20:34:33",\N
+"2","Jane","Smith","jane@example.com","password456","456 Elm St","456-789-0123","2024-02-23 20:34:33","2024-02-23 20:34:33",\N
