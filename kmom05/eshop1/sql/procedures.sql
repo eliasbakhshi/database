@@ -239,8 +239,12 @@ CREATE PROCEDURE create_product(
 )
 BEGIN
     INSERT INTO product (product_name, description, price, stock) VALUES (name, description, price, stock);
+    SET @productId = LAST_INSERT_ID();
 END;;
 DELIMITER ;
+
+
+
 
 --
 -- Create procedure for getting all producers.

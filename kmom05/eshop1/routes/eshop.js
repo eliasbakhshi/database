@@ -172,25 +172,23 @@ router.get("/product/delete/:id", async (req, res) => {
 
 router.post("/product/create", urlencodedParser, async (req, res) => {
     try {
-      const date = new Date();
-      const formattedDate = formatDate(date);
-      const name = req.body.name;
-  
-      // Create the product
-      await eShop.createProduct(req.body.name, req.body.description, req.body.price, req.body.stock);
-  
-      // Get the product ID by product name
-      const id = await eshop.getProductIDByProductName(name);
-  
-      // Add inventory log
-      await eshop.addInventoryLog(id, `En ny produkt lades till med produkt ID '${id}'`, formattedDate);
-  
-      res.redirect(`/eshop/product`);
+        const date = new Date();
+        const formattedDate = formatDate(date);
+        const name = req.body.name;
+
+        // Create the product and get the product ID
+        const productId = await eShop.createProduct(req.body.name, req.body.description, req.body.price, req.body.stock);
+
+        // Add inventory log with the retrieved product ID
+        await eShop.addInventoryLog(productId, `A new product was added with product ID '${productId}'`, formattedDate);
+
+        res.redirect(`/eshop/product`);
     } catch (error) {
-      console.error('Error:', error);
-      res.status(500).send('An error occurred while creating the product.');
+        console.error('Error:', error);
+        res.status(500).send('An error occurred while creating the product.');
     }
-  });
+});
+
   
 
 router.post("/product/edit", urlencodedParser, async (req, res) => {

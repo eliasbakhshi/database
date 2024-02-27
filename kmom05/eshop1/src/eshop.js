@@ -130,10 +130,21 @@ async function deleteCategory(id) {
  */
 async function createProduct(name, description, price, stock) {
     let sql = `CALL create_product(?, ?, ?, ?);`;
-    let res = await db.query(sql, [name, description, price, stock]);
+    await db.query(sql, [name, description, price, stock]);
+    
+    // Retrieve the product ID from the session variable
+    let productIdQuery = 'SELECT @productId AS productId;';
+    let productIdResult = await db.query(productIdQuery);
+    console.log('productIdResult:', productIdResult[0].productId); // Check the structure of productIdResult
 
-    return res;
+   return productIdResult[0].productId;
 }
+
+
+
+
+
+
 
 /**
  * Get all products.
