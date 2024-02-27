@@ -72,7 +72,7 @@ DROP PROCEDURE IF EXISTS displayProductsProcedure;
 DELIMITER ;;
 CREATE PROCEDURE displayProductsProcedure()
 BEGIN
-    SELECT ProduktID, Product_name FROM Product;
+    SELECT product_id, Product_name FROM Product;
 END;;
 DELIMITER ;
 
@@ -88,9 +88,9 @@ DROP PROCEDURE IF EXISTS displayInventoryProcedure;
 DELIMITER ;;
 CREATE PROCEDURE displayInventoryProcedure()
 BEGIN
-    SELECT p.ProduktID, p.Product_name, w.Shelf_location, w.Stock_quantity
+    SELECT p.product_id, p.Product_name, w.Shelf_location, w.Stock_quantity
     FROM Product p
-    JOIN Warehouse w ON p.ProduktID = w.Product_id;
+    JOIN Warehouse w ON p.product_id = w.product_id;
 END;;
 DELIMITER ;
 
@@ -100,10 +100,10 @@ CREATE PROCEDURE filterInventoryProcedure(
     IN filterString VARCHAR(255)
 )
 BEGIN
-    SELECT p.ProduktID, p.Product_name, w.Shelf_location, w.Stock_quantity
+    SELECT p.product_id, p.Product_name, w.Shelf_location, w.Stock_quantity
     FROM Product p
-    JOIN Warehouse w ON p.ProduktID = w.Product_id
-    WHERE p.ProduktID LIKE CONCAT('%', filterString, '%')
+    JOIN Warehouse w ON p.product_id = w.product_id
+    WHERE p.product_id LIKE CONCAT('%', filterString, '%')
     OR p.Product_name LIKE CONCAT('%', filterString, '%')
     OR w.Shelf_location LIKE CONCAT('%', filterString, '%');
 END;;
@@ -133,7 +133,7 @@ CREATE PROCEDURE removeProductFromInventoryProcedure(
 BEGIN
     UPDATE Warehouse
     SET Stock_quantity = GREATEST(Stock_quantity - quantity, 0)
-    WHERE Product_id = productId AND Shelf_location = shelf;
+    WHERE product_id = productId AND Shelf_location = shelf;
 END;;
 DELIMITER ;
 

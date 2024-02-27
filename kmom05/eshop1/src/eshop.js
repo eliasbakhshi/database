@@ -49,6 +49,7 @@ let db;
  */
 async function createCategory(name) {
     let sql = `CALL create_category(?);`;
+
     let res = await db.query(sql, [name]);
 
     return res;
@@ -63,6 +64,7 @@ async function createCategory(name) {
  */
 async function getCategories() {
     let sql = `CALL get_categories();`;
+
     let res = await db.query(sql);
 
     return res[0];
@@ -79,6 +81,7 @@ async function getCategories() {
  */
 async function getCategory(id) {
     let sql = `CALL get_category(?);`;
+
     let res = await db.query(sql, [id]);
 
     return res[0][0];
@@ -97,10 +100,12 @@ async function getCategory(id) {
  */
 async function editCategory(id, name) {
     let sql = `CALL edit_category(?, ?);`;
+
     let res = await db.query(sql, [id, name]);
 
+
     return res;
-} 
+}
 
 /**
  * Delete an category.
@@ -112,7 +117,9 @@ async function editCategory(id, name) {
  */
 async function deleteCategory(id) {
     let sql = `CALL delete_category(?);`;
+
     let res = await db.query(sql, [id]);
+
     console.info(`SQL: ${sql} got ${res.length} rows.`);
     return res;
 }
@@ -130,14 +137,17 @@ async function deleteCategory(id) {
  */
 async function createProduct(name, description, price, stock) {
     let sql = `CALL create_product(?, ?, ?, ?);`;
-    await db.query(sql, [name, description, price, stock]);
-    
-    // Retrieve the product ID from the session variable
-    let productIdQuery = 'SELECT @productId AS productId;';
-    let productIdResult = await db.query(productIdQuery);
-    console.log('productIdResult:', productIdResult[0].productId); // Check the structure of productIdResult
 
-   return productIdResult[0].productId;
+    await db.query(sql, [name, description, price, stock]);
+
+    let productIdQuery = 'SELECT @productId AS productId;';
+
+    let productIdResult = await db.query(productIdQuery);
+
+    console.log('productIdResult:', productIdResult[0].productId);
+    // Check the structure of productIdResult
+
+    return productIdResult[0].productId;
 }
 
 
@@ -155,7 +165,9 @@ async function createProduct(name, description, price, stock) {
  */
 async function getProducts() {
     let sql = `CALL get_products();`;
+
     let res = await db.query(sql);
+
     console.info(`SQL: ${sql} got ${res.length} rows.`);
 
     return res[0];
@@ -172,6 +184,7 @@ async function getProducts() {
  */
 async function getProduct(id) {
     let sql = `CALL get_product(?);`;
+
     let res = await db.query(sql, [id]);
 
     return res[0][0];
@@ -190,6 +203,7 @@ async function getProduct(id) {
  */
 async function editProduct(id, name, description, price, stock) {
     let sql = `CALL edit_product(?, ?, ?, ?, ?);`;
+
     let res = await db.query(sql, [id, name, description, price, stock]);
 
     return res;
@@ -205,7 +219,9 @@ async function editProduct(id, name, description, price, stock) {
  */
 async function deleteProduct(id) {
     let sql = `CALL delete_product(?);`;
+
     let res = await db.query(sql, [id]);
+
     console.info(`SQL: ${sql} got ${res.length} rows.`);
     return res;
 }
@@ -220,6 +236,7 @@ async function generateEventInstanceId() {
 async function addInventoryLog(id, eventDescription, eventDate) {
     // Generate Event_instance_id
     const eventInstanceId = await generateEventInstanceId(id);
+
     const sql = 'CALL addInventoryLogProcedure(?, ?, ?)';
 
     const result = await db.query(sql, [ eventInstanceId, eventDescription, eventDate]);
@@ -229,19 +246,17 @@ async function addInventoryLog(id, eventDescription, eventDate) {
 
 function getProductIDByProductName(productName) {
     return new Promise((resolve, reject) => {
-      // Prepare SQL query
-      const query = 'SELECT product_id FROM product WHERE product_name = ?';
-      // Execute the query
-      db.query(query, [productName], (error, results) => {
-        if (error) {
-          reject(error);
-        } else {
-          // If results are found, resolve with product_id, otherwise resolve with null
-          const productId = results.length > 0 ? results[0].product_id : null;
-          resolve(productId);
-        }
-      });
+        const query = 'SELECT product_id FROM product WHERE product_name = ?';
+
+        db.query(query, [productName], (error, results) => {
+            if (error) {
+                reject(error);
+            } else {
+                // If results are found, resolve with product_id, otherwise resolve with null
+                const productId = results.length > 0 ? results[0].product_id : null;
+
+                resolve(productId);
+            }
+        });
     });
-  }
-  
-  
+}

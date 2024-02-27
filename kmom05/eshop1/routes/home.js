@@ -5,7 +5,6 @@
 
 const express = require("express");
 const router  = express.Router();
-const path    = require("path");
 
 router.get("/", (req, res) => {
     let data = {
@@ -20,6 +19,7 @@ router.use((req, res) => {
     let data = {
         title: "Nothing found | Website"
     };
+
     res.status(404).render('error404', data);
 });
 

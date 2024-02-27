@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 const readline = require('readline');
 const util = require('util');
-const con = require("./config/db/eshop.json")
+const con = require("./config/db/eshop.json");
 
 const connection = mysql.createConnection(con);
 
@@ -26,17 +26,16 @@ function displayMenu() {
     console.log("Welcome to the eshop");
     console.log('\nMenu:');
     console.log('1. Display shelves in the warehouse');
-    console.log('2. Display products on the shelves');
-    console.log('3. About');
-    console.log('4. Log <number>');
-    console.log('5. Product');
-    console.log('6. Shelf');
-    console.log('7. Inv');
-    console.log('8. Inv <str>');
-    console.log('9. Invadd <productid> <shelf> <number>');
-    console.log('10. Invdel <productid> <shelf> <number>');
-    console.log("11. Menu: to see all the options.");
-    console.log('12. Exit');
+    console.log('2. About');
+    console.log('3. Log <number>');
+    console.log('4. Product');
+    console.log('5. Shelf');
+    console.log('6. Inv');
+    console.log('7. Inv <str>');
+    console.log('8. Invadd <productid> <shelf> <number>');
+    console.log('9. Invdel <productid> <shelf> <number>');
+    console.log("10. Menu: to see all the options.");
+    console.log('11. Exit');
 
     rl.question('Enter your choice: ', handleChoice);
 }
@@ -54,45 +53,42 @@ function handleChoice(choice) {
             displayShelves();
             break;
         case '2':
-            displayProductsOnShelves();
-            break;
-        case '3':
             console.log('Gruppen består av, Senai amanuel, Elias bakshi, Daniel');
             displayMenu();
             break;
-        case '4':
+        case '3':
             logNumber = parseInt(args[1]);
             displayLog(logNumber);
             break;
-        case '5':
+        case '4':
             displayProducts();
             break;
-        case '6':
+        case '5':
             displayShelfLocations();
             break;
-        case '7':
+        case '6':
             displayInventory();
             break;
-        case '8':
+        case '7':
             if (args.length > 1) {
                 filterInventory(args.slice(1).join(' '));
             } else {
                 displayInventory();
             }
             break;
-        case '9':
+        case '8':
             addArgs = args.slice(1);
 
             addProductToInventory(addArgs);
             break;
-        case '10':
+        case '9':
             delArgs = args.slice(1);
             removeProductFromInventory(delArgs);
             break;
-        case "11":
+        case "10":
             displayMenu();
             break;
-        case '12':
+        case '11':
             console.log('Exiting...');
             connection.end(); // Close connection
             rl.close(); // Close readline interface
@@ -116,20 +112,6 @@ async function displayShelves() {
         return;
     }
 }
-
-async function displayProductsOnShelves() {
-    try {
-        const results = await queryAsync('Call displayProductsOnShelvesProcedure();');
-
-        console.log('Products on the shelves:');
-        console.table(results[0]);
-        displayMenu();
-    } catch (error) {
-        console.error('Error fetching products on shelves: ', error);
-        return;
-    }
-}
-
 
 
 

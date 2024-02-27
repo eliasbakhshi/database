@@ -78,7 +78,7 @@ router.get("/category/edit/:id", async (req, res) => {
     };
 
     data.res = await eShop.getCategory(id);
-    
+
     res.render("eshop/category/edit", data);
 });
 
@@ -112,7 +112,7 @@ router.post("/category/delete", urlencodedParser, async (req, res) => {
 });
 
 router.get("/product", async (req, res) => {
-    let data = { 
+    let data = {
         title: "Products | eShop",
     };
 
@@ -132,7 +132,9 @@ router.get("/product/create", async (req, res) => {
 
 router.get("/product/edit/:id&:edited", async (req, res) => {
     let id = req.params.id;
+
     let edited = req.params.edited;
+
     let data = {
         title: "Edit product balance | eShop",
     };
@@ -140,9 +142,7 @@ router.get("/product/edit/:id&:edited", async (req, res) => {
     if (edited) {
         data.edited = true;
     }
-    const date = new Date();
 
-    const formattedDate = formatDate(date);
     data.res = await eShop.getProduct(id);
 
     res.render("eshop/product/edit", data);
@@ -164,7 +164,7 @@ router.get("/product/delete/:id", async (req, res) => {
     let data = {
         title: "Delete product | eShop",
     };
- 
+
     data.res = await eShop.getProduct(id);
 
     res.render("eshop/product/delete", data);
@@ -174,13 +174,15 @@ router.post("/product/create", urlencodedParser, async (req, res) => {
     try {
         const date = new Date();
         const formattedDate = formatDate(date);
-        const name = req.body.name;
 
         // Create the product and get the product ID
-        const productId = await eShop.createProduct(req.body.name, req.body.description, req.body.price, req.body.stock);
+        const productId = await eShop.createProduct(req.body.name, req.body.description,
+            req.body.price, req.body.stock);
 
         // Add inventory log with the retrieved product ID
-        await eShop.addInventoryLog(productId, `A new product was added with product ID '${productId}'`, formattedDate);
+        await eShop.addInventoryLog(productId,
+            `A new product was added with product ID '${productId}'`,
+            formattedDate);
 
         res.redirect(`/eshop/product`);
     } catch (error) {
@@ -189,25 +191,26 @@ router.post("/product/create", urlencodedParser, async (req, res) => {
     }
 });
 
-  
 
 router.post("/product/edit", urlencodedParser, async (req, res) => {
     const date = new Date();
 
     const formattedDate = formatDate(date);
-    let result = await eShop.editProduct(req.body.id, req.body.name, req.body.description, req.body.price, req.body.stock);
+
     await eshop.addInventoryLog(req.body.id,
-        `En ändring skedde  med produkt ID '${req.body.id}'`, formattedDate); 
+        `En ändring skedde  med produkt ID '${req.body.id}'`, formattedDate);
     res.redirect(`/eshop/product/edit/${req.body.id}&edited=true`);
 });
 
 router.post("/product/delete", urlencodedParser, async (req, res) => {
     let result = await eShop.deleteProduct(req.body.id);
+
     const date = new Date();
 
     const formattedDate = formatDate(date);
+
     await eshop.addInventoryLog(req.body.id,
-        `en borttagning skedde med produkt ID '${req.body.id}'`, formattedDate); 
+        `en borttagning skedde med produkt ID '${req.body.id}'`, formattedDate);
     if (result.serverStatus !== 2) {
         console.info("Product not found.");
     }
