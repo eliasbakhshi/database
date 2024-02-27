@@ -140,14 +140,13 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS addInventoryLogProcedure;
 DELIMITER ;;
 CREATE PROCEDURE addInventoryLogProcedure(
-    IN p_logId INT,
     IN p_eventInstanceId VARCHAR(36),
     IN p_eventDescription VARCHAR(255),
     IN p_eventDate DATETIME
 )
 BEGIN
-    INSERT INTO Inventory_Log (Log_id, Event_instance_id, Event_description, Event_date)
-    VALUES (p_logId, p_eventInstanceId, p_eventDescription, p_eventDate);
+    INSERT INTO Inventory_Log ( Event_instance_id, Event_description, Event_date)
+    VALUES ( p_eventInstanceId, p_eventDescription, p_eventDate);
 END;;
 DELIMITER ;
 
