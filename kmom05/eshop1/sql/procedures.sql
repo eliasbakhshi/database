@@ -1,3 +1,167 @@
+DROP PROCEDURE IF EXISTS displayShelvesProcedure;
+DELIMITER ;;
+CREATE PROCEDURE displayShelvesProcedure()
+BEGIN
+    SELECT * FROM Warehouse;
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS displayProductsOnShelvesProcedure;
+DELIMITER ;;
+CREATE PROCEDURE displayProductsOnShelvesProcedure()
+BEGIN
+    SELECT p.Product_name, w.Shelf_location, w.Stock_quantity
+    FROM Product p
+    JOIN Warehouse w ON p.ProduktID = w.Product_id;
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS addProductProcedure;
+DELIMITER ;;
+CREATE PROCEDURE addProductProcedure(
+    IN productId INT,
+    IN description VARCHAR(255),
+    IN productName VARCHAR(255),
+    IN price DECIMAL(10, 2),
+    IN stockQuantity INT
+)
+BEGIN
+    INSERT INTO Product (ProduktID, Description, Product_name, Price, Stock)
+    VALUES (productId, description, productName, price, stockQuantity);
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS addProductToShelfProcedure;
+DELIMITER ;;
+CREATE PROCEDURE addProductToShelfProcedure(
+    IN productId INT,
+    IN shelfLocation VARCHAR(255),
+    IN stockQuantity INT
+)
+BEGIN
+    INSERT INTO Warehouse (Warehouse_id, Product_id, Shelf_location, Stock_quantity)
+    VALUES (1,productId, shelfLocation, stockQuantity);
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS removeProductFromShelfProcedure;
+DELIMITER ;;
+CREATE PROCEDURE removeProductFromShelfProcedure(
+    IN productId INT,
+    IN shelfLocation VARCHAR(255),
+    IN quantity INT
+)
+BEGIN
+    UPDATE Warehouse
+    SET Stock_quantity = GREATEST(Stock_quantity - quantity, 0)
+    WHERE Product_id = productId AND Shelf_location = shelfLocation;
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS displayLogProcedure;
+DELIMITER ;;
+CREATE PROCEDURE displayLogProcedure(
+    IN logNumber INT
+)
+BEGIN
+    SELECT * FROM Inventory_Log ORDER BY Event_date DESC LIMIT logNumber;
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS displayProductsProcedure;
+DELIMITER ;;
+CREATE PROCEDURE displayProductsProcedure()
+BEGIN
+    SELECT ProduktID, Product_name FROM Product;
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS displayShelfLocationsProcedure;
+DELIMITER ;;
+CREATE PROCEDURE displayShelfLocationsProcedure()
+BEGIN
+    SELECT DISTINCT Shelf_location FROM Warehouse;
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS displayInventoryProcedure;
+DELIMITER ;;
+CREATE PROCEDURE displayInventoryProcedure()
+BEGIN
+    SELECT p.ProduktID, p.Product_name, w.Shelf_location, w.Stock_quantity
+    FROM Product p
+    JOIN Warehouse w ON p.ProduktID = w.Product_id;
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS filterInventoryProcedure;
+DELIMITER ;;
+CREATE PROCEDURE filterInventoryProcedure(
+    IN filterString VARCHAR(255)
+)
+BEGIN
+    SELECT p.ProduktID, p.Product_name, w.Shelf_location, w.Stock_quantity
+    FROM Product p
+    JOIN Warehouse w ON p.ProduktID = w.Product_id
+    WHERE p.ProduktID LIKE CONCAT('%', filterString, '%')
+    OR p.Product_name LIKE CONCAT('%', filterString, '%')
+    OR w.Shelf_location LIKE CONCAT('%', filterString, '%');
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS addProductToInventoryProcedure;
+DELIMITER ;;
+CREATE PROCEDURE addProductToInventoryProcedure(
+    IN productId INT,
+    IN shelf VARCHAR(255),
+    IN quantity INT
+)
+BEGIN
+    INSERT INTO Warehouse (Warehouse_id, Product_id, Shelf_location, Stock_quantity)
+    VALUES (1, productId, shelf, quantity)
+    ON DUPLICATE KEY UPDATE Stock_quantity = Stock_quantity + quantity;
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS removeProductFromInventoryProcedure;
+DELIMITER ;;
+CREATE PROCEDURE removeProductFromInventoryProcedure(
+    IN productId INT,
+    IN shelf VARCHAR(255),
+    IN quantity INT
+)
+BEGIN
+    UPDATE Warehouse
+    SET Stock_quantity = GREATEST(Stock_quantity - quantity, 0)
+    WHERE Product_id = productId AND Shelf_location = shelf;
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS addInventoryLogProcedure;
+DELIMITER ;;
+CREATE PROCEDURE addInventoryLogProcedure(
+    IN p_logId INT,
+    IN p_eventInstanceId VARCHAR(36),
+    IN p_eventDescription VARCHAR(255),
+    IN p_eventDate DATETIME
+)
+BEGIN
+    INSERT INTO Inventory_Log (Log_id, Event_instance_id, Event_description, Event_date)
+    VALUES (p_logId, p_eventInstanceId, p_eventDescription, p_eventDate);
+END;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS show_customer;
+DELIMITER ;;
+CREATE PROCEDURE show_customer(IN p_customer_id INT)
+BEGIN
+    SELECT * FROM Customer WHERE Customer_id = p_customer_id;
+END;;
+DELIMITER ;
+
+
+
+
 --
 -- Create procedure for creating a category.
 --
