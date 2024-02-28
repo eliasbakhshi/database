@@ -16,7 +16,9 @@ module.exports = {
     editProduct: editProduct,
     deleteProduct: deleteProduct,
     addInventoryLog: addInventoryLog,
-    getProductIDByProductName: getProductIDByProductName
+    getProductIDByProductName: getProductIDByProductName,
+    getCustomers: getCustomers,
+    getOrders: getOrders
 };
 
 const mysql = require("promise-mysql");
@@ -260,3 +262,22 @@ function getProductIDByProductName(productName) {
         });
     });
 }
+
+// get all customers
+async function getCustomers() {
+    let sql = `CALL show_all_customers();`;
+
+    let res = await db.query(sql);
+
+    return res[0];
+}
+
+// get all orders
+async function getOrders() {
+    let sql = `CALL show_orders_with_totals();`;
+
+    let res = await db.query(sql);
+
+    return res[0];
+}
+

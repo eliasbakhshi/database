@@ -298,3 +298,30 @@ BEGIN
     UPDATE product SET deleted = NOW() WHERE product_id = id AND deleted IS NULL;
 END;;
 DELIMITER ;
+
+
+-- show all orders
+DELIMITER //
+
+
+DROP PROCEDURE IF EXISTS `show_all_orders`//
+
+CREATE PROCEDURE `show_all_orders`()
+BEGIN
+    SELECT * FROM `order`;
+END//
+
+DELIMITER ;
+
+
+-- show all customers
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS `show_all_customers`//
+
+CREATE PROCEDURE `show_all_customers`()
+BEGIN
+    SELECT * FROM `customer`;
+END//
+
+DELIMITER ;
