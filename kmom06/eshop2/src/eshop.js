@@ -18,7 +18,9 @@ module.exports = {
     addInventoryLog: addInventoryLog,
     getProductIDByProductName: getProductIDByProductName,
     getCustomers: getCustomers,
-    getOrders: getOrders
+    getOrders: getOrders,
+    getCustomerById: getCustomerById,
+    createOrder: createOrder
 };
 
 const mysql = require("promise-mysql");
@@ -281,3 +283,20 @@ async function getOrders() {
     return res[0];
 }
 
+async function getCustomerById(customerId) {
+    
+    const sql = 'CALL show_customer_by_id(?)';
+
+    let res;
+
+    res = await db.query(sql, [customerId]);
+    return res[0];
+}
+
+async function createOrder(order_date, total_price, customer_id, status) {
+    let sql = `CALL insert_order(?, ?, ?, ?);`;
+
+    let res = await db.query(sql, [order_date, total_price, customer_id, status]);
+
+    return res;
+}

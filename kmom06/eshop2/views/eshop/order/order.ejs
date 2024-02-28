@@ -26,13 +26,15 @@
                     <td><%= order.total_products %></td>
                     <td><%= order.total_combined_price %></td>
                     <td class="right">
-                        <a href="/eshop/order/edit/<%= order.order_id %>" class="btn btn-primary">Edit Order</a>
+                        <a href="/eshop/order/<%= order.order_id %>" class="btn btn-primary">Edit Order</a>
                     </td>
                 </tr>
                 <% }; %>
             </tbody>
         </table>
     </div>
+    <a href="/eshop/customer" class="btn btn-primary">Kunder</a>
 </div>
+
 
 <%- include("../footer"); %>

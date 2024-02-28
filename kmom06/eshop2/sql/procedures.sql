@@ -333,3 +333,32 @@ BEGIN
 END//
 
 DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS `show_customer_by_id`//
+
+CREATE PROCEDURE `show_customer_by_id`(IN p_customer_id INT)
+BEGIN
+    SELECT * FROM `customer` WHERE `customer_id` = p_customer_id;
+END//
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS `insert_order`;
+
+CREATE PROCEDURE `insert_order`(
+    IN p_order_date DATETIME,
+    IN p_total_price DECIMAL(10,2),
+    IN p_customer_id INT,
+    IN p_status VARCHAR(20)
+)
+BEGIN
+    INSERT INTO `order` (order_date, total_price, customer_id, status, created, updated)
+    VALUES (p_order_date, p_total_price, p_customer_id, p_status, NOW(), NOW());
+END //
+
+DELIMITER ;
+

@@ -237,4 +237,44 @@ router.get("/customer", async (req, res) => {
     res.render("eshop/customer/customer", data);
 });
 
+
+router.get("/show/pro/:customer_id", async (req, res) => {
+    const customerId = req.params.customer_id; // Retrieve customer_id from route parameter
+    try {
+        let data = {
+            title: "Show | eShop",
+        };
+        // Your logic to fetch customer details using the customerId
+        // For example:
+        data.res = await eshop.getCustomerById(customerId); // Assuming you have a Customer model
+        res.render("eshop/customer/customerinfo", data);
+    } catch (error) {
+        console.error("Error fetching customer details:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
+router.get('/order/create/:id', async (req, res) => {
+    try {
+        // Extract data from the request body
+        const { customer_id } = req.params; // Use req.params to get the customer_id from the URL parameter
+        const date = new Date();
+        const formattedDate = formatDate(date);
+        const status = "Created";
+        const total_price = 0;
+
+        // Call function to create the order in the database
+        await eshop.createOrder(formattedDate, total_price, customer_id, status);
+
+        // Redirect to a success page or render a success message
+        res.redirect('/eshop/order'); // Corrected the URL for redirect
+    } catch (error) {
+        console.error("Error creating order:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
+
 module.exports = router;
