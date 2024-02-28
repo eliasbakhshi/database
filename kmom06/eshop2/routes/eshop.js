@@ -269,7 +269,7 @@ router.get('/order/create/:id', async (req, res) => {
         console.log("customer_id:",customer_id);
 
         // Redirect to a success page or render a success message
-        res.redirect('/eshop/order'); // Corrected the URL for redirect
+        res.redirect('eshop/order'); // Corrected the URL for redirect
     } catch (error) {
         console.error("Error creating order:", error);
         res.status(500).send("Internal Server Error");
@@ -281,15 +281,47 @@ router.get('/order/show/:id');
 router.get("/order/show/:order_id", async (req, res) => {
     try {
         const orderId = req.params.order_id;
-        let data = {
+        const data = {
             title: "Add product | eShop",
+            orderId: orderId // Include orderId in the data object
         };
-        data.res=await eshop.getProductDetails(orderId); // Assuming you have a function to fetch order details
-        res.render("eshop/order/addproduct", data);
+        data.res = await eshop.getProductDetails(orderId); // Assuming you have a function to fetch order details
+        res.render("eshop/order/addproduct", data); // Pass data object to render function
     } catch (error) {
         console.error("Error fetching order details:", error);
         res.status(500).send("Internal Server Error");
     }
 });
 
+
+router.get("/order/addtocart/:order_id", async (req, res) => {
+    try {
+        const orderId = req.params.order_id;
+        const data = {
+            title: "Add product | eShop",
+            orderId: orderId
+        };
+        data.res = await eshop.getProducts(); // Assuming you have a function to fetch products
+        res.render("eshop/order/addtocart", data);
+    } catch (error) {
+        console.error("Error fetching order details:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
+router.post('/order/show/create/:order_id', async (req, res) => {
+    const { order_id, product_id, price, quantity } = req.body;
+
+    try {
+        // Insert data into order_item table
+        await db.query('INSERT INTO order_item (order_id, product_id, price, quantity) VALUES (?, ?, ?, ?)', [order_id, product_id, price, quantity]);
+
+        res.status(200).send('Product added to order successfully.');
+        res.redirect(`eshop/order/show/${order_id}`);
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Failed to add product to order.');
+    }
+});
 module.exports = router;
