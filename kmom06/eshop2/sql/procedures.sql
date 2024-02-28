@@ -362,3 +362,18 @@ END //
 
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS `show_order_details`;
+
+DELIMITER //
+
+CREATE PROCEDURE `show_order_details` (IN p_order_id INT)
+BEGIN
+    SELECT oi.order_id, oi.product_id, p.product_name,
+           oi.quantity AS total_product, oi.price AS total_price
+    FROM `order_item` oi
+    JOIN `product` p ON oi.product_id = p.product_id
+    WHERE oi.order_id = p_order_id;
+END //
+
+DELIMITER ;
+
