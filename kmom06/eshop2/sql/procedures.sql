@@ -298,3 +298,38 @@ BEGIN
     UPDATE product SET deleted = NOW() WHERE product_id = id AND deleted IS NULL;
 END;;
 DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS `show_orders_with_totals`//
+
+CREATE PROCEDURE `show_orders_with_totals`()
+BEGIN
+    SELECT 
+        o.order_id,
+        o.order_date,
+        COALESCE(o.total_price, 0) AS total_price,
+        o.customer_id,
+        o.status,
+        COALESCE(COUNT(oi.order_item_id), 0) AS total_products,
+        COALESCE(SUM(oi.price * oi.quantity), 0) AS total_combined_price
+    FROM 
+        `order` o
+    LEFT JOIN 
+        `order_item` oi ON o.order_id = oi.order_id
+    GROUP BY 
+        o.order_id;
+END//
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS `show_all_customers`//
+
+CREATE PROCEDURE `show_all_customers`()
+BEGIN
+    SELECT * FROM `customer`;
+END//
+
+DELIMITER ;

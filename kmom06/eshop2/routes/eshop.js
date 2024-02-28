@@ -217,4 +217,24 @@ router.post("/product/delete", urlencodedParser, async (req, res) => {
     res.redirect("/eshop/product");
 });
 
+router.get("/order", async (req, res) => {
+    let data = {
+        title: "Order | eShop",
+    };
+
+    data.res = await eShop.getOrders();
+    console.log(data.res);
+    res.render("eshop/order/order", data);
+});
+
+router.get("/customer", async (req, res) => {
+    let data = {
+        title: "customer | eShop",
+    };
+
+    data.res = await eShop.getCustomers();
+    console.log(data.res);
+    res.render("eshop/customer/customer", data);
+});
+
 module.exports = router;
