@@ -23,7 +23,8 @@ module.exports = {
     createOrder: createOrder,
     getProductDetails: getProductDetails,
     insertOrderItem: insertOrderItem,
-    updateOrderStatus: updateOrderStatus
+    updateOrderStatus: updateOrderStatus,
+    softDeleteOrder: softDeleteOrder
 };
 
 const mysql = require("promise-mysql");
@@ -329,3 +330,12 @@ async function updateOrderStatus(id) {
 
     return 0;
 }
+
+async function softDeleteOrder(id) {
+    let sql = ` CALL soft_delete_order(?);`;
+
+    let res = await db.query(sql, [id]);
+
+    return 0;
+}
+

@@ -14,6 +14,7 @@
                     <th scope="col">Total Products</th>
                     <th scope="col">Total Combined Price</th>
                     <th scope="col">Action</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,7 @@
                     <td class="right">
                         <a href="/eshop/order/show/<%= order.order_id %>" class="btn btn-primary">Edit Order</a>
                     </td>
+                    <td><a href="/eshop/order/delete/<%= order.order_id %>" class="btn btn-primary">Delete</a> </td>
                 </tr>
                 <% }; %>
             </tbody>

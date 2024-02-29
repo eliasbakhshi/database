@@ -413,3 +413,15 @@ END //
 
 DELIMITER ;
 
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS soft_delete_order //
+
+CREATE PROCEDURE soft_delete_order(IN p_order_id INT)
+BEGIN
+    UPDATE `order`
+    SET `deleted` = NOW()
+    WHERE `order_id` = p_order_id;
+END //
+
+DELIMITER ;
