@@ -21,7 +21,9 @@ module.exports = {
     getOrders: getOrders,
     getCustomerById: getCustomerById,
     createOrder: createOrder,
-    getProductDetails: getProductDetails
+    getProductDetails: getProductDetails,
+    insertOrderItem: insertOrderItem,
+    updateOrderStatus: updateOrderStatus
 };
 
 const mysql = require("promise-mysql");
@@ -309,4 +311,21 @@ async function getProductDetails(customerId) {
 
     res = await db.query(sql, [customerId]);
     return res[0];
+}
+
+async function insertOrderItem(orderId, productId, price, quantity) {
+    try {
+        const result = await db.query('INSERT INTO order_item (order_id, product_id, price, quantity) VALUES (?, ?, ?, ?)', [orderId, productId, price, quantity]);
+        return result; 
+    } catch (error) {
+        throw error; 
+    }
+}
+
+async function updateOrderStatus(id) {
+    let sql = `CALL ChangeOrderStatus(?);`;
+
+    let res = await db.query(sql, [id]);
+
+    return 0;
 }

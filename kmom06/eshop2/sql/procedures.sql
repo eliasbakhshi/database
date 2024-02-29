@@ -377,3 +377,39 @@ END //
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE PROCEDURE ChangeOrderStatus(IN orderId INT)
+BEGIN
+    UPDATE `order`
+    SET `status` = 'ordered'
+    WHERE `order_id` = orderId;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS GetOrderInformation //
+
+CREATE PROCEDURE GetOrderInformation(IN orderId INT)
+BEGIN
+    SELECT * FROM `order`
+    WHERE `order_id` = orderId;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS updateorderstatustoshipped //
+
+CREATE PROCEDURE updateorderstatustoshipped(IN orderId INT)
+BEGIN
+    UPDATE `order`
+    SET `status` = 'shipped'
+    WHERE `order_id` = orderId;
+END //
+
+DELIMITER ;
+
