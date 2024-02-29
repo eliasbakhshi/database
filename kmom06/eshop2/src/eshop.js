@@ -18,7 +18,13 @@ module.exports = {
     addInventoryLog: addInventoryLog,
     getProductIDByProductName: getProductIDByProductName,
     getCustomers: getCustomers,
-    getOrders: getOrders
+    getOrders: getOrders,
+    getCustomerById: getCustomerById,
+    createOrder: createOrder,
+    getProductDetails: getProductDetails,
+    insertOrderItem: insertOrderItem,
+    updateOrderStatus: updateOrderStatus
+
 };
 
 const mysql = require("promise-mysql");
@@ -266,8 +272,9 @@ function getProductIDByProductName(productName) {
 // get all customers
 async function getCustomers() {
     let sql = `CALL show_all_customers();`;
-
     let res = await db.query(sql);
+
+    console.info(`SQL: ${sql} got ${res.length} rows.`);
 
     return res[0];
 }
@@ -281,3 +288,46 @@ async function getOrders() {
     return res[0];
 }
 
+async function getCustomerById(customerId) {
+    
+    const sql = 'CALL show_customer_by_id(?)';
+
+    let res;
+
+    res = await db.query(sql, [customerId]);
+    return res[0];
+}
+
+async function createOrder(order_date, total_price, customer_id, status) {
+    let sql = `CALL insert_order(?, ?, ?, ?);`;
+
+    let res = await db.query(sql, [order_date, total_price, customer_id, status]);
+
+    return res;
+}
+async function getProductDetails(customerId) {
+    
+    const sql = 'CALL show_order_details(?);';
+
+    let res;
+
+    res = await db.query(sql, [customerId]);
+    return res[0];
+}
+
+async function insertOrderItem(orderId, productId, price, quantity) {
+    try {
+        const result = await db.query('INSERT INTO order_item (order_id, product_id, price, quantity) VALUES (?, ?, ?, ?)', [orderId, productId, price, quantity]);
+        return result; 
+    } catch (error) {
+        throw error; 
+    }
+}
+
+async function updateOrderStatus(id) {
+    let sql = `CALL ChangeOrderStatus(?);`;
+
+    let res = await db.query(sql, [id]);
+
+    return 0;
+}

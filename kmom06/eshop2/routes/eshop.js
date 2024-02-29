@@ -9,6 +9,7 @@ const eShop = require("../src/eshop.js");
 const bodyParser = require("body-parser");
 const eshop = require("../src/eshop.js");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
+router.use(bodyParser.urlencoded({ extended: false }));
 
 
 function formatDate(date) {
@@ -217,16 +218,16 @@ router.post("/product/delete", urlencodedParser, async (req, res) => {
     res.redirect("/eshop/product");
 });
 
-
 router.get("/order", async (req, res) => {
     let data = {
-        title: "Orders | eShop",
+        title: "Order | eShop",
     };
 
     data.res = await eShop.getOrders();
     console.log(data.res);
     res.render("eshop/order/order", data);
 });
+
 router.get("/customer", async (req, res) => {
     let data = {
         title: "customer | eShop",
@@ -236,4 +237,114 @@ router.get("/customer", async (req, res) => {
     console.log(data.res);
     res.render("eshop/customer/customer", data);
 });
+
+
+router.get("/show/pro/:customer_id", async (req, res) => {
+    const customerId = req.params.customer_id; // Retrieve customer_id from route parameter
+    try {
+        let data = {
+            title: "Show | eShop",
+        };
+        // Your logic to fetch customer details using the customerId
+        // For example:
+        data.res = await eshop.getCustomerById(customerId); // Assuming you have a Customer model
+        res.render("eshop/customer/customerinfo", data);
+    } catch (error) {
+        console.error("Error fetching customer details:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
+router.get('/order/create/:id', async (req, res) => {
+    try {
+        // Extract data from the request body
+        const  customer_id  = req.params.id; // Use req.params to get the customer_id from the URL parameter
+        const date = new Date();
+        const formattedDate = formatDate(date);
+        const status = "Created";
+        const total_price = 0;
+
+        // Call function to create the order in the database
+        await eshop.createOrder(formattedDate, total_price, customer_id, status);
+        console.log("customer_id:",customer_id);
+
+        // Redirect to a success page or render a success message
+        res.redirect('eshop/order'); // Corrected the URL for redirect
+    } catch (error) {
+        console.error("Error creating order:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+router.get('/order/show/:id');
+
+router.get("/order/show/:order_id", async (req, res) => {
+    try {
+        const orderId = req.params.order_id;
+        const data = {
+            title: "Add product | eShop",
+            orderId: orderId // Include orderId in the data object
+        };
+        data.res = await eshop.getProductDetails(orderId); // Assuming you have a function to fetch order details
+        res.render("eshop/order/addproduct", data); // Pass data object to render function
+    } catch (error) {
+        console.error("Error fetching order details:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
+router.get("/order/addtocart/:order_id", async (req, res) => {
+    try {
+        const orderId = req.params.order_id;
+        const data = {
+            title: "Add product | eShop",
+            orderId: orderId
+        };
+        data.res = await eshop.getProducts(); // Assuming you have a function to fetch products
+        res.render("eshop/order/addtocart", data);
+    } catch (error) {
+        console.error("Error fetching order details:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
+router.post('/order/show/create/:order_id', async (req, res) => {
+    const orderId = req.params.order_id;
+
+    const { product_id, price, quantity } = req.body;
+
+    try {
+        await eshop.insertOrderItem(orderId, product_id, price, quantity);
+
+        res.redirect(`/eshop/order/show/${orderId}`);
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Failed to add product to order.');
+    }
+});
+
+router.get('/order/status/:order_id', async (req, res) => {
+    try {
+        const orderId = req.params.order_id;
+
+        const data = {
+            title: "Add product | eShop",
+            
+        };
+        // Here you can retrieve the order status based on orderId
+        // For demonstration, let's assume you have a function to fetch the order status from the database
+        await eShop.updateOrderStatus(orderId);
+        
+        // Render the order status page with the retrieved order status
+        res.render(`eshop/order/thankyou`, data);
+    } catch (error) {
+        console.error('Error fetching order status:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
 module.exports = router;

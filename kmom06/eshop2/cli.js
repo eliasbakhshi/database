@@ -36,6 +36,9 @@ function displayMenu() {
     console.log('9. Invdel <productid> <shelf> <number>');
     console.log("10. Menu: to see all the options.");
     console.log('11. Exit');
+    console.log('12. To se orders');
+    console.log('13.  See order <orderid> ');
+    console.log('14.  Shop <orderid> ');
 
     rl.question('Enter your choice: ', handleChoice);
 }
@@ -45,6 +48,7 @@ function handleChoice(choice) {
     let logNumber=0;
     let addArgs="";
     let delArgs="";
+    let id=0;
 
     choice = args[0];
 
@@ -93,6 +97,17 @@ function handleChoice(choice) {
             connection.end(); // Close connection
             rl.close(); // Close readline interface
             break;
+        case "12":
+            getOrders();
+            break;
+        case "13":
+            id = args.slice(1);
+            displayOrderId(id);
+            break;
+        case "14":
+            id = args.slice(1);
+            updateorderstatustoshipped(id);
+            break;
         default:
             console.log('Invalid choice. Please enter a valid command.');
             displayMenu(); // Display menu again
@@ -133,6 +148,18 @@ async function displayLog(logNumber) {
 async function displayProducts() {
     try {
         const results = await queryAsync('Call displayProductsProcedure()');
+
+        console.log('Products:');
+        console.table(results[0]);
+        displayMenu();
+    } catch (error) {
+        console.error('Error fetching products: ', error);
+        return;
+    }
+}
+async function getOrders() {
+    try {
+        const results = await queryAsync('Call show_orders_with_totals();');
 
         console.log('Products:');
         console.table(results[0]);
@@ -217,4 +244,30 @@ function removeProductFromInventory(args) {
             console.log(`Removed ${quantity} of product ${productId} from shelf ${shelf}`);
             displayMenu();
         });
+}
+
+async function displayOrderId(logNumber) {
+    try {
+        const results = await queryAsync('Call GetOrderInformation(?)', [logNumber]);
+
+        console.log(`Last ${logNumber} log entries:`);
+        console.table(results[0]); // Assuming results is an array of objects
+        displayMenu();// Display menu again
+    } catch (error) {
+        console.error('Error fetching log: ', error);
+        return;
+    }
+}
+
+async function updateorderstatustoshipped(logNumber) {
+    try {
+        const results = await queryAsync('Call updateorderstatustoshipped(?)', [logNumber]);
+
+        console.log(`Last ${logNumber} log entries:`);
+        console.table(results[0]); // Assuming results is an array of objects
+        displayMenu();// Display menu again
+    } catch (error) {
+        console.error('Error fetching log: ', error);
+        return;
+    }
 }

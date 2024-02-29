@@ -299,6 +299,26 @@ BEGIN
 END;;
 DELIMITER ;
 
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS `show_orders_with_totals`//
+
+CREATE PROCEDURE `show_orders_with_totals`()
+BEGIN
+    SELECT 
+        o.order_id,
+        o.order_date,
+        COALESCE(o.total_price, 0) AS total_price,
+        o.customer_id,
+        o.status,
+        COALESCE(COUNT(oi.order_item_id), 0) AS total_products,
+        COALESCE(SUM(oi.price * oi.quantity), 0) AS total_combined_price
+    FROM 
+        `order` o
+    LEFT JOIN 
+        `order_item` oi ON o.order_id = oi.order_id
+    GROUP BY 
+        o.order_id;
 
 -- show all orders
 DELIMITER //
@@ -313,7 +333,6 @@ END//
 
 DELIMITER ;
 
-
 -- show all customers
 DELIMITER //
 
@@ -325,3 +344,83 @@ BEGIN
 END//
 
 DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS `show_customer_by_id`//
+
+CREATE PROCEDURE `show_customer_by_id`(IN p_customer_id INT)
+BEGIN
+    SELECT * FROM `customer` WHERE `customer_id` = p_customer_id;
+END//
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS `insert_order`;
+
+CREATE PROCEDURE `insert_order`(
+    IN p_order_date DATETIME,
+    IN p_total_price DECIMAL(10,2),
+    IN p_customer_id INT,
+    IN p_status VARCHAR(20)
+)
+BEGIN
+    INSERT INTO `order` (order_date, total_price, customer_id, status, created, updated)
+    VALUES (p_order_date, p_total_price, p_customer_id, p_status, NOW(), NOW());
+END //
+
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `show_order_details`;
+
+DELIMITER //
+
+CREATE PROCEDURE `show_order_details` (IN p_order_id INT)
+BEGIN
+    SELECT oi.order_id, oi.product_id, p.product_name,
+           oi.quantity AS total_product, oi.price AS total_price
+    FROM `order_item` oi
+    JOIN `product` p ON oi.product_id = p.product_id
+    WHERE oi.order_id = p_order_id;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE ChangeOrderStatus(IN orderId INT)
+BEGIN
+    UPDATE `order`
+    SET `status` = 'ordered'
+    WHERE `order_id` = orderId;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS GetOrderInformation //
+
+CREATE PROCEDURE GetOrderInformation(IN orderId INT)
+BEGIN
+    SELECT * FROM `order`
+    WHERE `order_id` = orderId;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS updateorderstatustoshipped //
+
+CREATE PROCEDURE updateorderstatustoshipped(IN orderId INT)
+BEGIN
+    UPDATE `order`
+    SET `status` = 'shipped'
+    WHERE `order_id` = orderId;
+END //
+
+DELIMITER ;
+
