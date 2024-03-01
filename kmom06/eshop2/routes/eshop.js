@@ -270,7 +270,7 @@ router.get('/order/create/:id', async (req, res) => {
         console.log("customer_id:",customer_id);
 
         // Redirect to a success page or render a success message
-        res.redirect('eshop/order'); // Corrected the URL for redirect
+        res.redirect('/eshop/order'); // Corrected the URL for redirect
     } catch (error) {
         console.error("Error creating order:", error);
         res.status(500).send("Internal Server Error");
@@ -319,7 +319,7 @@ router.post('/order/show/create/:order_id', async (req, res) => {
     try {
         await eshop.insertOrderItem(orderId, product_id, price, quantity);
 
-        res.redirect(`/eshop/order/show/${orderId}`);
+        res.redirect(`/eshop/order`);
     } catch (error) {
         console.error('Error:', error);
         res.status(500).send('Failed to add product to order.');
@@ -343,6 +343,19 @@ router.get('/order/status/:order_id', async (req, res) => {
     } catch (error) {
         console.error('Error fetching order status:', error);
         res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/order/delete/:order_id', async (req, res) => {
+    const orderId = req.params.order_id;
+
+    try {
+        // Execute SQL statement to update the `deleted_at` column in the `order` table
+        await eshop.softDeleteOrder(orderId);
+        res.redirect("/eshop/order");
+    } catch (error) {
+        console.error('Error deleting product from order:', error);
+        res.status(500).send('Failed to delete product from order.');
     }
 });
 

@@ -127,15 +127,16 @@ CREATE TABLE `delivery` (
 -- Dumping data for table `delivery`
 --
 
-LOCK TABLES `delivery` WRITE;
-/*!40000 ALTER TABLE `delivery` DISABLE KEYS */;
-INSERT INTO `delivery` (`delivery_id`, `order_id`, `delivery_date`, `status`) VALUES
-(1,1,'2024-02-15 12:00:00','Delivered'),
-(2,2,'2024-02-16 13:00:00','Shipped');
+-- ;
 /*!40000 ALTER TABLE `delivery` ENABLE KEYS */;
-UNLOCK TABLES;
+-- UNLOCK TABLES;
 
---
+--LOCK TABLES `delivery` WRITE;
+-- /*!40000 ALTER TABLE `delivery` DISABLE KEYS */;
+-- INSERT INTO `delivery` (`delivery_id`, `order_id`, `delivery_date`, `status`) VALUES
+-- (1,1,'2024-02-15 12:00:00','Delivered'),
+-- (2,2,'2024-02-16 13:00:00','Shipped');
+-- (2,2,'2024-02-16 13:00:00','Shipped')
 -- Table structure for table `inventory_log`
 --
 
@@ -217,6 +218,7 @@ CREATE TABLE `order` (
   `created` datetime DEFAULT NOW(),
   `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
   `deleted` datetime DEFAULT NULL,
+  `shipped` datetime DEFAULT NULL,
   PRIMARY KEY (`order_id`),
   KEY `customer_id` (`customer_id`),
   CONSTRAINT `order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
