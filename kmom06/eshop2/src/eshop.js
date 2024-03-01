@@ -269,9 +269,9 @@ function getProductIDByProductName(productName) {
     });
 }
 
+// get all customers
 async function getCustomers() {
     let sql = `CALL show_all_customers();`;
-
     let res = await db.query(sql);
 
     console.info(`SQL: ${sql} got ${res.length} rows.`);
@@ -279,6 +279,7 @@ async function getCustomers() {
     return res[0];
 }
 
+// get all orders
 async function getOrders() {
     let sql = `CALL show_orders_with_totals();`;
 
