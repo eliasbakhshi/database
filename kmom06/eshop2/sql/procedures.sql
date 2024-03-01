@@ -298,7 +298,6 @@ BEGIN
     UPDATE product SET deleted = NOW() WHERE product_id = id AND deleted IS NULL;
 END;;
 DELIMITER ;
-
 DELIMITER //
 
 DROP PROCEDURE IF EXISTS `show_orders_with_totals`//
@@ -311,7 +310,7 @@ BEGIN
         COALESCE(o.total_price, 0) AS total_price,
         o.customer_id,
         o.status,
-        COALESCE(COUNT(oi.order_item_id), 0) AS total_products,
+        COALESCE(COUNT(sum(oi.quantity)), 0) AS total_products,
         COALESCE(SUM(oi.price * oi.quantity), 0) AS total_combined_price
     FROM 
         `order` o
@@ -322,6 +321,8 @@ BEGIN
 END//
 
 DELIMITER ;
+
+
 
 DELIMITER //
 
@@ -407,11 +408,12 @@ DROP PROCEDURE IF EXISTS updateorderstatustoshipped //
 CREATE PROCEDURE updateorderstatustoshipped(IN orderId INT)
 BEGIN
     UPDATE `order`
-    SET `status` = 'shipped'
+    SET `status` = 'Shipped', `shipped` = NOW()
     WHERE `order_id` = orderId;
 END //
 
 DELIMITER ;
+
 
 DELIMITER //
 
@@ -420,8 +422,58 @@ DROP PROCEDURE IF EXISTS soft_delete_order //
 CREATE PROCEDURE soft_delete_order(IN p_order_id INT)
 BEGIN
     UPDATE `order`
-    SET `deleted` = NOW()
+    SET `status` = 'deleted', `deleted` = NOW()
     WHERE `order_id` = p_order_id;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS plocklist //
+
+CREATE PROCEDURE plocklist (IN p_order_id INT)
+BEGIN
+    SELECT 
+        oi.order_id, 
+        oi.product_id, 
+        p.product_name,
+        oi.quantity AS order_quantity, 
+        (oi.price * oi.quantity ) AS order_price,
+        w.shelf_location,
+        w.stock_quantity,
+        (w.stock_quantity - oi.quantity) AS quantity_difference
+    FROM 
+        `order_item` oi
+    JOIN 
+        `product` p ON oi.product_id = p.product_id
+    LEFT JOIN 
+        `warehouse` w ON oi.product_id = w.product_id
+    WHERE 
+        oi.order_id = p_order_id;
+END //
+
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `get_order_status`;
+
+DELIMITER //
+
+CREATE PROCEDURE `get_order_status` (IN p_order_id INT)
+BEGIN
+    SELECT 
+        order_id,
+        order_date,
+        customer_id,
+        created,
+        updated,
+        deleted,
+        shipped,
+        order_status(created, updated, deleted, order_date, shipped) AS calculated_status
+    FROM 
+        `order`
+    WHERE 
+        order_id = p_order_id;
 END //
 
 DELIMITER ;

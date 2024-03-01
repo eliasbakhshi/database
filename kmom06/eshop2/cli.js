@@ -38,7 +38,9 @@ function displayMenu() {
     console.log('11. Exit');
     console.log('12. To se orders');
     console.log('13.  See order <orderid> ');
-    console.log('14.  Shop <orderid> ');
+    console.log('14.  Shop <orderid> '); 
+    console.log('15.  Picklist <orderid> '); 
+    console.log('16.  Orderstatus <orderid> '); 
 
     rl.question('Enter your choice: ', handleChoice);
 }
@@ -107,6 +109,14 @@ function handleChoice(choice) {
         case "14":
             id = args.slice(1);
             updateorderstatustoshipped(id);
+            break;
+        case "15":
+            id = args.slice(1);
+            plockLista(id);
+            break;
+        case "16":
+            id = args.slice(1);
+            get_order_status(id);
             break;
         default:
             console.log('Invalid choice. Please enter a valid command.');
@@ -264,6 +274,30 @@ async function updateorderstatustoshipped(logNumber) {
         const results = await queryAsync('Call updateorderstatustoshipped(?)', [logNumber]);
 
         console.log(`Last ${logNumber} log entries:`);
+        console.table(results[0]); // Assuming results is an array of objects
+        displayMenu();// Display menu again
+    } catch (error) {
+        console.error('Error fetching log: ', error);
+        return;
+    }
+}
+
+async function plockLista(logNumber) {
+    try {
+        const results = await queryAsync('Call plocklist(?)', [logNumber]);
+
+        console.table(results[0]); // Assuming results is an array of objects
+        displayMenu();// Display menu again
+    } catch (error) {
+        console.error('Error fetching log: ', error);
+        return;
+    }
+}
+
+async function get_order_status(logNumber) {
+    try {
+        const results = await queryAsync('Call get_order_status(?);', [logNumber]);
+
         console.table(results[0]); // Assuming results is an array of objects
         displayMenu();// Display menu again
     } catch (error) {

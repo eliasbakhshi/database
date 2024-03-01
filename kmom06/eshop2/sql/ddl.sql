@@ -217,6 +217,7 @@ CREATE TABLE `order` (
   `created` datetime DEFAULT NOW(),
   `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
   `deleted` datetime DEFAULT NULL,
+  `shipped` datetime DEFAULT NULL,
   PRIMARY KEY (`order_id`),
   KEY `customer_id` (`customer_id`),
   CONSTRAINT `order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
