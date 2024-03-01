@@ -38,7 +38,7 @@ function displayMenu() {
     console.log('11. Exit');
     console.log('12. To se orders');
     console.log('13.  See order <orderid> ');
-    console.log('14.  Shop <orderid> '); 
+    console.log('14.  Ship <orderid> '); 
     console.log('15.  Picklist <orderid> '); 
     console.log('16.  Orderstatus <orderid> '); 
 
