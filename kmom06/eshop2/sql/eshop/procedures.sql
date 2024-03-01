@@ -299,8 +299,9 @@ BEGIN
 END;;
 DELIMITER ;
 DELIMITER //
+DELIMITER //
 
-DROP PROCEDURE IF EXISTS `show_orders_with_totals`//
+DROP PROCEDURE IF EXISTS `show_orders_with_totals`;
 
 CREATE PROCEDURE `show_orders_with_totals`()
 BEGIN
@@ -310,7 +311,7 @@ BEGIN
         COALESCE(o.total_price, 0) AS total_price,
         o.customer_id,
         o.status,
-        COALESCE(COUNT(sum(oi.quantity)), 0) AS total_products,
+        COALESCE(SUM(oi.quantity), 0) AS total_products,
         COALESCE(SUM(oi.price * oi.quantity), 0) AS total_combined_price
     FROM 
         `order` o
@@ -318,12 +319,14 @@ BEGIN
         `order_item` oi ON o.order_id = oi.order_id
     GROUP BY 
         o.order_id;
+END //
 
--- show all orders
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS `show_all_orders`;
+
 DELIMITER //
-
-
-DROP PROCEDURE IF EXISTS `show_all_orders`//
 
 CREATE PROCEDURE `show_all_orders`()
 BEGIN
@@ -331,6 +334,7 @@ BEGIN
 END//
 
 DELIMITER ;
+
 
 
 
