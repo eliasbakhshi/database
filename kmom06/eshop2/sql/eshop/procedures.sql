@@ -158,12 +158,6 @@ BEGIN
 END;;
 DELIMITER ;
 
-
-
-
---
--- Create procedure for creating a category.
---
 DROP PROCEDURE IF EXISTS create_category;
 DELIMITER ;;
 CREATE PROCEDURE create_category(
@@ -174,9 +168,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for getting all categories.
---
 DROP PROCEDURE IF EXISTS get_categories;
 DELIMITER ;;
 CREATE PROCEDURE get_categories()
@@ -185,9 +176,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for getting a category.
---
 DROP PROCEDURE IF EXISTS get_category;
 DELIMITER ;;
 CREATE PROCEDURE get_category(
@@ -198,9 +186,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for editing a category.
---
 DROP PROCEDURE IF EXISTS edit_category;
 DELIMITER ;;
 CREATE PROCEDURE edit_category(
@@ -212,9 +197,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for deleting a category.
---
 DROP PROCEDURE IF EXISTS delete_category;
 DELIMITER ;;
 CREATE PROCEDURE delete_category(
@@ -225,9 +207,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for creating a product.
---
 DROP PROCEDURE IF EXISTS create_product;
 DELIMITER ;;
 CREATE PROCEDURE create_product(
@@ -242,12 +221,6 @@ BEGIN
 END;;
 DELIMITER ;
 
-
-
-
---
--- Create procedure for getting all producers.
---
 DROP PROCEDURE IF EXISTS get_products;
 DELIMITER ;;
 CREATE PROCEDURE get_products()
@@ -256,9 +229,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for getting a product.
---
 DROP PROCEDURE IF EXISTS get_product;
 DELIMITER ;;
 CREATE PROCEDURE get_product(
@@ -269,9 +239,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for editing a product.
---
 DROP PROCEDURE IF EXISTS edit_product;
 DELIMITER ;;
 CREATE PROCEDURE edit_product(
@@ -286,9 +253,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for deleting a product.
---
 DROP PROCEDURE IF EXISTS delete_product;
 DELIMITER ;;
 CREATE PROCEDURE delete_product(
@@ -301,14 +265,13 @@ DELIMITER ;
 DELIMITER //
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS `show_orders_with_totals`;
+DROP PROCEDURE IF EXISTS show_orders_with_totals;
 
-CREATE PROCEDURE `show_orders_with_totals`()
+CREATE PROCEDURE show_orders_with_totals()
 BEGIN
     SELECT 
         o.order_id,
         o.order_date,
-        COALESCE(o.total_price, 0) AS total_price,
         o.customer_id,
         o.status,
         COALESCE(SUM(oi.quantity), 0) AS total_products,
@@ -324,11 +287,11 @@ END //
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS `show_all_orders`;
+DROP PROCEDURE IF EXISTS show_all_orders;
 
 DELIMITER //
 
-CREATE PROCEDURE `show_all_orders`()
+CREATE PROCEDURE show_all_orders()
 BEGIN
     SELECT * FROM `order`;
 END//
@@ -338,11 +301,9 @@ DELIMITER ;
 
 
 
-DELIMITER //
+DROP PROCEDURE IF EXISTS show_all_customers//
 
-DROP PROCEDURE IF EXISTS `show_all_customers`//
-
-CREATE PROCEDURE `show_all_customers`()
+CREATE PROCEDURE show_all_customers()
 BEGIN
     SELECT * FROM `customer`;
 END//
@@ -351,9 +312,9 @@ DELIMITER ;
 
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS `show_customer_by_id`//
+DROP PROCEDURE IF EXISTS show_customer_by_id//
 
-CREATE PROCEDURE `show_customer_by_id`(IN p_customer_id INT)
+CREATE PROCEDURE show_customer_by_id(IN p_customer_id INT)
 BEGIN
     SELECT * FROM `customer` WHERE `customer_id` = p_customer_id;
 END//
@@ -362,9 +323,9 @@ DELIMITER ;
 
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS `insert_order`;
+DROP PROCEDURE IF EXISTS insert_order;
 
-CREATE PROCEDURE `insert_order`(
+CREATE PROCEDURE insert_order(
     IN p_order_date DATETIME,
     IN p_total_price DECIMAL(10,2),
     IN p_customer_id INT,
@@ -377,11 +338,11 @@ END //
 
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS `show_order_details`;
+DROP PROCEDURE IF EXISTS show_order_details;
 
 DELIMITER //
 
-CREATE PROCEDURE `show_order_details` (IN p_order_id INT)
+CREATE PROCEDURE show_order_details(IN p_order_id INT)
 BEGIN
     SELECT oi.order_id, oi.product_id, p.product_name,
            oi.quantity AS total_product, oi.price AS total_price
@@ -394,7 +355,7 @@ DELIMITER ;
 
 DELIMITER //
 
-CREATE PROCEDURE ChangeOrderStatus(IN orderId INT)
+CREATE PROCEDURE changeOrderStatus(IN orderId INT)
 BEGIN
     UPDATE `order`
     SET `status` = 'ordered'
@@ -405,9 +366,9 @@ DELIMITER ;
 
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS GetOrderInformation //
+DROP PROCEDURE IF EXISTS getOrderInformation //
 
-CREATE PROCEDURE GetOrderInformation(IN orderId INT)
+CREATE PROCEDURE getOrderInformation(IN orderId INT)
 BEGIN
     SELECT * FROM `order`
     WHERE `order_id` = orderId;
@@ -469,11 +430,11 @@ END //
 
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS `get_order_status`;
+DROP PROCEDURE IF EXISTS get_order_status;
 
 DELIMITER //
 
-CREATE PROCEDURE `get_order_status` (IN p_order_id INT)
+CREATE PROCEDURE get_order_status (IN p_order_id INT)
 BEGIN
     SELECT 
         order_id,
@@ -488,6 +449,32 @@ BEGIN
         `order`
     WHERE 
         order_id = p_order_id;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS show_order_with_totals_custom;
+
+CREATE PROCEDURE show_order_with_totals_custom(IN order_id INT)
+BEGIN
+    SELECT 
+        o.order_id,
+        o.order_date,
+        o.customer_id,
+        o.status,
+        COALESCE(SUM(oi.quantity), 0) AS total_products,
+        COALESCE(SUM(oi.price * oi.quantity), 0) AS total_combined_price
+    FROM 
+        `order` o
+    LEFT JOIN 
+        `order_item` oi ON o.order_id = oi.order_id
+    WHERE
+        o.order_id = order_id
+    GROUP BY 
+        o.order_id;
 END //
 
 DELIMITER ;
