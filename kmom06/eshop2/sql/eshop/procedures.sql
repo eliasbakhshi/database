@@ -263,10 +263,8 @@ BEGIN
 END;;
 DELIMITER ;
 DELIMITER //
-DELIMITER //
 
 DROP PROCEDURE IF EXISTS show_orders_with_totals;
-
 CREATE PROCEDURE show_orders_with_totals()
 BEGIN
     SELECT 
@@ -283,7 +281,6 @@ BEGIN
     GROUP BY 
         o.order_id;
 END //
-
 DELIMITER ;
 
 
@@ -299,9 +296,8 @@ END//
 DELIMITER ;
 
 
-
-
-DROP PROCEDURE IF EXISTS show_all_customers//
+DROP PROCEDURE IF EXISTS show_all_customers;
+DELIMITER //
 
 CREATE PROCEDURE show_all_customers()
 BEGIN
@@ -310,9 +306,8 @@ END//
 
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS show_customer_by_id;
 DELIMITER //
-
-DROP PROCEDURE IF EXISTS show_customer_by_id//
 
 CREATE PROCEDURE show_customer_by_id(IN p_customer_id INT)
 BEGIN
@@ -321,9 +316,9 @@ END//
 
 DELIMITER ;
 
-DELIMITER //
-
 DROP PROCEDURE IF EXISTS insert_order;
+
+DELIMITER //
 
 CREATE PROCEDURE insert_order(
     IN p_order_date DATETIME,
@@ -339,7 +334,6 @@ END //
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS show_order_details;
-
 DELIMITER //
 
 CREATE PROCEDURE show_order_details(IN p_order_id INT)
@@ -353,6 +347,7 @@ END //
 
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS changeOrderStatus;
 DELIMITER //
 
 CREATE PROCEDURE changeOrderStatus(IN orderId INT)
@@ -364,9 +359,8 @@ END //
 
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS getOrderInformation;
 DELIMITER //
-
-DROP PROCEDURE IF EXISTS getOrderInformation //
 
 CREATE PROCEDURE getOrderInformation(IN orderId INT)
 BEGIN
@@ -376,9 +370,8 @@ END //
 
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS updateorderstatustoshipped;
 DELIMITER //
-
-DROP PROCEDURE IF EXISTS updateorderstatustoshipped //
 
 CREATE PROCEDURE updateorderstatustoshipped(IN orderId INT)
 BEGIN
@@ -389,10 +382,8 @@ END //
 
 DELIMITER ;
 
-
+DROP PROCEDURE IF EXISTS soft_delete_order;
 DELIMITER //
-
-DROP PROCEDURE IF EXISTS soft_delete_order //
 
 CREATE PROCEDURE soft_delete_order(IN p_order_id INT)
 BEGIN
@@ -403,9 +394,8 @@ END //
 
 DELIMITER ;
 
-
+DROP PROCEDURE IF EXISTS plocklist;
 DELIMITER //
-DROP PROCEDURE IF EXISTS plocklist //
 
 CREATE PROCEDURE plocklist (IN p_order_id INT)
 BEGIN
@@ -431,7 +421,6 @@ END //
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS get_order_status;
-
 DELIMITER //
 
 CREATE PROCEDURE get_order_status (IN p_order_id INT)
@@ -453,10 +442,8 @@ END //
 
 DELIMITER ;
 
-
-DELIMITER //
-
 DROP PROCEDURE IF EXISTS show_order_with_totals_custom;
+DELIMITER //
 
 CREATE PROCEDURE show_order_with_totals_custom(IN order_id INT)
 BEGIN

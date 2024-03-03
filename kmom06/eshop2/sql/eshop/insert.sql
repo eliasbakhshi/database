@@ -1,6 +1,7 @@
 --
 -- Insert into customer table
 --
+use eshop;
 LOAD DATA LOCAL INFILE 'customer.csv'
 INTO TABLE customer
 CHARSET utf8
@@ -67,3 +68,30 @@ LINES
     TERMINATED BY '\n'
 IGNORE 1 LINES
 (`product_id`, `shelf_location`, `stock_quantity`);
+
+LOAD DATA LOCAL INFILE 'order.csv'
+INTO TABLE `order`
+CHARACTER SET utf8
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(`order_id`, `order_date`, `total_price`, `customer_id`, `status`, `created`, `updated`, `deleted`, `shipped`);
+
+LOAD DATA LOCAL INFILE 'order_item.csv'
+INTO TABLE order_item
+CHARACTER SET utf8
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(`order_item_id`, `order_id`, `product_id`, `quantity`, `price`, `created`, `updated`, `deleted`);
+
+LOAD DATA LOCAL INFILE 'inventory_log.csv'
+INTO TABLE inventory_log
+CHARACTER SET utf8
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(`log_id`, `event_instance_id`, `event_description`, `event_date`, `created`, `updated`, `deleted`);

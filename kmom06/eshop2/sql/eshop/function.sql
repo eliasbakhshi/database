@@ -1,3 +1,5 @@
+use databas eshop;
+
 DROP FUNCTION IF EXISTS order_status;
 DELIMITER //
 
