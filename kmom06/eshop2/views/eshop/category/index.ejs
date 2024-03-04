@@ -5,13 +5,13 @@
     <h1 class="my-3">Categories list</h1>
     <div class="table-responsive">
         <table class="table my-4 shadow-sm p-3 bg-white rounded table-hover rounded-3 overflow-hidden w-100">
-            <thead class="thead-light table-info">
+            <thead class="table-info">
                 <tr>
                     <th>Name</th>
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
-            <tbody class="border">
+            <tbody class="border align-middle">
                 <% for (const row of res) { %>
                 <tr>
                     <td><%= row.name %></td>

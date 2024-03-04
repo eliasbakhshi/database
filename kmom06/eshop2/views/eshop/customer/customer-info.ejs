@@ -5,7 +5,7 @@
 <
 <div class="container my-3">
     <table class="table my-4 shadow-sm p-3 bg-white rounded table-hover rounded-3 overflow-hidden w-100">
-        <thead class="thead-light table-info">
+        <thead class="table-info">
             <tr>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
@@ -16,7 +16,7 @@
                 <th scope="col" class="text-center">Action</th>
             </tr>
         </thead>
-        <tbody class="border">
+        <tbody class="border align-middle">
             <% for (const customer of res) { %>
             <tr>
                 <td><%= customer.firstname %></td>

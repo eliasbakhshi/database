@@ -1,6 +1,6 @@
-const mysql = require('mysql');
-const readline = require('readline');
-const util = require('util');
+const mysql = require("mysql");
+const readline = require("readline");
+const util = require("util");
 const con = require("./config/db/eshop.json");
 
 const connection = mysql.createConnection(con);
@@ -8,201 +8,197 @@ const queryAsync = util.promisify(connection.query).bind(connection);
 
 connection.connect((err) => {
     if (err) {
-        console.error('Error connecting to the database:', err);
+        console.error("Error connecting to the database:", err);
         return;
     }
-    console.log('Connected to the database');
+    console.log("Connected to the database");
 
     displayMenu();
 });
 
 const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
 });
 
 function displayMenu() {
     console.log("Welcome to the eshop");
-    console.log('\nMenu:');
-    console.log('1. Display shelves in the warehouse');
-    console.log('2. About');
-    console.log('3. Log <number>');
-    console.log('4. Product');
-    console.log('5. Shelf');
-    console.log('6. Inv');
-    console.log('7. Inv <str>');
-    console.log('8. Invadd <productid> <shelf> <number>');
-    console.log('9. Invdel <productid> <shelf> <number>');
-    console.log('10. Menu: to see all the options.');
-    console.log('11. Exit');
-    console.log('12. To see orders');
-    console.log('13. See order <orderid>');
-    console.log('14. Ship <orderid>'); 
-    console.log('15. Picklist <orderid>'); 
-    console.log('16. Orderstatus <orderid>'); 
+    console.log("\nMenu:");
+    console.log("1. Display shelves in the warehouse");
+    console.log("2. About");
+    console.log("3. Log <number>");
+    console.log("4. Product");
+    console.log("5. Shelf");
+    console.log("6. Inv");
+    console.log("7. Inv <str>");
+    console.log("8. Invadd <productid> <shelf> <number>");
+    console.log("9. Invdel <productid> <shelf> <number>");
+    console.log("10. Menu: to see all the options.");
+    console.log("11. Exit");
+    console.log("12. To see orders");
+    console.log("13. See order <orderid>");
+    console.log("14. Ship <orderid>");
+    console.log("15. Picklist <orderid>");
+    console.log("16. Orderstatus <orderid>");
 
-    rl.question('Enter your choice: ', handleChoice);
+    rl.question("Enter your choice: ", handleChoice);
 }
 
 function handleChoice(choice) {
-    const args = choice.split(' ');
+    const args = choice.split(" ");
     let id = 0;
 
     choice = args[0];
 
     switch (choice) {
-        case '1':
+        case "1":
             displayShelves();
             break;
-        case '2':
-            console.log('About: This program is for managing an eshop built by Senao, Elias and Daniel.');
+        case "2":
+            console.log("About: Made by Senai, Elias and Daniel.");
             displayMenu();
             break;
-        case '3':
-            const logNumber = parseInt(args[1]);
-            displayLog(logNumber);
+        case "3":
+            displayLog(parseInt(args[1]));
             break;
-        case '4':
+        case "4":
             displayProducts();
             break;
-        case '5':
+        case "5":
             displayShelfLocations();
             break;
-        case '6':
+        case "6":
             displayInventory();
             break;
-        case '7':
-            const filterString = args.slice(1).join(' ');
-            filterInventory(filterString);
+        case "7":
+            filterInventory(args.slice(1).join(" "));
             break;
-        case '8':
-            const addArgs = args.slice(1);
-            addProductToInventory(addArgs);
+        case "8":
+            addProductToInventory(args.slice(1));
             break;
-        case '9':
-            const delArgs = args.slice(1);
-            removeProductFromInventory(delArgs);
+        case "9":
+            removeProductFromInventory(args.slice(1));
             break;
-        case '10':
+        case "10":
             displayMenu();
             break;
-        case '11':
-            console.log('Exiting...');
-            connection.end(); 
-            rl.close(); 
+        case "11":
+            console.log("Exiting...");
+            connection.end();
+            rl.close();
             break;
-        case '12':
+        case "12":
             getOrders();
             break;
-        case '13':
+        case "13":
             id = args.slice(1);
             displayOrderId(id);
             break;
-        case '14':
+        case "14":
             id = args.slice(1);
             updateOrderStatusToShipped(id);
             break;
-        case '15':
+        case "15":
             id = args.slice(1);
             pickList(id);
             break;
-        case '16':
+        case "16":
             id = args.slice(1);
             getOrderStatus(id);
             break;
         default:
-            console.log('Invalid choice. Please enter a valid command.');
-            displayMenu(); 
+            console.log("Invalid choice. Please enter a valid command.");
+            displayMenu();
             break;
     }
 }
 
 async function displayShelves() {
     try {
-        const results = await queryAsync('CALL displayshelvesprocedure();');
+        const results = await queryAsync("CALL p_display_shelves();");
 
-        console.log('Displaying shelves in the warehouse:');
+        console.log("Displaying shelves in the warehouse:");
         console.table(results[0]);
         displayMenu();
     } catch (error) {
-        console.error('Error fetching shelves:', error);
+        console.error("Error fetching shelves:", error);
         return;
     }
 }
 
 async function displayLog(logNumber) {
     try {
-        const results = await queryAsync('CALL displaylogprocedure(?)', [logNumber]);
+        const results = await queryAsync("CALL p_display_log(?)", [logNumber]);
 
         console.log(`Displaying last ${logNumber} log entries:`);
-        console.table(results[0]); 
+        console.table(results[0]);
         displayMenu();
     } catch (error) {
-        console.error('Error fetching log:', error);
+        console.error("Error fetching log:", error);
         return;
     }
 }
 
 async function displayProducts() {
     try {
-        const results = await queryAsync('CALL displayproductsprocedure()');
+        const results = await queryAsync("CALL p_display_products()");
 
-        console.log('Displaying products:');
+        console.log("Displaying products:");
         console.table(results[0]);
         displayMenu();
     } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
         return;
     }
 }
 
 async function getOrders() {
     try {
-        const results = await queryAsync('CALL show_orders_with_totals()');
+        const results = await queryAsync("CALL show_orders_with_totals()");
 
-        console.log('Displaying orders:');
+        console.log("Displaying orders:");
         console.table(results[0]);
         displayMenu();
     } catch (error) {
-        console.error('Error fetching orders:', error);
+        console.error("Error fetching orders:", error);
         return;
     }
 }
 
 async function displayShelfLocations() {
     try {
-        const results = await queryAsync('CALL displayshelflocationsprocedure()');
+        const results = await queryAsync("CALL p_display_shelf_locations()");
 
-        console.log('Displaying shelf locations:');
+        console.log("Displaying shelf locations:");
         console.table(results[0]);
         displayMenu();
     } catch (error) {
-        console.error('Error fetching shelf locations:', error);
+        console.error("Error fetching shelf locations:", error);
         return;
     }
 }
 
 async function displayInventory() {
     try {
-        const results = await queryAsync('CALL displayinventoryprocedure()');
+        const results = await queryAsync("CALL p_display_inventory()");
 
-        console.log('Displaying inventory:');
+        console.log("Displaying inventory:");
         console.table(results[0]);
         displayMenu();
     } catch (error) {
-        console.error('Error fetching inventory:', error);
+        console.error("Error fetching inventory:", error);
         return;
     }
 }
 
 async function filterInventory(filterString) {
     try {
-        const results = await queryAsync('CALL filterinventoryprocedure(?)', [filterString]);
+        const results = await queryAsync("CALL p_filter_nventory(?)", [filterString]);
 
         const resultSet = results[0];
 
         if (resultSet.length === 0) {
-            console.log('No matching items found.');
+            console.log("No matching items found.");
             displayMenu();
             return;
         }
@@ -211,7 +207,7 @@ async function filterInventory(filterString) {
         console.table(resultSet);
         displayMenu();
     } catch (error) {
-        console.error('Error fetching filtered inventory:', error);
+        console.error("Error fetching filtered inventory:", error);
         return;
     }
 }
@@ -219,9 +215,9 @@ async function filterInventory(filterString) {
 function addProductToInventory(args) {
     const [productId, shelf, quantity] = args;
 
-    connection.query('CALL invadd(?, ?, ?)', [productId, shelf, quantity], (error) => {
+    connection.query("CALL invadd(?, ?, ?)", [productId, shelf, quantity], (error) => {
         if (error) {
-            console.error('Error adding product to inventory:', error);
+            console.error("Error adding product to inventory:", error);
             return;
         }
         console.log(`Added ${quantity} of product ${productId} to shelf ${shelf}`);
@@ -230,69 +226,66 @@ function addProductToInventory(args) {
 }
 
 function removeProductFromInventory(args) {
-    const [productId, shelf, quantity] = args;
+    const [proId, shelf, qty] = args;
 
-    connection.query(
-        'CALL removeproductfrominventoryprocedure(?, ?, ?)',
-        [productId, shelf, quantity],
-        (error) => {
-            if (error) {
-                console.error('Error removing product from inventory:', error);
-                return;
-            }
-            console.log(`Removed ${quantity} of product ${productId} from shelf ${shelf}`);
-            displayMenu();
-        });
+    connection.query("CALL p_remove_product_inventory(?, ?, ?)", [proId, shelf, qty], (error) => {
+        if (error) {
+            console.error("Error removing product from inventory:", error);
+            return;
+        }
+        console.log(`Removed ${qty} of product ${proId} from shelf ${shelf}`);
+        displayMenu();
+    });
 }
 
 async function displayOrderId(logNumber) {
     try {
-        const results = await queryAsync('CALL show_order_with_totals_custom(?)', [logNumber]);
+        const results = await queryAsync("CALL show_order_with_totals_custom(?)", [logNumber]);
 
         console.log(`Displaying order with ID ${logNumber}:`);
         console.table(results[0]);
         displayMenu();
     } catch (error) {
-        console.error('Error fetching order information:', error);
+        console.error("Error fetching order information:", error);
         return;
     }
 }
 
 async function updateOrderStatusToShipped(logNumber) {
     try {
-        const results = await queryAsync('CALL updateorderstatustoshipped(?)', [logNumber]);
+        const results = await queryAsync("CALL updateorderstatustoshipped(?)", [logNumber]);
 
         console.log(`Updated order status to shipped for order with ID ${logNumber}:`);
         console.table(results[0]);
         displayMenu();
     } catch (error) {
-        console.error('Error updating order status:', error);
+        console.error("Error updating order status:", error);
         return;
     }
 }
 
 async function pickList(logNumber) {
     try {
-        const results = await queryAsync('CALL plocklist(?)', [logNumber]);
+        const results = await queryAsync("CALL plocklist(?)", [logNumber]);
 
         console.log(`Generating picklist for order with ID ${logNumber}:`);
         console.table(results[0]);
         displayMenu();
     } catch (error) {
-        console.error('Error generating picklist:', error);
+        console.error("Error generating picklist:", error);
         return;
     }
 }
 
 async function getOrderStatus(logNumber) {
     try {
-        const results = await queryAsync('CALL get_order_status(?)', [logNumber]);
+        const results = await queryAsync("CALL get_order_status(?)", [logNumber]);
 
         console.log(`Displaying order status for order with ID ${logNumber}:`);
         console.table(results[0]);
         displayMenu();
     } catch (error) {
-        console.error('Error fetching order status:', error);
+        console.error("Error fetching order status:", error);
         return;
     }
 }
