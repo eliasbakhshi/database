@@ -158,12 +158,6 @@ async function createProduct(name, description, price, stock) {
     return productIdResult[0].productId;
 }
 
-
-
-
-
-
-
 /**
  * Get all products.
  *
@@ -245,7 +239,7 @@ async function addInventoryLog(id, eventDescription, eventDate) {
     // Generate Event_instance_id
     const eventInstanceId = await generateEventInstanceId(id);
 
-    const sql = 'CALL addInventoryLogProcedure(?, ?, ?)';
+    const sql = 'CALL addinventorylogprocedure(?, ?, ?)';
 
     const result = await db.query(sql, [ eventInstanceId, eventDescription, eventDate]);
 
@@ -325,7 +319,7 @@ async function insertOrderItem(orderId, productId, price, quantity) {
 }
 
 async function updateOrderStatus(id) {
-    let sql = `CALL ChangeOrderStatus(?);`;
+    let sql = `CALL changeorderstatus(?);`;
 
     let res = await db.query(sql, [id]);
 
@@ -339,4 +333,3 @@ async function softDeleteOrder(id) {
 
     return 0;
 }
-

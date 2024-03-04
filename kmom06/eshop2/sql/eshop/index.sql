@@ -1,4 +1,5 @@
 -- Drop index if exists and then add index to order table on customer_id
+use databas eshop;
 ALTER TABLE `order` DROP INDEX IF EXISTS idx_order_customer_id;
 ALTER TABLE `order` ADD INDEX idx_order_customer_id (`customer_id`);
 
