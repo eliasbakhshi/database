@@ -225,7 +225,7 @@ router.get("/order", async (req, res) => {
 
     data.res = await eShop.getOrders();
     console.log(data.res);
-    res.render("eshop/order/order", data);
+    res.render("eshop/order/index", data);
 });
 
 router.get("/customer", async (req, res) => {
@@ -235,7 +235,7 @@ router.get("/customer", async (req, res) => {
 
     data.res = await eShop.getCustomers();
     console.log(data.res);
-    res.render("eshop/customer/customer", data);
+    res.render("eshop/customer/index", data);
 });
 
 
@@ -332,12 +332,12 @@ router.get('/order/status/:order_id', async (req, res) => {
 
         const data = {
             title: "Add product | eShop",
-            
+
         };
         // Here you can retrieve the order status based on orderId
         // For demonstration, let's assume you have a function to fetch the order status from the database
         await eShop.updateOrderStatus(orderId);
-        
+
         // Render the order status page with the retrieved order status
         res.render(`eshop/order/thankyou`, data);
     } catch (error) {
