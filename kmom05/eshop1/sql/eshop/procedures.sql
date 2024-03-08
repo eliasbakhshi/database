@@ -1,24 +1,24 @@
-DROP PROCEDURE IF EXISTS displayShelvesProcedure;
+DROP PROCEDURE IF EXISTS displayshelvesprocedure;
 DELIMITER ;;
-CREATE PROCEDURE displayShelvesProcedure()
+CREATE PROCEDURE displayshelvesprocedure()
 BEGIN
-    SELECT * FROM Warehouse;
+    SELECT * FROM warehouse;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS displayProductsOnShelvesProcedure;
+DROP PROCEDURE IF EXISTS displayproductsonshelvesprocedure;
 DELIMITER ;;
-CREATE PROCEDURE displayProductsOnShelvesProcedure()
+CREATE PROCEDURE displayproductsonshelvesprocedure()
 BEGIN
-    SELECT p.Product_name, w.Shelf_location, w.Stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.ProduktID = w.Product_id;
+    SELECT p.product_name, w.shelf_location, w.stock_quantity
+    FROM product p
+    JOIN warehouse w ON p.produktid = w.product_id;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS addProductProcedure;
+DROP PROCEDURE IF EXISTS addproductprocedure;
 DELIMITER ;;
-CREATE PROCEDURE addProductProcedure(
+CREATE PROCEDURE addproductprocedure(
     IN productId INT,
     IN description VARCHAR(255),
     IN productName VARCHAR(255),
@@ -26,126 +26,126 @@ CREATE PROCEDURE addProductProcedure(
     IN stockQuantity INT
 )
 BEGIN
-    INSERT INTO Product (ProduktID, Description, Product_name, Price, Stock)
+    INSERT INTO product (produktid, description, product_name, price, stock)
     VALUES (productId, description, productName, price, stockQuantity);
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS addProductToShelfProcedure;
+DROP PROCEDURE IF EXISTS addproducttoshelfprocedure;
 DELIMITER ;;
-CREATE PROCEDURE addProductToShelfProcedure(
+CREATE PROCEDURE addproducttoshelfprocedure(
     IN productId INT,
     IN shelfLocation VARCHAR(255),
     IN stockQuantity INT
 )
 BEGIN
-    INSERT INTO Warehouse (Warehouse_id, Product_id, Shelf_location, Stock_quantity)
+    INSERT INTO warehouse (warehouse_id, product_id, shelf_location, stock_quantity)
     VALUES (1,productId, shelfLocation, stockQuantity);
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS removeProductFromShelfProcedure;
+DROP PROCEDURE IF EXISTS removeproductfromshelfprocedure;
 DELIMITER ;;
-CREATE PROCEDURE removeProductFromShelfProcedure(
+CREATE PROCEDURE removeproductfromshelfprocedure(
     IN productId INT,
     IN shelfLocation VARCHAR(255),
     IN quantity INT
 )
 BEGIN
-    UPDATE Warehouse
-    SET Stock_quantity = GREATEST(Stock_quantity - quantity, 0)
-    WHERE Product_id = productId AND Shelf_location = shelfLocation;
+    UPDATE warehouse
+    SET stock_quantity = GREATEST(stock_quantity - quantity, 0)
+    WHERE product_id = productId AND shelf_location = shelfLocation;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS displayLogProcedure;
+DROP PROCEDURE IF EXISTS displaylogprocedure;
 DELIMITER ;;
-CREATE PROCEDURE displayLogProcedure(
+CREATE PROCEDURE displaylogprocedure(
     IN logNumber INT
 )
 BEGIN
-    SELECT * FROM Inventory_Log ORDER BY Event_date DESC LIMIT logNumber;
+    SELECT * FROM inventory_log ORDER BY event_date DESC LIMIT logNumber;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS displayProductsProcedure;
+DROP PROCEDURE IF EXISTS displayproductsprocedure;
 DELIMITER ;;
-CREATE PROCEDURE displayProductsProcedure()
+CREATE PROCEDURE displayproductsprocedure()
 BEGIN
-    SELECT product_id, Product_name FROM Product;
+    SELECT product_id, product_name FROM product;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS displayShelfLocationsProcedure;
+DROP PROCEDURE IF EXISTS displayshelflocationsprocedure;
 DELIMITER ;;
-CREATE PROCEDURE displayShelfLocationsProcedure()
+CREATE PROCEDURE displayshelflocationsprocedure()
 BEGIN
-    SELECT DISTINCT Shelf_location FROM Warehouse;
+    SELECT DISTINCT shelf_location FROM warehouse;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS displayInventoryProcedure;
+DROP PROCEDURE IF EXISTS displayinventoryprocedure;
 DELIMITER ;;
-CREATE PROCEDURE displayInventoryProcedure()
+CREATE PROCEDURE displayinventoryprocedure()
 BEGIN
-    SELECT p.product_id, p.Product_name, w.Shelf_location, w.Stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.product_id = w.product_id;
+    SELECT p.product_id, p.product_name, w.shelf_location, w.stock_quantity
+    FROM product p
+    JOIN warehouse w ON p.product_id = w.product_id;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS filterInventoryProcedure;
+DROP PROCEDURE IF EXISTS filterinventoryprocedure;
 DELIMITER ;;
-CREATE PROCEDURE filterInventoryProcedure(
+CREATE PROCEDURE filterinventoryprocedure(
     IN filterString VARCHAR(255)
 )
 BEGIN
-    SELECT p.product_id, p.Product_name, w.Shelf_location, w.Stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.product_id = w.product_id
+    SELECT p.product_id, p.product_name, w.shelf_location, w.stock_quantity
+    FROM product p
+    JOIN warehouse w ON p.product_id = w.product_id
     WHERE p.product_id LIKE CONCAT('%', filterString, '%')
-    OR p.Product_name LIKE CONCAT('%', filterString, '%')
-    OR w.Shelf_location LIKE CONCAT('%', filterString, '%');
+    OR p.product_name LIKE CONCAT('%', filterString, '%')
+    OR w.shelf_location LIKE CONCAT('%', filterString, '%');
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS addProductToInventoryProcedure;
+DROP PROCEDURE IF EXISTS addproducttoinventoryprocedure;
 DELIMITER ;;
-CREATE PROCEDURE addProductToInventoryProcedure(
+CREATE PROCEDURE addproducttoinventoryprocedure(
     IN productId INT,
     IN shelf VARCHAR(255),
     IN quantity INT
 )
 BEGIN
-    INSERT INTO Warehouse (Warehouse_id, Product_id, Shelf_location, Stock_quantity)
-    VALUES (1, productId, shelf, quantity)
-    ON DUPLICATE KEY UPDATE Stock_quantity = Stock_quantity + quantity;
+    INSERT INTO warehouse ( product_id, shelf_location, stock_quantity)
+    VALUES ( productId, shelf, quantity)
+    ON DUPLICATE KEY UPDATE stock_quantity = stock_quantity + quantity;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS removeProductFromInventoryProcedure;
+DROP PROCEDURE IF EXISTS removeproductfrominventoryprocedure;
 DELIMITER ;;
-CREATE PROCEDURE removeProductFromInventoryProcedure(
+CREATE PROCEDURE removeproductfrominventoryprocedure(
     IN productId INT,
     IN shelf VARCHAR(255),
     IN quantity INT
 )
 BEGIN
-    UPDATE Warehouse
-    SET Stock_quantity = GREATEST(Stock_quantity - quantity, 0)
-    WHERE product_id = productId AND Shelf_location = shelf;
+    UPDATE warehouse
+    SET stock_quantity = GREATEST(stock_quantity - quantity, 0)
+    WHERE product_id = productId AND shelf_location = shelf;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS addInventoryLogProcedure;
+DROP PROCEDURE IF EXISTS addinventorylogprocedure;
 DELIMITER ;;
-CREATE PROCEDURE addInventoryLogProcedure(
+CREATE PROCEDURE addinventorylogprocedure(
     IN p_eventInstanceId VARCHAR(36),
     IN p_eventDescription VARCHAR(255),
     IN p_eventDate DATETIME
 )
 BEGIN
-    INSERT INTO Inventory_Log ( Event_instance_id, Event_description, Event_date)
+    INSERT INTO inventory_log ( event_instance_id, event_description, event_date)
     VALUES ( p_eventInstanceId, p_eventDescription, p_eventDate);
 END;;
 DELIMITER ;
@@ -154,16 +154,10 @@ DROP PROCEDURE IF EXISTS show_customer;
 DELIMITER ;;
 CREATE PROCEDURE show_customer(IN p_customer_id INT)
 BEGIN
-    SELECT * FROM Customer WHERE Customer_id = p_customer_id;
+    SELECT * FROM customer WHERE customer_id = p_customer_id;
 END;;
 DELIMITER ;
 
-
-
-
---
--- Create procedure for creating a category.
---
 DROP PROCEDURE IF EXISTS create_category;
 DELIMITER ;;
 CREATE PROCEDURE create_category(
@@ -174,9 +168,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for getting all categories.
---
 DROP PROCEDURE IF EXISTS get_categories;
 DELIMITER ;;
 CREATE PROCEDURE get_categories()
@@ -185,9 +176,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for getting a category.
---
 DROP PROCEDURE IF EXISTS get_category;
 DELIMITER ;;
 CREATE PROCEDURE get_category(
@@ -198,9 +186,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for editing a category.
---
 DROP PROCEDURE IF EXISTS edit_category;
 DELIMITER ;;
 CREATE PROCEDURE edit_category(
@@ -212,9 +197,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for deleting a category.
---
 DROP PROCEDURE IF EXISTS delete_category;
 DELIMITER ;;
 CREATE PROCEDURE delete_category(
@@ -225,9 +207,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for creating a product.
---
 DROP PROCEDURE IF EXISTS create_product;
 DELIMITER ;;
 CREATE PROCEDURE create_product(
@@ -242,12 +221,6 @@ BEGIN
 END;;
 DELIMITER ;
 
-
-
-
---
--- Create procedure for getting all producers.
---
 DROP PROCEDURE IF EXISTS get_products;
 DELIMITER ;;
 CREATE PROCEDURE get_products()
@@ -256,9 +229,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for getting a product.
---
 DROP PROCEDURE IF EXISTS get_product;
 DELIMITER ;;
 CREATE PROCEDURE get_product(
@@ -269,9 +239,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for editing a product.
---
 DROP PROCEDURE IF EXISTS edit_product;
 DELIMITER ;;
 CREATE PROCEDURE edit_product(
@@ -286,9 +253,6 @@ BEGIN
 END;;
 DELIMITER ;
 
---
--- Create procedure for deleting a product.
---
 DROP PROCEDURE IF EXISTS delete_product;
 DELIMITER ;;
 CREATE PROCEDURE delete_product(
