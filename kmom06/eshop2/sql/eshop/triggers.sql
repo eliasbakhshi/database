@@ -1,7 +1,7 @@
 --
 -- Create a Trigger for deleting a product and rows that product is connected to.
 --
-use databas eshop;
+use  eshop;
 
 DROP TRIGGER IF EXISTS delete_product_trigger;
 DELIMITER ;;

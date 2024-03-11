@@ -1,11 +1,9 @@
 -- Drop index if exists and then add index to order table on customer_id
-use databas eshop;
+use  eshop;
 ALTER TABLE `order` DROP INDEX IF EXISTS idx_order_customer_id;
 ALTER TABLE `order` ADD INDEX idx_order_customer_id (`customer_id`);
 
--- Drop index if exists and then add index to delivery table on order_id
-ALTER TABLE `delivery` DROP INDEX IF EXISTS idx_delivery_order_id;
-ALTER TABLE `delivery` ADD INDEX idx_delivery_order_id (`order_id`);
+
 
 -- Drop index if exists and then add index to order table on status
 ALTER TABLE `order` DROP INDEX IF EXISTS idx_order_status;

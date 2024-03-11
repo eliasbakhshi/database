@@ -2,7 +2,7 @@
  * A module exporting functions to access the eshop database.
  */
 "use strict";
-const { v4: uuidv4 } = require("uuid");
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
     createCategory: createCategory,
@@ -25,6 +25,7 @@ module.exports = {
     insertOrderItem: insertOrderItem,
     updateOrderStatus: updateOrderStatus,
     softDeleteOrder: softDeleteOrder,
+    getundercategory: getundercategory
 };
 
 const mysql = require("promise-mysql");
@@ -57,6 +58,7 @@ let db;
  */
 async function createCategory(name) {
     let sql = `CALL create_category(?);`;
+
     let res = await db.query(sql, [name]);
 
     return res;
@@ -71,6 +73,7 @@ async function createCategory(name) {
  */
 async function getCategories() {
     let sql = `CALL get_categories();`;
+
     let res = await db.query(sql);
 
     return res[0];
@@ -87,6 +90,7 @@ async function getCategories() {
  */
 async function getCategory(id) {
     let sql = `CALL get_category(?);`;
+
     let res = await db.query(sql, [id]);
 
     return res[0][0];
@@ -105,7 +109,9 @@ async function getCategory(id) {
  */
 async function editCategory(id, name) {
     let sql = `CALL edit_category(?, ?);`;
+
     let res = await db.query(sql, [id, name]);
+
 
     return res;
 }
@@ -120,6 +126,7 @@ async function editCategory(id, name) {
  */
 async function deleteCategory(id) {
     let sql = `CALL delete_category(?);`;
+
     let res = await db.query(sql, [id]);
 
     console.info(`SQL: ${sql} got ${res.length} rows.`);
@@ -142,10 +149,11 @@ async function createProduct(name, description, price, stock) {
 
     await db.query(sql, [name, description, price, stock]);
 
-    let productIdQuery = "SELECT @productId AS productId;";
+    let productIdQuery = 'SELECT @productId AS productId;';
+
     let productIdResult = await db.query(productIdQuery);
 
-    console.log("productIdResult:", productIdResult[0].productId);
+    console.log('productIdResult:', productIdResult[0].productId);
     // Check the structure of productIdResult
 
     return productIdResult[0].productId;
@@ -160,6 +168,7 @@ async function createProduct(name, description, price, stock) {
  */
 async function getProducts() {
     let sql = `CALL get_products();`;
+
     let res = await db.query(sql);
 
     console.info(`SQL: ${sql} got ${res.length} rows.`);
@@ -178,6 +187,7 @@ async function getProducts() {
  */
 async function getProduct(id) {
     let sql = `CALL get_product(?);`;
+
     let res = await db.query(sql, [id]);
 
     return res[0][0];
@@ -196,6 +206,7 @@ async function getProduct(id) {
  */
 async function editProduct(id, name, description, price, stock) {
     let sql = `CALL edit_product(?, ?, ?, ?, ?);`;
+
     let res = await db.query(sql, [id, name, description, price, stock]);
 
     return res;
@@ -211,6 +222,7 @@ async function editProduct(id, name, description, price, stock) {
  */
 async function deleteProduct(id) {
     let sql = `CALL delete_product(?);`;
+
     let res = await db.query(sql, [id]);
 
     console.info(`SQL: ${sql} got ${res.length} rows.`);
@@ -227,15 +239,17 @@ async function generateEventInstanceId() {
 async function addInventoryLog(id, eventDescription, eventDate) {
     // Generate Event_instance_id
     const eventInstanceId = await generateEventInstanceId(id);
-    const sql = "CALL addinventorylogprocedure(?, ?, ?)";
-    const result = await db.query(sql, [eventInstanceId, eventDescription, eventDate]);
+
+    const sql = 'CALL add_inventory_log_procedure(?, ?, ?)';
+
+    const result = await db.query(sql, [ eventInstanceId, eventDescription, eventDate]);
 
     return result;
 }
 
 function getProductIDByProductName(productName) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT product_id FROM product WHERE product_name = ?";
+        const query = 'SELECT product_id FROM product WHERE product_name = ?';
 
         db.query(query, [productName], (error, results) => {
             if (error) {
@@ -263,27 +277,31 @@ async function getCustomers() {
 // get all orders
 async function getOrders() {
     let sql = `CALL show_orders_with_totals();`;
+
     let res = await db.query(sql);
 
     return res[0];
 }
 
 async function getCustomerById(customerId) {
-    const sql = "CALL show_customer_by_id(?)";
+    const sql = 'CALL show_customer_by_id(?)';
+
     let res;
 
     res = await db.query(sql, [customerId]);
     return res[0];
 }
 
-async function createOrder(orderDate, totalPrice, customerId, status) {
+async function createOrder(ORDERDATE, TotalPrice, CustomerID, status) {
     let sql = `CALL insert_order(?, ?, ?, ?);`;
-    let res = await db.query(sql, [orderDate, totalPrice, customerId, status]);
+
+    let res = await db.query(sql, [ORDERDATE, TotalPrice, CustomerID, status]);
 
     return res;
 }
 async function getProductDetails(customerId) {
-    const sql = "CALL show_order_details(?);";
+    const sql = 'CALL show_order_details(?);';
+
     let res;
 
     res = await db.query(sql, [customerId]);
@@ -291,19 +309,35 @@ async function getProductDetails(customerId) {
 }
 
 async function insertOrderItem(orderId, productId, price, quantity) {
-    return await db.query("INSERT INTO order_item" +
-    (orderId, productId, price, quantity) +
-    "VALUES (?, ?, ?, ?)", [orderId, productId, price, quantity]);
+    const result = await db.query(
+        'INSERT INTO order_item (order_id, product_id, price, quantity) VALUES (?, ?, ?, ?)',
+        [orderId, productId, price, quantity]
+    );
+
+    return result;
 }
 
-async function updateOrderStatus(id) {
-    let sql = `CALL changeorderstatus(?);`;
 
-    return await db.query(sql, [id]);
+async function updateOrderStatus(id) {
+    let sql = `CALL change_order_status(?);`;
+
+    await db.query(sql, [id]);
+
+    return 0;
 }
 
 async function softDeleteOrder(id) {
     let sql = ` CALL soft_delete_order(?);`;
 
-    return await db.query(sql, [id]);
+    await db.query(sql, [id]);
+
+    return 0;
+}
+
+async function getundercategory(id) {
+    let sql = `CALL get_products_by_category(?);`;
+
+    let res = await db.query(sql, [id]);
+
+    return res[0];
 }
