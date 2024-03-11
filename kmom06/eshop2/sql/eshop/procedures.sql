@@ -1,14 +1,14 @@
-DROP PROCEDURE IF EXISTS display_shelves_procedure;
-delimiter ;;
-CREATE PROCEDURE display_shelves_procedure()
+DROP PROCEDURE IF EXISTS p_display_shelves_procedure;
+DELIMITER ;;
+CREATE PROCEDURE p_display_shelves_procedure()
 begin
     select * from warehouse;
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS display_products_on_shelves_procedure;
+DROP PROCEDURE IF EXISTS p_display_products_on_shelves_procedure;
 delimiter ;;
-CREATE PROCEDURE display_products_on_shelves_procedure()
+CREATE PROCEDURE p_display_products_on_shelves_procedure()
 begin
     select p.product_name, w.shelf_location, w.stock_quantity
     from product p
@@ -16,9 +16,9 @@ begin
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS add_product_procedure;
+DROP PROCEDURE IF EXISTS p_add_product_procedure;
 delimiter ;;
-CREATE PROCEDURE add_product_procedure(
+CREATE PROCEDURE p_add_product_procedure(
     in productid int,
     in description varchar(255),
     in productname varchar(255),
@@ -31,9 +31,9 @@ begin
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS add_product_to_shelf_procedure;
+DROP PROCEDURE IF EXISTS p_add_product_to_shelf_procedure;
 delimiter ;;
-CREATE PROCEDURE add_product_to_shelf_procedure(
+CREATE PROCEDURE p_add_product_to_shelf_procedure(
     in productid int,
     in shelflocation varchar(255),
     in stockquantity int
@@ -44,9 +44,9 @@ begin
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS remove_product_from_shelf_procedure;
+DROP PROCEDURE IF EXISTS p_remove_product_from_shelf_procedure;
 delimiter ;;
-CREATE PROCEDURE remove_product_from_shelf_procedure(
+CREATE PROCEDURE p_remove_product_from_shelf_procedure(
     in productid int,
     in shelflocation varchar(255),
     in quantity int
@@ -58,9 +58,9 @@ begin
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS display_log_procedure;
+DROP PROCEDURE IF EXISTS p_display_log_procedure;
 delimiter ;;
-CREATE PROCEDURE display_log_procedure(
+CREATE PROCEDURE p_display_log_procedure(
     in lognumber int
 )
 begin
@@ -68,25 +68,25 @@ begin
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS display_products_procedure;
+DROP PROCEDURE IF EXISTS p_display_products_procedure;
 delimiter ;;
-CREATE PROCEDURE display_products_procedure()
+CREATE PROCEDURE p_display_products_procedure()
 begin
     select product_id, product_name from product;
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS display_shelf_locations_procedure;
+DROP PROCEDURE IF EXISTS p_display_shelf_locations_procedure;
 delimiter ;;
-CREATE PROCEDURE display_shelf_locations_procedure()
+CREATE PROCEDURE p_display_shelf_locations_procedure()
 begin
     select distinct shelf_location from warehouse;
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS display_inventory_procedure;
+DROP PROCEDURE IF EXISTS p_display_inventory_procedure;
 delimiter ;;
-CREATE PROCEDURE display_inventory_procedure()
+CREATE PROCEDURE p_display_inventory_procedure()
 begin
     select p.product_id, p.product_name, w.shelf_location, w.stock_quantity
     from product p
@@ -94,9 +94,9 @@ begin
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS filter_inventory_procedure;
+DROP PROCEDURE IF EXISTS p_filter_inventory_procedure;
 delimiter ;;
-CREATE PROCEDURE filter_inventory_procedure(
+CREATE PROCEDURE p_filter_inventory_procedure(
     in filterstring varchar(255)
 )
 begin
@@ -109,23 +109,23 @@ begin
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS add_product_to_inventory_procedure;
+DROP PROCEDURE IF EXISTS p_add_product_to_inventory_procedure;
 delimiter ;;
-CREATE PROCEDURE add_product_to_inventory_procedure(
+CREATE PROCEDURE p_add_product_to_inventory_procedure(
     in productid int,
     in shelf varchar(255),
     in quantity int
 )
 begin
-    insert into warehouse (warehouse_id, product_id, shelf_location, stock_quantity)
-    values (1, productid, shelf, quantity)
+    insert into warehouse ( product_id, shelf_location, stock_quantity)
+    values ( productid, shelf, quantity)
     on duplicate key update stock_quantity = stock_quantity + quantity;
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS remove_product_from_inventory_procedure;
+DROP PROCEDURE IF EXISTS p_remove_product_from_inventory_procedure;
 delimiter ;;
-CREATE PROCEDURE remove_product_from_inventory_procedure(
+CREATE PROCEDURE p_remove_product_from_inventory_procedure(
     in productid int,
     in shelf varchar(255),
     in quantity int
@@ -137,9 +137,9 @@ begin
 end;;
 delimiter ;
 
-DROP PROCEDURE IF EXISTS add_inventory_log_procedure;
+DROP PROCEDURE IF EXISTS p_add_inventory_log_procedure;
 delimiter ;;
-CREATE PROCEDURE add_inventory_log_procedure(
+CREATE PROCEDURE p_add_inventory_log_procedure(
     in p_eventinstanceid varchar(36),
     in p_eventdescription varchar(255),
     in p_eventdate datetime
@@ -150,18 +150,17 @@ begin
 end;;
 delimiter ;
 
-
-DROP PROCEDURE IF EXISTS show_customer;
+DROP PROCEDURE IF EXISTS p_show_customer;
 DELIMITER ;;
-CREATE PROCEDURE show_customer(IN p_customer_id INT)
+CREATE PROCEDURE p_show_customer(IN p_customer_id INT)
 BEGIN
     SELECT * FROM Customer WHERE Customer_id = p_customer_id;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS create_category;
+DROP PROCEDURE IF EXISTS p_create_category;
 DELIMITER ;;
-CREATE PROCEDURE create_category(
+CREATE PROCEDURE p_create_category(
     IN the_name VARCHAR(100)
 )
 BEGIN
@@ -169,17 +168,17 @@ BEGIN
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS get_categories;
+DROP PROCEDURE IF EXISTS p_get_categories;
 DELIMITER ;;
-CREATE PROCEDURE get_categories()
+CREATE PROCEDURE p_get_categories()
 BEGIN
     SELECT * FROM category WHERE deleted IS NULL;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS get_category;
+DROP PROCEDURE IF EXISTS p_get_category;
 DELIMITER ;;
-CREATE PROCEDURE get_category(
+CREATE PROCEDURE p_get_category(
     IN id INT
 )
 BEGIN
@@ -187,9 +186,9 @@ BEGIN
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS edit_category;
+DROP PROCEDURE IF EXISTS p_edit_category;
 DELIMITER ;;
-CREATE PROCEDURE edit_category(
+CREATE PROCEDURE p_edit_category(
     IN id INT,
     IN the_name VARCHAR(100)
 )
@@ -198,9 +197,9 @@ BEGIN
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS delete_category;
+DROP PROCEDURE IF EXISTS p_delete_category;
 DELIMITER ;;
-CREATE PROCEDURE delete_category(
+CREATE PROCEDURE p_delete_category(
     IN id INT
 )
 BEGIN
@@ -208,9 +207,9 @@ BEGIN
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS create_product;
+DROP PROCEDURE IF EXISTS p_create_product;
 DELIMITER ;;
-CREATE PROCEDURE create_product(
+CREATE PROCEDURE p_create_product(
     IN name VARCHAR(100),
     IN description TEXT,
     IN price DECIMAL(10,2),
@@ -222,17 +221,17 @@ BEGIN
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS get_products;
+DROP PROCEDURE IF EXISTS p_get_products;
 DELIMITER ;;
-CREATE PROCEDURE get_products()
+CREATE PROCEDURE p_get_products()
 BEGIN
     SELECT * FROM product WHERE deleted IS NULL;
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS get_product;
+DROP PROCEDURE IF EXISTS p_get_product;
 DELIMITER ;;
-CREATE PROCEDURE get_product(
+CREATE PROCEDURE p_get_product(
     IN id INT
 )
 BEGIN
@@ -240,9 +239,9 @@ BEGIN
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS edit_product;
+DROP PROCEDURE IF EXISTS p_edit_product;
 DELIMITER ;;
-CREATE PROCEDURE edit_product(
+CREATE PROCEDURE p_edit_product(
     IN id INT,
     IN name VARCHAR(100),
     IN description TEXT,
@@ -254,9 +253,9 @@ BEGIN
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS delete_product;
+DROP PROCEDURE IF EXISTS p_delete_product;
 DELIMITER ;;
-CREATE PROCEDURE delete_product(
+CREATE PROCEDURE p_delete_product(
     IN id INT
 )
 BEGIN
@@ -265,8 +264,8 @@ END;;
 DELIMITER ;
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS show_orders_with_totals;
-CREATE PROCEDURE show_orders_with_totals()
+DROP PROCEDURE IF EXISTS p_show_orders_with_totals;
+CREATE PROCEDURE p_show_orders_with_totals()
 BEGIN
     SELECT 
         o.order_id,
@@ -285,11 +284,11 @@ END //
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS show_all_orders;
+DROP PROCEDURE IF EXISTS p_show_all_orders;
 
 DELIMITER //
 
-CREATE PROCEDURE show_all_orders()
+CREATE PROCEDURE p_show_all_orders()
 BEGIN
     SELECT * FROM `order`;
 END//
@@ -297,31 +296,31 @@ END//
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS show_all_customers;
+DROP PROCEDURE IF EXISTS p_show_all_customers;
 DELIMITER //
 
-CREATE PROCEDURE show_all_customers()
+CREATE PROCEDURE p_show_all_customers()
 BEGIN
     SELECT * FROM `customer`;
 END//
 
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS show_customer_by_id;
+DROP PROCEDURE IF EXISTS p_show_customer_by_id;
 DELIMITER //
 
-CREATE PROCEDURE show_customer_by_id(IN p_customer_id INT)
+CREATE PROCEDURE p_show_customer_by_id(IN p_customer_id INT)
 BEGIN
     SELECT * FROM `customer` WHERE `customer_id` = p_customer_id;
 END//
 
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS insert_order;
+DROP PROCEDURE IF EXISTS p_insert_order;
 
 DELIMITER //
 
-CREATE PROCEDURE insert_order(
+CREATE PROCEDURE p_insert_order(
     IN p_order_date DATETIME,
     IN p_total_price DECIMAL(10,2),
     IN p_customer_id INT,
@@ -334,10 +333,10 @@ END //
 
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS show_order_details;
+DROP PROCEDURE IF EXISTS p_show_order_details;
 DELIMITER //
 
-CREATE PROCEDURE show_order_details(IN p_order_id INT)
+CREATE PROCEDURE p_show_order_details(IN p_order_id INT)
 BEGIN
     SELECT oi.order_id, oi.product_id, p.product_name,
            oi.quantity AS total_product, oi.price AS total_price
@@ -350,9 +349,9 @@ DELIMITER ;
 
 
 
-DROP PROCEDURE IF EXISTS change_order_status;
+DROP PROCEDURE IF EXISTS p_change_order_status;
 delimiter //
-CREATE PROCEDURE change_order_status(in orderid int)
+CREATE PROCEDURE p_change_order_status(in orderid int)
 begin
     update `order`
     set `status` = 'ordered'
@@ -361,9 +360,9 @@ end //
 
 delimiter ;
 
-DROP PROCEDURE IF EXISTS get_order_information;
+DROP PROCEDURE IF EXISTS p_get_order_information;
 delimiter //
-CREATE PROCEDURE get_order_information(in orderid int)
+CREATE PROCEDURE p_get_order_information(in orderid int)
 begin
     select * from `order`
     where `order_id` = orderid;
@@ -371,9 +370,9 @@ end //
 
 delimiter ;
 
-DROP PROCEDURE IF EXISTS update_order_status_to_shipped;
+DROP PROCEDURE IF EXISTS p_update_order_status_to_shipped;
 delimiter //
-CREATE PROCEDURE update_order_status_to_shipped(in orderid int)
+CREATE PROCEDURE p_update_order_status_to_shipped(in orderid int)
 begin
     update `order`
     set `status` = 'Shipped', `shipped` = now()
@@ -383,10 +382,10 @@ end //
 delimiter ;
 
 
-DROP PROCEDURE IF EXISTS soft_delete_order;
+DROP PROCEDURE IF EXISTS p_soft_delete_order;
 DELIMITER //
 
-CREATE PROCEDURE soft_delete_order(IN p_order_id INT)
+CREATE PROCEDURE p_soft_delete_order(IN p_order_id INT)
 BEGIN
     UPDATE `order`
     SET `status` = 'deleted', `deleted` = NOW()
@@ -395,10 +394,10 @@ END //
 
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS plocklist;
+DROP PROCEDURE IF EXISTS p_plocklist;
 DELIMITER //
 
-CREATE PROCEDURE plocklist (IN p_order_id INT)
+CREATE PROCEDURE p_plocklist (IN p_order_id INT)
 BEGIN
     SELECT 
         oi.order_id, 
@@ -421,10 +420,10 @@ END //
 
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS get_order_status;
+DROP PROCEDURE IF EXISTS p_get_order_status;
 DELIMITER //
 
-CREATE PROCEDURE get_order_status (IN p_order_id INT)
+CREATE PROCEDURE p_get_order_status (IN p_order_id INT)
 BEGIN
     SELECT 
         order_id,
@@ -434,7 +433,7 @@ BEGIN
         updated,
         deleted,
         shipped,
-        order_status(created, updated, deleted, order_date, shipped) AS calculated_status
+        f_order_status(created, updated, deleted, order_date, shipped) AS calculated_status
     FROM 
         `order`
     WHERE 
@@ -443,10 +442,10 @@ END //
 
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS show_order_with_totals_custom;
+DROP PROCEDURE IF EXISTS p_show_order_with_totals_custom;
 DELIMITER //
 
-CREATE PROCEDURE show_order_with_totals_custom(IN order_id INT)
+CREATE PROCEDURE p_show_order_with_totals_custom(IN order_id INT)
 BEGIN
     SELECT 
         o.order_id,
@@ -467,9 +466,9 @@ END //
 
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS get_products_by_category;
+DROP PROCEDURE IF EXISTS p_get_products_by_category;
 DELIMITER //
-CREATE PROCEDURE get_products_by_category(
+CREATE PROCEDURE p_get_products_by_category(
     IN category_id INT
 )
 BEGIN

@@ -1,9 +1,9 @@
 use eshop;
 
-DROP FUNCTION IF EXISTS order_status;
+DROP FUNCTION IF EXISTS f_order_status;
 DELIMITER //
 
-CREATE FUNCTION order_status(
+CREATE FUNCTION f_order_status(
     created_at DATETIME, 
     updated_at DATETIME, 
     deleted_at DATETIME, 

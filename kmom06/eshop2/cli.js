@@ -130,7 +130,7 @@ function handleChoice(choice) {
 
 async function displayShelves() {
     try {
-        const results = await queryAsync('CALL display_shelves_procedure();');
+        const results = await queryAsync('CALL p_display_shelves_procedure();');
 
         console.log('Displaying shelves in the warehouse:');
         console.table(results[0]);
@@ -143,7 +143,7 @@ async function displayShelves() {
 
 async function displayLog(logNumber) {
     try {
-        const results = await queryAsync('CALL display_log_procedure(?)', [logNumber]);
+        const results = await queryAsync('CALL p_display_log_procedure(?)', [logNumber]);
 
         console.log(`Displaying last ${logNumber} log entries:`);
         console.table(results[0]);
@@ -156,7 +156,7 @@ async function displayLog(logNumber) {
 
 async function displayProducts() {
     try {
-        const results = await queryAsync('CALL display_products_procedure()');
+        const results = await queryAsync('CALL p_display_products_procedure()');
 
         console.log('Displaying products:');
         console.table(results[0]);
@@ -169,7 +169,7 @@ async function displayProducts() {
 
 async function getOrders() {
     try {
-        const results = await queryAsync('CALL show_orders_with_totals()');
+        const results = await queryAsync('CALL p_show_orders_with_totals()');
 
         console.log('Displaying orders:');
         console.table(results[0]);
@@ -182,7 +182,7 @@ async function getOrders() {
 
 async function displayShelfLocations() {
     try {
-        const results = await queryAsync('CALL display_shelf_locations_procedure()');
+        const results = await queryAsync('CALL p_display_shelf_locations_procedure()');
 
         console.log('Displaying shelf locations:');
         console.table(results[0]);
@@ -195,7 +195,7 @@ async function displayShelfLocations() {
 
 async function displayInventory() {
     try {
-        const results = await queryAsync('CALL display_inventory_procedure()');
+        const results = await queryAsync('CALL p_display_inventory_procedure()');
 
         console.log('Displaying inventory:');
         console.table(results[0]);
@@ -208,7 +208,7 @@ async function displayInventory() {
 
 async function filterInventory(filterString) {
     try {
-        const results = await queryAsync('CALL filter_inventory_procedure(?)', [filterString]);
+        const results = await queryAsync('CALL p_filter_inventory_procedure(?)', [filterString]);
 
         const resultSet = results[0];
 
@@ -231,7 +231,7 @@ async function filterInventory(filterString) {
 function addProductToInventory(args) {
     const [productId, shelf, quantity] = args;
 
-    connection.query('CALL add_product_to_inventory_procedure(?, ?, ?)',
+    connection.query('CALL p_add_product_to_inventory_procedure(?, ?, ?)',
         [productId, shelf, quantity], (error) => {
             if (error) {
                 console.error('Error adding product to inventory:', error);
@@ -246,7 +246,7 @@ function removeProductFromInventory(args) {
     const [productId, shelf, quantity] = args;
 
     connection.query(
-        'CALL remove_product_from_inventory_procedure(?, ?, ?)',
+        'CALL p_remove_product_from_inventory_procedure(?, ?, ?)',
         [productId, shelf, quantity],
         (error) => {
             if (error) {
@@ -260,7 +260,7 @@ function removeProductFromInventory(args) {
 
 async function displayOrderId(logNumber) {
     try {
-        const results = await queryAsync('CALL show_order_with_totals_custom(?)', [logNumber]);
+        const results = await queryAsync('CALL p_show_order_with_totals_custom(?)', [logNumber]);
 
         console.log(`Displaying order with ID ${logNumber}:`);
         console.table(results[0]);
@@ -273,7 +273,7 @@ async function displayOrderId(logNumber) {
 
 async function updateOrderStatusToShipped(logNumber) {
     try {
-        const results = await queryAsync('CALL update_order_status_to_shipped(?)', [logNumber]);
+        const results = await queryAsync('CALL p_update_order_status_to_shipped(?)', [logNumber]);
 
         console.log(`Updated order status to shipped for order with ID ${logNumber}:`);
         console.table(results[0]);
@@ -286,7 +286,7 @@ async function updateOrderStatusToShipped(logNumber) {
 
 async function pickList(logNumber) {
     try {
-        const results = await queryAsync('CALL plocklist(?)', [logNumber]);
+        const results = await queryAsync('CALL p_plocklist(?)', [logNumber]);
 
         console.log(`Generating picklist for order with ID ${logNumber}:`);
         console.table(results[0]);
@@ -299,7 +299,7 @@ async function pickList(logNumber) {
 
 async function getOrderStatus(logNumber) {
     try {
-        const results = await queryAsync('CALL get_order_status(?)', [logNumber]);
+        const results = await queryAsync('CALL p_get_order_status(?)', [logNumber]);
 
         console.log(`Displaying order status for order with ID ${logNumber}:`);
         console.table(results[0]);
