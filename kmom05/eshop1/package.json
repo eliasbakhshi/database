@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/eliasbakhshi/database.git"
   },
-  "author": "Elias Bakhshi, Senai, Daniel",
+  "author": "Elias Bakhshi",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/eliasbakhshi/database/issues"
@@ -23,6 +23,6 @@
     "mysql": "^2.18.1",
     "promise-mysql": "^5.2.0",
     "table": "^6.8.1",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.1"
   }
 }

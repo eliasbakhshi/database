@@ -1,0 +1,42 @@
+use eshop;
+
+DROP FUNCTION IF EXISTS f_order_status;
+DELIMITER //
+
+CREATE FUNCTION f_order_status(
+    created_at DATETIME, 
+    updated_at DATETIME, 
+    deleted_at DATETIME, 
+    ordered_at DATETIME, 
+    shipped_at DATETIME
+)
+RETURNS VARCHAR(20)
+BEGIN
+    DECLARE status VARCHAR(20);
+
+    -- Determine the most relevant status based on the timestamps
+    IF deleted_at IS NOT NULL THEN
+        SET status = 'Deleted';
+        RETURN status;
+    END IF;
+
+    IF shipped_at IS NOT NULL THEN
+        SET status = 'Shipped';
+        RETURN status;
+    END IF;
+
+    IF updated_at is not null   THEN
+        SET status = 'Updated';
+        RETURN status;
+    END IF; 
+    
+    IF ordered_at IS NOT NULL THEN
+        SET status = 'Ordered';
+        RETURN status;
+    END IF;
+
+    -- If none of the above conditions are met, set status to 'Created'
+    SET status = 'Created';
+    RETURN status;
+END//
+DELIMITER ;
