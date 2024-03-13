@@ -161,9 +161,9 @@ CREATE TABLE `inventory_log` (
 LOCK TABLES `inventory_log` WRITE;
 /*!40000 ALTER TABLE `inventory_log` DISABLE KEYS */;
 INSERT INTO `inventory_log` (`log_id`, `event_instance_id`, `event_description`, `event_date`) VALUES
-(1,'1','Inventory updated for Product 1','2024-02-16 17:03:44'),
+(1,'1','Inventory updated for product 1','2024-02-16 17:03:44'),
 (2,'0357ba68-d09e-4105-9f83-94ba0d011fda','Detaljer om produkt med iD \'2\' ändrades','2024-02-17 12:27:57'),
-(2,'2','Inventory updated for Product 2','2024-02-16 17:03:44'),
+(2,'2','Inventory updated for product 2','2024-02-16 17:03:44'),
 (2,'43225a16-1f64-405f-93fc-53abaa5fa157','Detaljer om produkt med iD \'2\' ändrades','2024-02-17 12:27:38');
 /*!40000 ALTER TABLE `inventory_log` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -299,36 +299,36 @@ CREATE TABLE `product` (
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` (`product_id`, `description`, `product_name`, `price`, `stock`) VALUES
-(1,'description of Product 1','Product 1',10.99,100),
-(2,'description of Product 2','Product 2',51.00,151),
-(3,'description of Product 3','Product 3',91.01,202),
-(4,'description of Product 4','Product 4',131.02,253),
-(5,'description of Product 5','Product 5',171.03,304),
-(6,'description of Product 6','Product 6',211.04,355),
-(7,'description of Product 7','Product 7',251.05,406),
-(8,'description of Product 8','Product 8',291.06,457),
-(9,'description of Product 9','Product 9',331.07,508),
-(10,'description of Product 10','Product 10',371.08,559),
-(11,'description of Product 11','Product 11',411.09,610),
-(12,'description of Product 12','Product 12',451.10,661),
-(13,'description of Product 13','Product 13',491.11,712),
-(14,'description of Product 14','Product 14',531.12,763),
-(15,'description of Product 15','Product 15',571.13,814),
-(16,'description of Product 16','Product 16',611.14,865),
-(17,'description of Product 17','Product 17',651.15,916),
-(18,'description of Product 18','Product 18',691.16,967),
-(19,'description of Product 19','Product 19',731.17,1018),
-(20,'description of Product 20','Product 20',771.18,1069),
-(21,'description of Product 21','Product 21',811.19,1120),
-(22,'description of Product 22','Product 22',851.20,1171),
-(23,'description of Product 23','Product 23',891.21,1222),
-(24,'description of Product 24','Product 24',931.22,1273),
-(25,'description of Product 25','Product 25',971.23,1324),
-(26,'description of Product 26','Product 26',1011.24,1375),
-(27,'description of Product 27','Product 27',1051.25,1426),
-(28,'description of Product 28','Product 28',1091.26,1477),
-(29,'description of Product 29','Product 29',1131.27,1528),
-(30,'description of Product 30','Product 30',1171.28,1579);
+(1,'description of product 1','product 1',10.99,100),
+(2,'description of product 2','product 2',51.00,151),
+(3,'description of product 3','product 3',91.01,202),
+(4,'description of product 4','product 4',131.02,253),
+(5,'description of product 5','product 5',171.03,304),
+(6,'description of product 6','product 6',211.04,355),
+(7,'description of product 7','product 7',251.05,406),
+(8,'description of product 8','product 8',291.06,457),
+(9,'description of product 9','product 9',331.07,508),
+(10,'description of product 10','product 10',371.08,559),
+(11,'description of product 11','product 11',411.09,610),
+(12,'description of product 12','product 12',451.10,661),
+(13,'description of product 13','product 13',491.11,712),
+(14,'description of product 14','product 14',531.12,763),
+(15,'description of product 15','product 15',571.13,814),
+(16,'description of product 16','product 16',611.14,865),
+(17,'description of product 17','product 17',651.15,916),
+(18,'description of product 18','product 18',691.16,967),
+(19,'description of product 19','product 19',731.17,1018),
+(20,'description of product 20','product 20',771.18,1069),
+(21,'description of product 21','product 21',811.19,1120),
+(22,'description of product 22','product 22',851.20,1171),
+(23,'description of product 23','product 23',891.21,1222),
+(24,'description of product 24','product 24',931.22,1273),
+(25,'description of product 25','product 25',971.23,1324),
+(26,'description of product 26','product 26',1011.24,1375),
+(27,'description of product 27','product 27',1051.25,1426),
+(28,'description of product 28','product 28',1091.26,1477),
+(29,'description of product 29','product 29',1131.27,1528),
+(30,'description of product 30','product 30',1171.28,1579);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -458,7 +458,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `AddInventoryLog`(
     IN eventDate DATETIME
 )
 BEGIN
-    INSERT INTO Inventory_Log (log_id, event_description, event_date)
+    INSERT INTO inventory_log (log_id, event_description, event_date)
     VALUES (logId, eventdescription, eventDate);
 END ;;
 DELIMITER ;
@@ -482,7 +482,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `AddInventoryLogProcedure`(
     IN p_event_date DATETIME
 )
 BEGIN
-    INSERT INTO Inventory_Log (log_id, event_instance_id, event_description, event_date)
+    INSERT INTO inventory_log (log_id, event_instance_id, event_description, event_date)
     VALUES (p_log_id, NULL, p_event_description, p_event_date);
 END ;;
 DELIMITER ;
@@ -508,7 +508,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `addProductProcedure`(
     IN pstockQuantity INT
 )
 BEGIN
-    INSERT INTO Product (product_id, description, product_name, price, stock)
+    INSERT INTO product (product_id, description, product_name, price, stock)
     VALUES (pProductId, pdescription, pProductName, pprice, pstockQuantity);
 END ;;
 DELIMITER ;
@@ -532,7 +532,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `addProductToInventoryProcedure`(
     IN pQuantity INT
 )
 BEGIN
-    INSERT INTO Warehouse (product_id, shelf_location, stock_quantity)
+    INSERT INTO warehouse (product_id, shelf_location, stock_quantity)
     VALUES (pProductId, pShelf, pQuantity)
     ON DUPLICATE KEY UPDATE stock_quantity = stock_quantity + pQuantity;
 END ;;
@@ -557,7 +557,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `addProductToShelfProcedure`(
     IN pstockQuantity INT
 )
 BEGIN
-    INSERT INTO Warehouse (product_id, shelf_location, stock_quantity)
+    INSERT INTO warehouse (product_id, shelf_location, stock_quantity)
     VALUES (pProductId, pShelfLocation, pstockQuantity);
 END ;;
 DELIMITER ;
@@ -606,7 +606,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `DeleteInventoryLog`(
     IN eventDate DATETIME
 )
 BEGIN
-    INSERT INTO Inventory_Log (log_id, event_description, event_date)
+    INSERT INTO inventory_log (log_id, event_description, event_date)
     VALUES (logId, eventdescription, eventDate);
 END ;;
 DELIMITER ;
@@ -628,7 +628,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `delete_product`(
     IN p_id INT
 )
 BEGIN
-    DELETE FROM Product WHERE product_id = p_id;
+    DELETE FROM product WHERE product_id = p_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -648,8 +648,8 @@ DELIMITER ;;
 CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayInventoryProcedure`()
 BEGIN
     SELECT p.product_id, p.product_name, w.shelf_location, w.stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.product_id = w.product_id;
+    FROM product p
+    JOIN warehouse w ON p.product_id = w.product_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -670,7 +670,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayLogProcedure`(
     IN pLogNumber INT
 )
 BEGIN
-    SELECT * FROM Inventory_Log ORDER BY event_date DESC LIMIT pLogNumber;
+    SELECT * FROM inventory_log ORDER BY event_date DESC LIMIT pLogNumber;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -690,8 +690,8 @@ DELIMITER ;;
 CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayProductsOnShelvesProcedure`()
 BEGIN
     SELECT p.product_name, w.shelf_location, w.stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.product_id = w.product_id;
+    FROM product p
+    JOIN warehouse w ON p.product_id = w.product_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -710,7 +710,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayProductsProcedure`()
 BEGIN
-    SELECT product_id, product_name FROM Product;
+    SELECT product_id, product_name FROM product;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -729,7 +729,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayShelfLocationsProcedure`()
 BEGIN
-    SELECT DISTINCT shelf_location FROM Warehouse;
+    SELECT DISTINCT shelf_location FROM warehouse;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -748,7 +748,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayShelvesProcedure`()
 BEGIN
-    SELECT * FROM Warehouse;
+    SELECT * FROM warehouse;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -770,8 +770,8 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `filterInventoryProcedure`(
 )
 BEGIN
     SELECT p.product_id, p.product_name, w.shelf_location, w.stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.product_id = w.product_id
+    FROM product p
+    JOIN warehouse w ON p.product_id = w.product_id
     WHERE p.product_id LIKE CONCAT('%', pFilterString, '%')
     OR p.product_name LIKE CONCAT('%', pFilterString, '%')
     OR w.shelf_location LIKE CONCAT('%', pFilterString, '%');
@@ -801,17 +801,17 @@ BEGIN
 
 
     SELECT stock_quantity INTO v_Existing_Quantity
-    FROM Warehouse
+    FROM warehouse
     WHERE product_id = p_Product_id AND shelf_location = p_Shelf_location;
 
 
     IF v_Existing_Quantity IS NOT NULL THEN
-        UPDATE Warehouse
+        UPDATE warehouse
         SET stock_quantity = stock_quantity + p_stock_quantity
         WHERE product_id = p_Product_id AND shelf_location = p_Shelf_location;
     ELSE
 
-        INSERT INTO Warehouse (product_id, shelf_location, stock_quantity)
+        INSERT INTO warehouse (product_id, shelf_location, stock_quantity)
         VALUES (p_Product_id, p_Shelf_location, p_stock_quantity);
     END IF;
 END ;;
@@ -836,7 +836,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `removeProductFromInventoryProcedure`(
     IN pQuantity INT
 )
 BEGIN
-    UPDATE Warehouse
+    UPDATE warehouse
     SET stock_quantity = GREATEST(stock_quantity - pQuantity, 0)
     WHERE product_id = pProductId AND shelf_location = pShelf;
 END ;;
@@ -861,7 +861,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `removeProductFromShelfProcedure`(
     IN pQuantity INT
 )
 BEGIN
-    UPDATE Warehouse
+    UPDATE warehouse
     SET stock_quantity = GREATEST(stock_quantity - pQuantity, 0)
     WHERE product_id = pProductId AND shelf_location = pShelfLocation;
 END ;;
@@ -903,7 +903,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_product`(
     IN p_id INT
 )
 BEGIN
-    SELECT * FROM Product WHERE product_id = p_id;
+    SELECT * FROM product WHERE product_id = p_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -922,7 +922,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_products`()
 BEGIN
-    SELECT * FROM Product;
+    SELECT * FROM product;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -947,7 +947,7 @@ CREATE DEFINER=`dbadm`@`%` PROCEDURE `update_product`(
     IN p_stock INT
 )
 BEGIN
-    UPDATE Product
+    UPDATE product
     SET description = p_description, product_name = p_product_name, price = p_price, stock = p_stock
     WHERE product_id = p_id;
 END ;;

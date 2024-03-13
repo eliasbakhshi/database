@@ -2,7 +2,7 @@ DROP PROCEDURE IF EXISTS p_display_shelves;
 DELIMITER ;;
 CREATE PROCEDURE p_display_shelves()
 BEGIN
-    SELECT * FROM Warehouse;
+    SELECT * FROM warehouse;
 END;;
 DELIMITER ;
 
@@ -10,51 +10,51 @@ DROP PROCEDURE IF EXISTS p_display_products_shelves;
 DELIMITER ;;
 CREATE PROCEDURE p_display_products_shelves()
 BEGIN
-    SELECT p.Product_name, w.Shelf_location, w.Stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.ProduktID = w.Product_id;
+    SELECT p.product_name, w.shelf_location, w.stock_quantity
+    FROM product p
+    JOIN warehouse w ON p.product_id = w.product_id;
 END;;
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS p_add_product;
 DELIMITER ;;
 CREATE PROCEDURE p_add_product(
-    IN productId INT,
+    IN product_id INT,
     IN description VARCHAR(255),
-    IN productName VARCHAR(255),
+    IN product_name VARCHAR(255),
     IN price DECIMAL(10, 2),
-    IN stockQuantity INT
+    IN stock_quantity INT
 )
 BEGIN
-    INSERT INTO Product (ProduktID, Description, Product_name, Price, Stock)
-    VALUES (productId, description, productName, price, stockQuantity);
+    INSERT INTO product (product_id, description, product_name, price, stock)
+    VALUES (product_id, description, product_name, price, stock_quantity);
 END;;
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS p_add_product_Shelf;
 DELIMITER ;;
 CREATE PROCEDURE p_add_product_Shelf(
-    IN productId INT,
-    IN shelfLocation VARCHAR(255),
-    IN stockQuantity INT
+    IN product_id INT,
+    IN shelf_location VARCHAR(255),
+    IN stock_quantity INT
 )
 BEGIN
-    INSERT INTO Warehouse (Warehouse_id, Product_id, Shelf_location, Stock_quantity)
-    VALUES (1,productId, shelfLocation, stockQuantity);
+    INSERT INTO warehouse (warehouse_id, product_id, shelf_location, stock_quantity)
+    VALUES (1,product_id, shelf_location, stock_quantity);
 END;;
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS p_remove_product_from_shelf;
 DELIMITER ;;
 CREATE PROCEDURE p_remove_product_from_shelf(
-    IN productId INT,
-    IN shelfLocation VARCHAR(255),
+    IN product_id INT,
+    IN shelf_location VARCHAR(255),
     IN quantity INT
 )
 BEGIN
-    UPDATE Warehouse
-    SET Stock_quantity = GREATEST(Stock_quantity - quantity, 0)
-    WHERE Product_id = productId AND Shelf_location = shelfLocation;
+    UPDATE warehouse
+    SET stock_quantity = GREATEST(stock_quantity - quantity, 0)
+    WHERE product_id = product_id AND shelf_location = shelf_location;
 END;;
 DELIMITER ;
 
@@ -64,7 +64,7 @@ CREATE PROCEDURE p_display_log(
     IN logNumber INT
 )
 BEGIN
-    SELECT * FROM Inventory_Log ORDER BY Event_date DESC LIMIT logNumber;
+    SELECT * FROM inventory_log ORDER BY event_date DESC LIMIT logNumber;
 END;;
 DELIMITER ;
 
@@ -72,7 +72,7 @@ DROP PROCEDURE IF EXISTS p_display_products;
 DELIMITER ;;
 CREATE PROCEDURE p_display_products()
 BEGIN
-    SELECT product_id, Product_name FROM Product;
+    SELECT product_id, product_name FROM product;
 END;;
 DELIMITER ;
 
@@ -80,7 +80,7 @@ DROP PROCEDURE IF EXISTS p_display_shelf_locations;
 DELIMITER ;;
 CREATE PROCEDURE p_display_shelf_locations()
 BEGIN
-    SELECT DISTINCT Shelf_location FROM Warehouse;
+    SELECT DISTINCT shelf_location FROM warehouse;
 END;;
 DELIMITER ;
 
@@ -88,9 +88,9 @@ DROP PROCEDURE IF EXISTS p_display_inventory;
 DELIMITER ;;
 CREATE PROCEDURE p_display_inventory()
 BEGIN
-    SELECT p.product_id, p.Product_name, w.Shelf_location, w.Stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.product_id = w.product_id;
+    SELECT p.product_id, p.product_name, w.shelf_location, w.stock_quantity
+    FROM product p
+    JOIN warehouse w ON p.product_id = w.product_id;
 END;;
 DELIMITER ;
 
@@ -100,40 +100,40 @@ CREATE PROCEDURE p_filter_inventory(
     IN filterString VARCHAR(255)
 )
 BEGIN
-    SELECT p.product_id, p.Product_name, w.Shelf_location, w.Stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.product_id = w.product_id
+    SELECT p.product_id, p.product_name, w.shelf_location, w.stock_quantity
+    FROM product p
+    JOIN warehouse w ON p.product_id = w.product_id
     WHERE p.product_id LIKE CONCAT('%', filterString, '%')
-    OR p.Product_name LIKE CONCAT('%', filterString, '%')
-    OR w.Shelf_location LIKE CONCAT('%', filterString, '%');
+    OR p.product_name LIKE CONCAT('%', filterString, '%')
+    OR w.shelf_location LIKE CONCAT('%', filterString, '%');
 END;;
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS p_add_product_to_inventory;
 DELIMITER ;;
 CREATE PROCEDURE p_add_product_to_inventory(
-    IN productId INT,
+    IN product_id INT,
     IN shelf VARCHAR(255),
     IN quantity INT
 )
 BEGIN
-    INSERT INTO Warehouse (Warehouse_id, Product_id, Shelf_location, Stock_quantity)
-    VALUES (1, productId, shelf, quantity)
-    ON DUPLICATE KEY UPDATE Stock_quantity = Stock_quantity + quantity;
+    INSERT INTO warehouse (warehouse_id, product_id, shelf_location, stock_quantity)
+    VALUES (1, product_id, shelf, quantity)
+    ON DUPLICATE KEY UPDATE stock_quantity = stock_quantity + quantity;
 END;;
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS p_remove_product_inventory;
 DELIMITER ;;
 CREATE PROCEDURE p_remove_product_inventory(
-    IN productId INT,
+    IN product_id INT,
     IN shelf VARCHAR(255),
     IN quantity INT
 )
 BEGIN
-    UPDATE Warehouse
-    SET Stock_quantity = GREATEST(Stock_quantity - quantity, 0)
-    WHERE product_id = productId AND Shelf_location = shelf;
+    UPDATE warehouse
+    SET stock_quantity = GREATEST(stock_quantity - quantity, 0)
+    WHERE product_id = product_id AND shelf_location = shelf;
 END;;
 DELIMITER ;
 
@@ -145,7 +145,7 @@ CREATE PROCEDURE p_add_inventory_log(
     IN p_eventDate DATETIME
 )
 BEGIN
-    INSERT INTO Inventory_Log ( Event_instance_id, Event_description, Event_date)
+    INSERT INTO inventory_log ( event_instance_id, event_description, event_date)
     VALUES ( p_eventInstanceId, p_eventDescription, p_eventDate);
 END;;
 DELIMITER ;
@@ -154,7 +154,7 @@ DROP PROCEDURE IF EXISTS p_show_customer;
 DELIMITER ;;
 CREATE PROCEDURE p_show_customer(IN p_customer_id INT)
 BEGIN
-    SELECT * FROM Customer WHERE Customer_id = p_customer_id;
+    SELECT * FROM customer WHERE Customer_id = p_customer_id;
 END;;
 DELIMITER ;
 
@@ -217,7 +217,7 @@ CREATE PROCEDURE p_create_product(
 )
 BEGIN
     INSERT INTO product (product_name, description, price, stock) VALUES (name, description, price, stock);
-    SET @productId = LAST_INSERT_ID();
+    SET @product_id = LAST_INSERT_ID();
 END;;
 DELIMITER ;
 
