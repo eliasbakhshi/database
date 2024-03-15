@@ -1,34 +1,34 @@
 <%- include("../header", {title: title}); %>
+<div class="container my-3">
+    <a href="/eshop/category/create" class="btn btn-primary btn-sm my-4" style="max-width: 150px">Create category</a>
 
-<a href="/eshop/category/create" class="btn btn-primary btn-sm my-4" style="max-width: 150px;">Create category</a>
+    <h1 class="my-3">Categories list</h1>
+    <div class="table-responsive">
+        <table class="table my-4 shadow-sm p-3 bg-white rounded table-hover rounded-3 overflow-hidden w-100">
+            <thead class="table-info">
+                <tr>
+                    <th>Name</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody class="border align-middle">
+                <% for (const row of res) { %>
+                <tr>
+                    <td><%= row.name %></td>
+                    <td class="text-center w-25 display-flex justify-content-around">
+                        <a href="/eshop/category/edit/<%= row.category_id %>">
+                            <i class="fa fa-pencil-square-o me-3" aria-hidden="true"></i>
+                        </a>
+                        <a href="/eshop/category/delete/<%= row.category_id %>">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
 
-<h1 class="my-3">Categories list</h1>
+                <% }; %>
+            </tbody>
+        </table>
+    </div>
 
-<table class="table my-4 shadow-sm p-3 bg-white rounded table-hover rounded-3 overflow-hidden w-100">
-    <thead class="thead-light table-info">
-        <tr>
-            <th>Name</th>
-            <th>See products under the table</th>
-            <th class="text-center">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% for (const row of res) { %>
-        <tr>
-            <td><a href="/eshop/products/under/<%= row.category_id %>"><%= row.name %></a></td>
-            <td><a href="/eshop/products/under/<%= row.category_id %>">See products</a></td>
-            <td class="text-center w-25 display-flex justify-content-around">
-                <a href="/eshop/category/edit/<%= row.category_id %>">
-                    <i class="fa fa-pencil-square-o me-3" aria-hidden="true"></i>
-                </a>
-                <a href="/eshop/category/delete/<%= row.category_id %>">
-                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                </a>
-            </td>
-        </tr>
-
-        <% }; %>
-    </tbody>
-</table>
-
-<%- include("../footer"); %>
+    <%- include("../footer"); %>
+</div>

@@ -10,16 +10,13 @@ const bodyParser = require("body-parser");
 const eshop = require("../src/eshop.js");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-router.use(bodyParser.urlencoded({ extended: false }));
-
-
 function formatDate(date) {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
 
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
@@ -128,7 +125,6 @@ router.get("/product/create", async (req, res) => {
         title: "Create a product | eShop",
     };
 
-
     res.render("eshop/product/create", data);
 });
 
@@ -176,49 +172,41 @@ router.post("/product/create", urlencodedParser, async (req, res) => {
     try {
         const date = new Date();
         const formattedDate = formatDate(date);
+        let eventDescription = `A new product was added with product ID '${productId}'`;
+        let { name, description, price, stock } = req.body;
 
         // Create the product and get the product ID
-        const productId = await eShop.createProduct(req.body.name, req.body.description,
-            req.body.price, req.body.stock);
+        const productId = await eShop.createProduct(name, description, price, stock);
 
         // Add inventory log with the retrieved product ID
-        await eShop.addInventoryLog(productId,
-            `A new product was added with product ID '${productId}'`,
-            formattedDate);
+        await eShop.addInventoryLog(productId, eventDescription, formattedDate);
 
         res.redirect(`/eshop/product`);
     } catch (error) {
-        console.error('Error:', error);
-        res.status(500).send('An error occurred while creating the product.');
+        console.error("Error:", error);
+        res.status(500).send("An error occurred while creating the product.");
     }
 });
 
-
 router.post("/product/edit", urlencodedParser, async (req, res) => {
+    let { id, name, description, price, stock } = req.body;
     const date = new Date();
-    const productId = req.body.id;
-    const productName = req.body.name;
-    const description = req.body.description;
-    const price = req.body.price;
-    const stock = req.body.stock;
     const formattedDate = formatDate(date);
+    let eventDescription = `En ändring skedde  med produkt ID '${req.body.id}'`;
 
-    await eshop.editProduct(productId, productName, description, price, stock);
+    await eShop.editProduct(id, name, description, price, stock);
 
-    await eshop.addInventoryLog(req.body.id,
-        `En ändring skedde  med produkt ID '${req.body.id}'`, formattedDate);
+    await eshop.addInventoryLog(req.body.id, eventDescription, formattedDate);
     res.redirect(`/eshop/product/edit/${req.body.id}&edited=true`);
 });
 
 router.post("/product/delete", urlencodedParser, async (req, res) => {
     let result = await eShop.deleteProduct(req.body.id);
-
     const date = new Date();
-
     const formattedDate = formatDate(date);
+    let eventDescription = `en borttagning skedde med produkt ID '${req.body.id}'`;
 
-    await eshop.addInventoryLog(req.body.id,
-        `en borttagning skedde med produkt ID '${req.body.id}'`, formattedDate);
+    await eshop.addInventoryLog(req.body.id, eventDescription, formattedDate);
     if (result.serverStatus !== 2) {
         console.info("Product not found.");
     }
