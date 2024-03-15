@@ -1,154 +1,154 @@
-DROP PROCEDURE IF EXISTS p_display_shelves;
+DROP PROCEDURE IF EXISTS p_display_shelves_procedure;
 DELIMITER ;;
-CREATE PROCEDURE p_display_shelves()
-BEGIN
-    SELECT * FROM Warehouse;
-END;;
-DELIMITER ;
+CREATE PROCEDURE p_display_shelves_procedure()
+begin
+    select * from warehouse;
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_display_products_shelves;
-DELIMITER ;;
-CREATE PROCEDURE p_display_products_shelves()
-BEGIN
-    SELECT p.Product_name, w.Shelf_location, w.Stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.ProduktID = w.Product_id;
-END;;
-DELIMITER ;
+DROP PROCEDURE IF EXISTS p_display_products_on_shelves_procedure;
+delimiter ;;
+CREATE PROCEDURE p_display_products_on_shelves_procedure()
+begin
+    select p.product_name, w.shelf_location, w.stock_quantity
+    from product p
+    join warehouse w on p.produktid = w.product_id;
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_add_product;
-DELIMITER ;;
-CREATE PROCEDURE p_add_product(
-    IN productId INT,
-    IN description VARCHAR(255),
-    IN productName VARCHAR(255),
-    IN price DECIMAL(10, 2),
-    IN stockQuantity INT
+DROP PROCEDURE IF EXISTS p_add_product_procedure;
+delimiter ;;
+CREATE PROCEDURE p_add_product_procedure(
+    in productid int,
+    in description varchar(255),
+    in productname varchar(255),
+    in price decimal(10, 2),
+    in stockquantity int
 )
-BEGIN
-    INSERT INTO Product (ProduktID, Description, Product_name, Price, Stock)
-    VALUES (productId, description, productName, price, stockQuantity);
-END;;
-DELIMITER ;
+begin
+    insert into product (produktid, description, product_name, price, stock)
+    values (productid, description, productname, price, stockquantity);
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_add_product_Shelf;
-DELIMITER ;;
-CREATE PROCEDURE p_add_product_Shelf(
-    IN productId INT,
-    IN shelfLocation VARCHAR(255),
-    IN stockQuantity INT
+DROP PROCEDURE IF EXISTS p_add_product_to_shelf_procedure;
+delimiter ;;
+CREATE PROCEDURE p_add_product_to_shelf_procedure(
+    in productid int,
+    in shelflocation varchar(255),
+    in stockquantity int
 )
-BEGIN
-    INSERT INTO Warehouse (Warehouse_id, Product_id, Shelf_location, Stock_quantity)
-    VALUES (1,productId, shelfLocation, stockQuantity);
-END;;
-DELIMITER ;
+begin
+    insert into warehouse (warehouse_id, product_id, shelf_location, stock_quantity)
+    values (1,productid, shelflocation, stockquantity);
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_remove_product_from_shelf;
-DELIMITER ;;
-CREATE PROCEDURE p_remove_product_from_shelf(
-    IN productId INT,
-    IN shelfLocation VARCHAR(255),
-    IN quantity INT
+DROP PROCEDURE IF EXISTS p_remove_product_from_shelf_procedure;
+delimiter ;;
+CREATE PROCEDURE p_remove_product_from_shelf_procedure(
+    in productid int,
+    in shelflocation varchar(255),
+    in quantity int
 )
-BEGIN
-    UPDATE Warehouse
-    SET Stock_quantity = GREATEST(Stock_quantity - quantity, 0)
-    WHERE Product_id = productId AND Shelf_location = shelfLocation;
-END;;
-DELIMITER ;
+begin
+    update warehouse
+    set stock_quantity = greatest(stock_quantity - quantity, 0)
+    where product_id = productid and shelf_location = shelflocation;
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_display_log;
-DELIMITER ;;
-CREATE PROCEDURE p_display_log(
-    IN logNumber INT
+DROP PROCEDURE IF EXISTS p_display_log_procedure;
+delimiter ;;
+CREATE PROCEDURE p_display_log_procedure(
+    in lognumber int
 )
-BEGIN
-    SELECT * FROM Inventory_Log ORDER BY Event_date DESC LIMIT logNumber;
-END;;
-DELIMITER ;
+begin
+    select * from inventory_log order by event_date desc limit lognumber;
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_display_products;
-DELIMITER ;;
-CREATE PROCEDURE p_display_products()
-BEGIN
-    SELECT product_id, Product_name FROM Product;
-END;;
-DELIMITER ;
+DROP PROCEDURE IF EXISTS p_display_products_procedure;
+delimiter ;;
+CREATE PROCEDURE p_display_products_procedure()
+begin
+    select product_id, product_name from product;
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_display_shelf_locations;
-DELIMITER ;;
-CREATE PROCEDURE p_display_shelf_locations()
-BEGIN
-    SELECT DISTINCT Shelf_location FROM Warehouse;
-END;;
-DELIMITER ;
+DROP PROCEDURE IF EXISTS p_display_shelf_locations_procedure;
+delimiter ;;
+CREATE PROCEDURE p_display_shelf_locations_procedure()
+begin
+    select distinct shelf_location from warehouse;
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_display_inventory;
-DELIMITER ;;
-CREATE PROCEDURE p_display_inventory()
-BEGIN
-    SELECT p.product_id, p.Product_name, w.Shelf_location, w.Stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.product_id = w.product_id;
-END;;
-DELIMITER ;
+DROP PROCEDURE IF EXISTS p_display_inventory_procedure;
+delimiter ;;
+CREATE PROCEDURE p_display_inventory_procedure()
+begin
+    select p.product_id, p.product_name, w.shelf_location, w.stock_quantity
+    from product p
+    join warehouse w on p.product_id = w.product_id;
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_filter_inventory;
-DELIMITER ;;
-CREATE PROCEDURE p_filter_inventory(
-    IN filterString VARCHAR(255)
+DROP PROCEDURE IF EXISTS p_filter_inventory_procedure;
+delimiter ;;
+CREATE PROCEDURE p_filter_inventory_procedure(
+    in filterstring varchar(255)
 )
-BEGIN
-    SELECT p.product_id, p.Product_name, w.Shelf_location, w.Stock_quantity
-    FROM Product p
-    JOIN Warehouse w ON p.product_id = w.product_id
-    WHERE p.product_id LIKE CONCAT('%', filterString, '%')
-    OR p.Product_name LIKE CONCAT('%', filterString, '%')
-    OR w.Shelf_location LIKE CONCAT('%', filterString, '%');
-END;;
-DELIMITER ;
+begin
+    select p.product_id, p.product_name, w.shelf_location, w.stock_quantity
+    from product p
+    join warehouse w on p.product_id = w.product_id
+    where p.product_id like concat('%', filterstring, '%')
+    or p.product_name like concat('%', filterstring, '%')
+    or w.shelf_location like concat('%', filterstring, '%');
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_add_product_to_inventory;
-DELIMITER ;;
-CREATE PROCEDURE p_add_product_to_inventory(
-    IN productId INT,
-    IN shelf VARCHAR(255),
-    IN quantity INT
+DROP PROCEDURE IF EXISTS p_add_product_to_inventory_procedure;
+delimiter ;;
+CREATE PROCEDURE p_add_product_to_inventory_procedure(
+    in productid int,
+    in shelf varchar(255),
+    in quantity int
 )
-BEGIN
-    INSERT INTO Warehouse (Warehouse_id, Product_id, Shelf_location, Stock_quantity)
-    VALUES (1, productId, shelf, quantity)
-    ON DUPLICATE KEY UPDATE Stock_quantity = Stock_quantity + quantity;
-END;;
-DELIMITER ;
+begin
+    insert into warehouse ( product_id, shelf_location, stock_quantity)
+    values ( productid, shelf, quantity)
+    on duplicate key update stock_quantity = stock_quantity + quantity;
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_remove_product_inventory;
-DELIMITER ;;
-CREATE PROCEDURE p_remove_product_inventory(
-    IN productId INT,
-    IN shelf VARCHAR(255),
-    IN quantity INT
+DROP PROCEDURE IF EXISTS p_remove_product_from_inventory_procedure;
+delimiter ;;
+CREATE PROCEDURE p_remove_product_from_inventory_procedure(
+    in productid int,
+    in shelf varchar(255),
+    in quantity int
 )
-BEGIN
-    UPDATE Warehouse
-    SET Stock_quantity = GREATEST(Stock_quantity - quantity, 0)
-    WHERE product_id = productId AND Shelf_location = shelf;
-END;;
-DELIMITER ;
+begin
+    update warehouse
+    set stock_quantity = greatest(stock_quantity - quantity, 0)
+    where product_id = productid and shelf_location = shelf;
+end;;
+delimiter ;
 
-DROP PROCEDURE IF EXISTS p_add_inventory_log;
-DELIMITER ;;
-CREATE PROCEDURE p_add_inventory_log(
-    IN p_eventInstanceId VARCHAR(36),
-    IN p_eventDescription VARCHAR(255),
-    IN p_eventDate DATETIME
+DROP PROCEDURE IF EXISTS p_add_inventory_log_procedure;
+delimiter ;;
+CREATE PROCEDURE p_add_inventory_log_procedure(
+    in p_eventinstanceid varchar(36),
+    in p_eventdescription varchar(255),
+    in p_eventdate datetime
 )
-BEGIN
-    INSERT INTO Inventory_Log ( Event_instance_id, Event_description, Event_date)
-    VALUES ( p_eventInstanceId, p_eventDescription, p_eventDate);
-END;;
-DELIMITER ;
+begin
+    insert into inventory_log ( event_instance_id, event_description, event_date)
+    values ( p_eventinstanceid, p_eventdescription, p_eventdate);
+end;;
+delimiter ;
 
 DROP PROCEDURE IF EXISTS p_show_customer;
 DELIMITER ;;
@@ -267,18 +267,18 @@ DELIMITER //
 DROP PROCEDURE IF EXISTS p_show_orders_with_totals;
 CREATE PROCEDURE p_show_orders_with_totals()
 BEGIN
-    SELECT
+    SELECT 
         o.order_id,
         o.order_date,
         o.customer_id,
         o.status,
         COALESCE(SUM(oi.quantity), 0) AS total_products,
         COALESCE(SUM(oi.price * oi.quantity), 0) AS total_combined_price
-    FROM
+    FROM 
         `order` o
-    LEFT JOIN
+    LEFT JOIN 
         `order_item` oi ON o.order_id = oi.order_id
-    GROUP BY
+    GROUP BY 
         o.order_id;
 END //
 DELIMITER ;
@@ -347,40 +347,40 @@ END //
 
 DELIMITER ;
 
+
+
 DROP PROCEDURE IF EXISTS p_change_order_status;
-DELIMITER //
+delimiter //
+CREATE PROCEDURE p_change_order_status(in orderid int)
+begin
+    update `order`
+    set `status` = 'ordered'
+    where `order_id` = orderid;
+end //
 
-CREATE PROCEDURE p_change_order_status(IN orderId INT)
-BEGIN
-    UPDATE `order`
-    SET `status` = 'ordered'
-    WHERE `order_id` = orderId;
-END //
-
-DELIMITER ;
+delimiter ;
 
 DROP PROCEDURE IF EXISTS p_get_order_information;
-DELIMITER //
+delimiter //
+CREATE PROCEDURE p_get_order_information(in orderid int)
+begin
+    select * from `order`
+    where `order_id` = orderid;
+end //
 
-CREATE PROCEDURE p_get_order_information(IN orderId INT)
-BEGIN
-    SELECT * FROM `order`
-    WHERE `order_id` = orderId;
-END //
-
-DELIMITER ;
+delimiter ;
 
 DROP PROCEDURE IF EXISTS p_update_order_status_to_shipped;
-DELIMITER //
+delimiter //
+CREATE PROCEDURE p_update_order_status_to_shipped(in orderid int)
+begin
+    update `order`
+    set `status` = 'Shipped', `shipped` = now()
+    where `order_id` = orderid;
+end //
 
-CREATE PROCEDURE p_update_order_status_to_shipped(IN orderId INT)
-BEGIN
-    UPDATE `order`
-    SET `status` = 'Shipped', `shipped` = NOW()
-    WHERE `order_id` = orderId;
-END //
+delimiter ;
 
-DELIMITER ;
 
 DROP PROCEDURE IF EXISTS p_soft_delete_order;
 DELIMITER //
@@ -399,22 +399,22 @@ DELIMITER //
 
 CREATE PROCEDURE p_plocklist (IN p_order_id INT)
 BEGIN
-    SELECT
-        oi.order_id,
-        oi.product_id,
+    SELECT 
+        oi.order_id, 
+        oi.product_id, 
         p.product_name,
-        oi.quantity AS order_quantity,
+        oi.quantity AS order_quantity, 
         (oi.price * oi.quantity ) AS order_price,
         w.shelf_location,
         w.stock_quantity,
         (w.stock_quantity - oi.quantity) AS quantity_difference
-    FROM
+    FROM 
         `order_item` oi
-    JOIN
+    JOIN 
         `product` p ON oi.product_id = p.product_id
-    LEFT JOIN
+    LEFT JOIN 
         `warehouse` w ON oi.product_id = w.product_id
-    WHERE
+    WHERE 
         oi.order_id = p_order_id;
 END //
 
@@ -425,7 +425,7 @@ DELIMITER //
 
 CREATE PROCEDURE p_get_order_status (IN p_order_id INT)
 BEGIN
-    SELECT
+    SELECT 
         order_id,
         order_date,
         customer_id,
@@ -433,10 +433,10 @@ BEGIN
         updated,
         deleted,
         shipped,
-        order_status(created, updated, deleted, order_date, shipped) AS calculated_status
-    FROM
+        f_order_status(created, updated, deleted, order_date, shipped) AS calculated_status
+    FROM 
         `order`
-    WHERE
+    WHERE 
         order_id = p_order_id;
 END //
 
@@ -447,21 +447,34 @@ DELIMITER //
 
 CREATE PROCEDURE p_show_order_with_totals_custom(IN order_id INT)
 BEGIN
-    SELECT
+    SELECT 
         o.order_id,
         o.order_date,
         o.customer_id,
         o.status,
         COALESCE(SUM(oi.quantity), 0) AS total_products,
         COALESCE(SUM(oi.price * oi.quantity), 0) AS total_combined_price
-    FROM
+    FROM 
         `order` o
-    LEFT JOIN
+    LEFT JOIN 
         `order_item` oi ON o.order_id = oi.order_id
     WHERE
         o.order_id = order_id
-    GROUP BY
+    GROUP BY 
         o.order_id;
 END //
 
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS p_get_products_by_category;
+DELIMITER //
+CREATE PROCEDURE p_get_products_by_category(
+    IN category_id INT
+)
+BEGIN
+    SELECT p.product_name, p.price, p.stock, p.description
+    FROM product p
+    JOIN product_category pc ON p.product_id = pc.product_id
+    WHERE pc.category_id = category_id;
+END //
 DELIMITER ;

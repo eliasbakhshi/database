@@ -1,11 +1,9 @@
 <%- include("../header"); %>
 
-<div class="container my-3">
-
-<h1 class="mb-3">Products list</h1>
+<h1 class="my-3">Products list</h1>
 <h3 class="my-3">OrderId: <%= orderId %></h3>
-<table class="table my-4 shadow-sm p-3 bg-white rounded table-hover rounded-3 overflow-hidden w-100">
-    <thead class="table-info">
+<table class="table my-4 shadow-sm p-3 bg-white rounded table-hover rounded-3 overflow-hidden">
+    <thead class="thead-light table-info">
         <tr>
             <th>Name</th>
             <th>Description</th>
@@ -15,7 +13,7 @@
             <th class="text-center">Action</th>
         </tr>
     </thead>
-    <tbody class="border align-middle">
+    <tbody>
         <% for (const row of res) { %>
         <tr>
             <td><%= row.product_name %></td>
@@ -32,12 +30,11 @@
             <td class="text-center">
                     <button type="submit" class="btn btn-primary btn-sm">Add to Cart</button>
                 </form>
-
+    
             </td>
         </tr>
         <% }; %>
     </tbody>
 </table>
-</div>
 
 <%- include("../footer"); %>

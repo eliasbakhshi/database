@@ -8,13 +8,15 @@
     <thead class="thead-light table-info">
         <tr>
             <th>Name</th>
+            <th>See products under the table</th>
             <th class="text-center">Action</th>
         </tr>
     </thead>
     <tbody>
         <% for (const row of res) { %>
         <tr>
-            <td><%= row.name %></td>
+            <td><a href="/eshop/products/under/<%= row.category_id %>"><%= row.name %></a></td>
+            <td><a href="/eshop/products/under/<%= row.category_id %>">See products</a></td>
             <td class="text-center w-25 display-flex justify-content-around">
                 <a href="/eshop/category/edit/<%= row.category_id %>">
                     <i class="fa fa-pencil-square-o me-3" aria-hidden="true"></i>

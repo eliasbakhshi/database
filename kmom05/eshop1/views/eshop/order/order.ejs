@@ -1,0 +1,43 @@
+<%- include("../header", { title: title }); %>
+
+<div class="container">
+    <h1 class="mt-5 mb-4">Order List</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total Products</th>
+                    <th scope="col">Total Combined Price</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (const order of res) { %>
+                <tr>
+                    <td><%= order.order_id %></td>
+                    <td><%= order.order_date %></td>
+                    <td><%= order.customer_id %></td>
+                    <!-- Updated inline style for conditional color based on status -->
+                    <td style="color: <%= order.status === 'deleted' ? 'red' : (order.status === 'Created' ? 'grey' : 'green') %>;"><%= order.status %></td>
+                    <td><%= order.total_products %></td>
+                    <td><%= order.total_combined_price %></td>
+                    <td class="right">
+                        <a href="/eshop/order/show/<%= order.order_id %>" class="btn btn-primary">Edit Order</a>
+                    </td>
+                    <td>
+                        <a href="/eshop/order/delete/<%= order.order_id %>" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                <% }; %>
+            </tbody>
+        </table>
+    </div>
+    <a href="/eshop/customer" class="btn btn-primary">Kunder</a>
+</div>
+
+<%- include("../footer"); %>
