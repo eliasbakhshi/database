@@ -1,4 +1,4 @@
-DROP PROCEDURE IF EXISTS p_display_shelves;
+DROP PROCEDURE IF EXISTS p_display_shelves_procedure;
 DELIMITER ;;
 CREATE PROCEDURE p_display_shelves()
 BEGIN
@@ -58,10 +58,10 @@ BEGIN
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS p_display_log;
-DELIMITER ;;
-CREATE PROCEDURE p_display_log(
-    IN logNumber INT
+DROP PROCEDURE IF EXISTS p_display_log_procedure;
+delimiter ;;
+CREATE PROCEDURE p_display_log_procedure(
+    in lognumber int
 )
 BEGIN
     SELECT * FROM inventory_log ORDER BY event_date DESC LIMIT logNumber;
@@ -94,10 +94,10 @@ BEGIN
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS p_filter_inventory;
-DELIMITER ;;
-CREATE PROCEDURE p_filter_inventory(
-    IN filterString VARCHAR(255)
+DROP PROCEDURE IF EXISTS p_filter_inventory_procedure;
+delimiter ;;
+CREATE PROCEDURE p_filter_inventory_procedure(
+    in filterstring varchar(255)
 )
 BEGIN
     SELECT p.product_id, p.product_name, w.shelf_location, w.stock_quantity
@@ -137,12 +137,12 @@ BEGIN
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS p_add_inventory_log;
-DELIMITER ;;
-CREATE PROCEDURE p_add_inventory_log(
-    IN p_eventInstanceId VARCHAR(36),
-    IN p_eventDescription VARCHAR(255),
-    IN p_eventDate DATETIME
+DROP PROCEDURE IF EXISTS p_add_inventory_log_procedure;
+delimiter ;;
+CREATE PROCEDURE p_add_inventory_log_procedure(
+    in p_eventinstanceid varchar(36),
+    in p_eventdescription varchar(255),
+    in p_eventdate datetime
 )
 BEGIN
     INSERT INTO inventory_log ( event_instance_id, event_description, event_date)
@@ -347,40 +347,40 @@ END //
 
 DELIMITER ;
 
+
+
 DROP PROCEDURE IF EXISTS p_change_order_status;
-DELIMITER //
+delimiter //
+CREATE PROCEDURE p_change_order_status(in orderid int)
+begin
+    update `order`
+    set `status` = 'ordered'
+    where `order_id` = orderid;
+end //
 
-CREATE PROCEDURE p_change_order_status(IN orderId INT)
-BEGIN
-    UPDATE `order`
-    SET `status` = 'ordered'
-    WHERE `order_id` = orderId;
-END //
-
-DELIMITER ;
+delimiter ;
 
 DROP PROCEDURE IF EXISTS p_get_order_information;
-DELIMITER //
+delimiter //
+CREATE PROCEDURE p_get_order_information(in orderid int)
+begin
+    select * from `order`
+    where `order_id` = orderid;
+end //
 
-CREATE PROCEDURE p_get_order_information(IN orderId INT)
-BEGIN
-    SELECT * FROM `order`
-    WHERE `order_id` = orderId;
-END //
-
-DELIMITER ;
+delimiter ;
 
 DROP PROCEDURE IF EXISTS p_update_order_status_to_shipped;
-DELIMITER //
+delimiter //
+CREATE PROCEDURE p_update_order_status_to_shipped(in orderid int)
+begin
+    update `order`
+    set `status` = 'Shipped', `shipped` = now()
+    where `order_id` = orderid;
+end //
 
-CREATE PROCEDURE p_update_order_status_to_shipped(IN orderId INT)
-BEGIN
-    UPDATE `order`
-    SET `status` = 'Shipped', `shipped` = NOW()
-    WHERE `order_id` = orderId;
-END //
+delimiter ;
 
-DELIMITER ;
 
 DROP PROCEDURE IF EXISTS p_soft_delete_order;
 DELIMITER //
@@ -464,4 +464,17 @@ BEGIN
         o.order_id;
 END //
 
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS p_get_products_by_category;
+DELIMITER //
+CREATE PROCEDURE p_get_products_by_category(
+    IN category_id INT
+)
+BEGIN
+    SELECT p.product_name, p.price, p.stock, p.description
+    FROM product p
+    JOIN product_category pc ON p.product_id = pc.product_id
+    WHERE pc.category_id = category_id;
+END //
 DELIMITER ;

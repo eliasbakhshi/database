@@ -1,0 +1,26 @@
+<%- include("../header"); %>
+
+<div class="container">
+    <h1 class="my-4">Products by Category</h1>
+    <div class="row">
+        <% for (const row of res) { %>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= row.product_name %></h5>
+                        <p class="card-text">
+                            <strong>Price:</strong> <%= row.price %><br>
+                            <strong>Stock:</strong> <%= row.stock %><br>
+                            <strong>Description:</strong> <%= row.description %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <div class="mt-4">
+        <a href="/" class="btn btn-primary">Go Back</a>
+    </div>
+</div>
+
+<%- include("../footer"); %>

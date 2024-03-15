@@ -1,0 +1,32 @@
+<%- include("../header", { title: title }); %>
+
+<div class="container">
+    <h1 class="mt-5 mb-4">Customer List</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (const row of res) { %>
+                <tr>
+                    <td><%= row.firstname %></td>
+                    <td><%= row.lastname %></td>
+                    <td><%= row.email %></td>
+                    <td class="right">
+                        <a href="/eshop/show/pro/<%= row.customer_id %>" class="btn btn-primary">Create Order</a>
+                    </td>
+                </tr>
+                <% }; %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include("../footer"); %>

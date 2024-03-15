@@ -1,27 +1,5 @@
--- MariaDB dump 10.19  Distrib 10.11.6-MariaDB, for debian-linux-gnu (x86_64)
---
--- Host: localhost    Database: eshop
--- ------------------------------------------------------
--- Server version	10.11.6-MariaDB-0ubuntu0.23.10.2
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
 -- Table structure for table `category`
---
-
 DROP TABLE IF EXISTS `category`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -30,51 +8,9 @@ CREATE TABLE `category` (
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `category`
---
-
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` (`category_id`, `name`) VALUES
-(1,'Category 1'),
-(2,'Category 2'),
-(3,'Category 3\"\r\n\"4'),
-(5,'Category 5\"\r\n\"6'),
-(7,'Category 7\"\r\n\"8'),
-(9,'Category 9\"\r\n\"10'),
-(11,'Category 11\"\r'),
-(12,'Category 12\"\r'),
-(13,'Category 13\"\r'),
-(14,'Category 14\"\r'),
-(15,'Category 15\"\r'),
-(16,'Category 16\"\r'),
-(17,'Category 17\"\r'),
-(18,'Category 18\"\r'),
-(19,'Category 19\"\r'),
-(20,'Category 20\"\r'),
-(21,'Category 21\"\r'),
-(22,'Category 22\"\r'),
-(23,'Category 23\"\r'),
-(24,'Category 24\"\r'),
-(25,'Category 25\"\r'),
-(26,'Category 26\"\r'),
-(27,'Category 27\"\r'),
-(28,'Category 28\"\r'),
-(29,'Category 29\"\r'),
-(30,'Category 30\"\r');
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `customer`
---
-
 DROP TABLE IF EXISTS `customer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `customer` (
   `customer_id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(255) DEFAULT NULL,
@@ -88,60 +24,37 @@ CREATE TABLE `customer` (
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `customer`
---
-
-LOCK TABLES `customer` WRITE;
-/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` (`customer_id`, `firstname`, `lastname`, `email`, `password`, `address`, `phone_number`) VALUES
-(1,'John','Doe','john@example.com','password123','123 Main St','123-456-7890'),
-(2,'Jane','Smith','jane@example.com','password456','456 Elm St','456-789-0123');
-/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `delivery`
---
-
-DROP TABLE IF EXISTS `delivery`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `delivery` (
-  `delivery_id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_id` int(11) DEFAULT NULL,
-  `delivery_date` datetime DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL,
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` text DEFAULT NULL,
+  `product_name` varchar(255) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NOW(),
   `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
   `deleted` datetime DEFAULT NULL,
-  PRIMARY KEY (`delivery_id`),
-  KEY `order_id` (`order_id`),
-  CONSTRAINT `delivery_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`)
+  PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `delivery`
---
+-- -- Table structure for table `delivery`
+-- DROP TABLE IF EXISTS `delivery`;
+-- CREATE TABLE `delivery` (
+--   `delivery_id` int(11) NOT NULL AUTO_INCREMENT,
+--   `order_id` int(11) DEFAULT NULL,
+--   `delivery_date` datetime DEFAULT NULL,
+--   `status` varchar(20) DEFAULT NULL,
+--   `created` datetime DEFAULT NOW(),
+--   `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+--   `deleted` datetime DEFAULT NULL,
+--   PRIMARY KEY (`delivery_id`),
+--   KEY `order_id` (`order_id`),
+--   FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-LOCK TABLES `delivery` WRITE;
-/*!40000 ALTER TABLE `delivery` DISABLE KEYS */;
-INSERT INTO `delivery` (`delivery_id`, `order_id`, `delivery_date`, `status`) VALUES
-(1,1,'2024-02-15 12:00:00','Delivered'),
-(2,2,'2024-02-16 13:00:00','Shipped');
-/*!40000 ALTER TABLE `delivery` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `inventory_log`
---
-
 DROP TABLE IF EXISTS `inventory_log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `inventory_log` (
   `log_id` int(11) NOT NULL AUTO_INCREMENT,
   `event_instance_id` varchar(36) NOT NULL,
@@ -170,44 +83,22 @@ UNLOCK TABLES;
 
 --
 -- Table structure for table `invoice`
---
+-- DROP TABLE IF EXISTS `invoice`;
+-- CREATE TABLE `invoice` (
+--   `invoice_id` int(11) NOT NULL AUTO_INCREMENT,
+--   `order_id` int(11) DEFAULT NULL,
+--   `invoice_date` datetime DEFAULT NULL,
+--   `total_price` decimal(10,2) DEFAULT NULL,
+--   `created` datetime DEFAULT NOW(),
+--   `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+--   `deleted` datetime DEFAULT NULL,
+--   PRIMARY KEY (`invoice_id`),
+--   KEY `order_id` (`order_id`),
+--   FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-DROP TABLE IF EXISTS `invoice`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `invoice` (
-  `invoice_id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_id` int(11) DEFAULT NULL,
-  `invoice_date` datetime DEFAULT NULL,
-  `total_price` decimal(10,2) DEFAULT NULL,
-  `created` datetime DEFAULT NOW(),
-  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
-  `deleted` datetime DEFAULT NULL,
-  PRIMARY KEY (`invoice_id`),
-  KEY `order_id` (`order_id`),
-  CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `invoice`
---
-
-LOCK TABLES `invoice` WRITE;
-/*!40000 ALTER TABLE `invoice` DISABLE KEYS */;
-INSERT INTO `invoice` (`invoice_id`, `order_id`, `invoice_date`, `total_price`) VALUES
-(1,1,'2024-02-15 12:00:00',35.98),
-(2,2,'2024-02-16 13:00:00',20.99);
-/*!40000 ALTER TABLE `invoice` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `order`
---
-
 DROP TABLE IF EXISTS `order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `order` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_date` datetime DEFAULT NULL,
@@ -217,31 +108,14 @@ CREATE TABLE `order` (
   `created` datetime DEFAULT NOW(),
   `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
   `deleted` datetime DEFAULT NULL,
+  `shipped` datetime DEFAULT NULL,
   PRIMARY KEY (`order_id`),
   KEY `customer_id` (`customer_id`),
-  CONSTRAINT `order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
+  FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `order`
---
-
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` (`order_id`, `order_date`, `total_price`, `customer_id`, `status`) VALUES
-(1,'2024-02-15 10:00:00',35.98,1,'Completed'),
-(2,'2024-02-16 11:00:00',20.99,2,'Pending');
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `order_item`
---
-
 DROP TABLE IF EXISTS `order_item`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `order_item` (
   `order_item_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) DEFAULT NULL,
@@ -254,41 +128,8 @@ CREATE TABLE `order_item` (
   PRIMARY KEY (`order_item_id`),
   KEY `order_id` (`order_id`),
   KEY `product_id` (`product_id`),
-  CONSTRAINT `order_item_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
-  CONSTRAINT `order_item_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `order_item`
---
-
-LOCK TABLES `order_item` WRITE;
-/*!40000 ALTER TABLE `order_item` DISABLE KEYS */;
-INSERT INTO `order_item` (`order_item_id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
-(1,1,1,2,21.98),
-(2,1,2,1,14.00),
-(3,2,2,1,20.99);
-/*!40000 ALTER TABLE `order_item` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `product`
---
-
-DROP TABLE IF EXISTS `product`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `product` (
-  `product_id` int(11) NOT NULL AUTO_INCREMENT,
-  `description` text DEFAULT NULL,
-  `product_name` varchar(255) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
-  `stock` int(11) DEFAULT NULL,
-  `created` datetime DEFAULT NOW(),
-  `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
-  `deleted` datetime DEFAULT NULL,
-  PRIMARY KEY (`product_id`)
+  FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
+  FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -334,11 +175,7 @@ UNLOCK TABLES;
 
 --
 -- Table structure for table `product_category`
---
-
 DROP TABLE IF EXISTS `product_category`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_category` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
@@ -347,46 +184,12 @@ CREATE TABLE `product_category` (
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`product_id`,`category_id`),
   KEY `category_id` (`category_id`),
-  CONSTRAINT `product_category_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
-  CONSTRAINT `product_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)
+  FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
+  FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `product_category`
---
-
-LOCK TABLES `product_category` WRITE;
-/*!40000 ALTER TABLE `product_category` DISABLE KEYS */;
-INSERT INTO `product_category` (`product_id`, `category_id`) VALUES
-(1,1),
-(2,2),
-(2,19),
-(3,3),
-(3,17),
-(5,5),
-(7,7),
-(9,9),
-(11,11),
-(13,13),
-(15,15),
-(17,17),
-(19,19),
-(21,21),
-(23,23),
-(25,25),
-(27,27),
-(29,29);
-/*!40000 ALTER TABLE `product_category` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `warehouse`
---
-
 DROP TABLE IF EXISTS `warehouse`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `warehouse` (
   `product_id` int(11) NOT NULL,
   `shelf_location` varchar(255) DEFAULT NULL,
@@ -395,7 +198,7 @@ CREATE TABLE `warehouse` (
   `updated` datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`product_id`),
-  CONSTRAINT `warehouse_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
+  FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

@@ -2,10 +2,9 @@
 
 <h1 class="my-3">Customer List</h1>
 
-<
-<div class="container my-3">
-    <table class="table my-4 shadow-sm p-3 bg-white rounded table-hover rounded-3 overflow-hidden w-100">
-        <thead class="table-info">
+<div class="container">
+    <table class="table my-4 shadow-sm p-3 bg-white rounded table-hover rounded-3 overflow-hidden">
+        <thead class="thead-light">
             <tr>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
@@ -16,7 +15,7 @@
                 <th scope="col" class="text-center">Action</th>
             </tr>
         </thead>
-        <tbody class="border align-middle">
+        <tbody>
             <% for (const customer of res) { %>
             <tr>
                 <td><%= customer.firstname %></td>
@@ -33,7 +32,7 @@
         </tbody>
     </table>
     <div class="text-center">
-        <a href="/eshop/customer" class="btn btn-primary btn-sm my-4" style="max-width: 150px">Back to Customers</a>
+        <a href="/eshop/customer" class="btn btn-primary btn-sm my-4" style="max-width: 150px;">Back to Customers</a>
     </div>
 </div>
 

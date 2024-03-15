@@ -1,0 +1,4 @@
+"log_id","event_instance_id","event_description","event_date","created","updated","deleted"
+"1","abcd1234","Product added to inventory","2024-02-20 09:00:00","2024-02-20 09:00:00","2024-02-20 09:00:00",\N
+"2","efgh5678","Product removed from inventory","2024-02-21 15:30:00","2024-02-21 15:30:00","2024-02-21 15:30:00",\N
+"3","ijkl9101","Inventory count updated","2024-02-22 12:45:00","2024-02-22 12:45:00","2024-02-22 12:45:00",\N
