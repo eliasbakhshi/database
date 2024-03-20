@@ -330,10 +330,10 @@ router.get("/order/addtocart/:order_id", async (req, res) => {
 router.post('/order/show/create/:order_id', async (req, res) => {
     const orderId = req.params.order_id;
 
-    const { productId, price, quantity } = req.body;
+    const { product_id, price, quantity } = req.body;
 
     try {
-        await eshop.insertOrderItem(orderId, productId, price, quantity);
+        await eshop.insertOrderItem(orderId, product_id, price, quantity);
 
         res.redirect(`/eshop/order`);
     } catch (error) {
