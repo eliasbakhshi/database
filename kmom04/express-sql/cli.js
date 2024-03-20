@@ -76,6 +76,10 @@ async function handleInput(line) {
             }
             /* eslint-enable max-len */
         }
+    } else if (line[0] == "balance") {
+        let balance = await bank.showBalance();
+
+        console.info(`Adam has ${balance[0].balance} and Eva has ${balance[1].balance} pengar.`);
     }
 
     rl.prompt();
@@ -94,7 +98,8 @@ function showMenu() {
         `  help, menu ------------------> to show this menu.\n` +
         `  move ------------------------> Move 1.5 peng to Eva.\n` +
         `  move <amount> ---------------> Move amount peng to Eva.\n` +
-        `  move <amount> <from> <to> ---> Move amount peng from one person to another.\n`);
+        `  move <amount> <from> <to> ---> Move amount peng from one person to another.\n`+
+        `  balance ---------------------> Move amount peng from one person to another.\n`);
 }
 
 /**

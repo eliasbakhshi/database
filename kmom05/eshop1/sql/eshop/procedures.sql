@@ -267,18 +267,18 @@ DELIMITER //
 DROP PROCEDURE IF EXISTS p_show_orders_with_totals;
 CREATE PROCEDURE p_show_orders_with_totals()
 BEGIN
-    SELECT 
+    SELECT
         o.order_id,
         o.order_date,
         o.customer_id,
         o.status,
         COALESCE(SUM(oi.quantity), 0) AS total_products,
         COALESCE(SUM(oi.price * oi.quantity), 0) AS total_combined_price
-    FROM 
+    FROM
         `order` o
-    LEFT JOIN 
+    LEFT JOIN
         `order_item` oi ON o.order_id = oi.order_id
-    GROUP BY 
+    GROUP BY
         o.order_id;
 END //
 DELIMITER ;
@@ -399,22 +399,22 @@ DELIMITER //
 
 CREATE PROCEDURE p_plocklist (IN p_order_id INT)
 BEGIN
-    SELECT 
-        oi.order_id, 
-        oi.product_id, 
+    SELECT
+        oi.order_id,
+        oi.product_id,
         p.product_name,
-        oi.quantity AS order_quantity, 
+        oi.quantity AS order_quantity,
         (oi.price * oi.quantity ) AS order_price,
         w.shelf_location,
         w.stock_quantity,
         (w.stock_quantity - oi.quantity) AS quantity_difference
-    FROM 
+    FROM
         `order_item` oi
-    JOIN 
+    JOIN
         `product` p ON oi.product_id = p.product_id
-    LEFT JOIN 
+    LEFT JOIN
         `warehouse` w ON oi.product_id = w.product_id
-    WHERE 
+    WHERE
         oi.order_id = p_order_id;
 END //
 
@@ -425,7 +425,7 @@ DELIMITER //
 
 CREATE PROCEDURE p_get_order_status (IN p_order_id INT)
 BEGIN
-    SELECT 
+    SELECT
         order_id,
         order_date,
         customer_id,
@@ -434,9 +434,9 @@ BEGIN
         deleted,
         shipped,
         f_order_status(created, updated, deleted, order_date, shipped) AS calculated_status
-    FROM 
+    FROM
         `order`
-    WHERE 
+    WHERE
         order_id = p_order_id;
 END //
 
@@ -447,20 +447,20 @@ DELIMITER //
 
 CREATE PROCEDURE p_show_order_with_totals_custom(IN order_id INT)
 BEGIN
-    SELECT 
+    SELECT
         o.order_id,
         o.order_date,
         o.customer_id,
         o.status,
         COALESCE(SUM(oi.quantity), 0) AS total_products,
         COALESCE(SUM(oi.price * oi.quantity), 0) AS total_combined_price
-    FROM 
+    FROM
         `order` o
-    LEFT JOIN 
+    LEFT JOIN
         `order_item` oi ON o.order_id = oi.order_id
     WHERE
         o.order_id = order_id
-    GROUP BY 
+    GROUP BY
         o.order_id;
 END //
 
