@@ -4,8 +4,8 @@
     <h1 class="mt-5 mb-4">Order List</h1>
 
     <div class="table-responsive">
-        <table class="table table-striped">
-            <thead class="thead-dark">
+        <table class="table my-4 shadow-sm p-3 bg-white rounded table-hover rounded-3 overflow-hidden w-100">
+            <thead class="thead-light table-info">
                 <tr>
                     <th scope="col">Order ID</th>
                     <th scope="col">Order Date</th>
@@ -27,10 +27,12 @@
                     <td><%= order.total_products %></td>
                     <td><%= order.total_combined_price %></td>
                     <td class="right">
-                        <a href="/eshop/order/show/<%= order.order_id %>" class="btn btn-primary">Edit Order</a>
-                    </td>
-                    <td>
-                        <a href="/eshop/order/delete/<%= order.order_id %>" class="btn btn-danger">Delete</a>
+                        <a href="/eshop/order/show/<%= order.order_id %>">
+                            <i class="fa fa-pencil-square-o me-3" aria-hidden="true"></i>
+                        </a>
+                        <a href="/eshop/order/delete/<%= order.order_id %>">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
                     </td>
                 </tr>
                 <% }; %>

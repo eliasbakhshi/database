@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.6.16-MariaDB, for debian-linux-gnu (x86_64)
+-- MariaDB dump 10.19  Distrib 10.11.6-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: HP.local    Database: eshop
+-- Host: localhost    Database: eshop
 -- ------------------------------------------------------
--- Server version	11.4.0-MariaDB
+-- Server version	10.11.6-MariaDB-0ubuntu0.23.10.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,7 +38,33 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Category 1','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(2,'Category 2','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(3,'Category 3\"\r\n\"4','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(5,'Category 5\"\r\n\"6','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(7,'Category 7\"\r\n\"8','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(9,'Category 9\"\r\n\"10','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(11,'Category 11\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(12,'Category 12\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(13,'Category 13\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(14,'Category 14\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(15,'Category 15\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(16,'Category 16\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(17,'Category 17\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(18,'Category 18\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(19,'Category 19\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(20,'Category 20\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(21,'Category 21\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(22,'Category 22\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(23,'Category 23\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(24,'Category 24\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(25,'Category 25\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(26,'Category 26\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(27,'Category 27\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(28,'Category 28\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(29,'Category 29\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(30,'Category 30\"\r','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL);
+INSERT INTO `category` VALUES
+(1,'Category 1','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(2,'Category 2','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(3,'Category 3\"\r\n\"4','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(5,'Category 5\"\r\n\"6','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(7,'Category 7\"\r\n\"8','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(9,'Category 9\"\r\n\"10','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(11,'Category 11\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(12,'Category 12\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(13,'Category 13\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(14,'Category 14\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(15,'Category 15\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(16,'Category 16\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(17,'Category 17\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(18,'Category 18\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(19,'Category 19\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(20,'Category 20\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(21,'Category 21\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(22,'Category 22\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(23,'Category 23\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(24,'Category 24\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(25,'Category 25\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(26,'Category 26\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(27,'Category 27\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(28,'Category 28\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(29,'Category 29\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(30,'Category 30\"\r','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +96,9 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'John','Doe','john@example.com','password123','123 Main St','123-456-7890','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(2,'Jane','Smith','jane@example.com','password456','456 Elm St','456-789-0123','2024-03-10 20:25:16','2024-03-10 20:25:16',NULL);
+INSERT INTO `customer` VALUES
+(1,'John','Doe','john@example.com','password123','123 Main St','123-456-7890','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(2,'Jane','Smith','jane@example.com','password456','456 Elm St','456-789-0123','2024-03-19 14:48:31','2024-03-19 14:48:31',NULL);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +118,7 @@ CREATE TABLE `inventory_log` (
   `updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`log_id`,`event_instance_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +127,14 @@ CREATE TABLE `inventory_log` (
 
 LOCK TABLES `inventory_log` WRITE;
 /*!40000 ALTER TABLE `inventory_log` DISABLE KEYS */;
-INSERT INTO `inventory_log` VALUES (1,'abcd1234','Product added to inventory','2024-02-20 09:00:00','2024-02-20 09:00:00','2024-02-20 09:00:00',NULL),(2,'efgh5678','Product removed from inventory','2024-02-21 15:30:00','2024-02-21 15:30:00','2024-02-21 15:30:00',NULL),(3,'ijkl9101','Inventory count updated','2024-02-22 12:45:00','2024-02-22 12:45:00','2024-02-22 12:45:00',NULL),(4,'122c82da-6bac-460b-a0cf-3394906b6162','A new product was added with product ID \'31\'','2024-03-10 20:26:15','2024-03-10 20:26:15','2024-03-10 20:26:15',NULL),(5,'4a671929-18d6-4771-860b-ea5582b2c83b','En ändring skedde  med produkt ID \'31\'','2024-03-10 20:26:28','2024-03-10 20:26:28','2024-03-10 20:26:28',NULL),(6,'e227e60e-b0b6-40f8-a4d5-1991574c5331','En ändring skedde  med produkt ID \'31\'','2024-03-10 20:26:39','2024-03-10 20:26:39','2024-03-10 20:26:39',NULL),(7,'ec80b0f9-c96f-4402-9bdf-4d996590f3a3','en borttagning skedde med produkt ID \'31\'','2024-03-10 20:26:52','2024-03-10 20:26:52','2024-03-10 20:26:52',NULL),(8,'0cc7eaee-253d-4627-bce6-64e0a7a21874','En ändring skedde  med produkt ID \'1\'','2024-03-10 20:38:49','2024-03-10 20:38:49','2024-03-10 20:38:49',NULL);
+INSERT INTO `inventory_log` VALUES
+(1,'1','Inventory updated for product 1','2024-02-16 17:03:44','2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(1,'abcd1234','Product added to inventory','2024-02-20 09:00:00','2024-02-20 09:00:00','2024-02-20 09:00:00',NULL),
+(2,'0357ba68-d09e-4105-9f83-94ba0d011fda','Detaljer om produkt med iD \'2\' ändrades','2024-02-17 12:27:57','2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(2,'2','Inventory updated for product 2','2024-02-16 17:03:44','2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(2,'43225a16-1f64-405f-93fc-53abaa5fa157','Detaljer om produkt med iD \'2\' ändrades','2024-02-17 12:27:38','2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(2,'efgh5678','Product removed from inventory','2024-02-21 15:30:00','2024-02-21 15:30:00','2024-02-21 15:30:00',NULL),
+(3,'ijkl9101','Inventory count updated','2024-02-22 12:45:00','2024-02-22 12:45:00','2024-02-22 12:45:00',NULL);
 /*!40000 ALTER TABLE `inventory_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +169,9 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (1,'2024-02-15 10:00:00',35.98,1,'Completed','2024-02-23 20:34:33','2024-02-23 20:34:33',NULL,NULL),(2,'2024-02-16 11:00:00',20.99,2,'Pending','2024-02-23 20:34:33','2024-02-23 20:34:33',NULL,NULL);
+INSERT INTO `order` VALUES
+(1,'2024-02-15 10:00:00',35.98,1,'Completed','2024-02-23 20:34:33','2024-02-23 20:34:33',NULL,NULL),
+(2,'2024-02-16 11:00:00',20.99,2,'Pending','2024-02-23 20:34:33','2024-02-23 20:34:33',NULL,NULL);
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +205,10 @@ CREATE TABLE `order_item` (
 
 LOCK TABLES `order_item` WRITE;
 /*!40000 ALTER TABLE `order_item` DISABLE KEYS */;
-INSERT INTO `order_item` VALUES (1,1,1,2,21.98,'2024-02-23 20:34:33','2024-02-23 20:34:33',NULL),(2,1,2,1,14.00,'2024-02-23 20:34:33','2024-02-23 20:34:33',NULL),(3,2,2,1,20.99,'2024-02-23 20:34:33','2024-02-23 20:34:33',NULL);
+INSERT INTO `order_item` VALUES
+(1,1,1,2,21.98,'2024-02-23 20:34:33','2024-02-23 20:34:33',NULL),
+(2,1,2,1,14.00,'2024-02-23 20:34:33','2024-02-23 20:34:33',NULL),
+(3,2,2,1,20.99,'2024-02-23 20:34:33','2024-02-23 20:34:33',NULL);
 /*!40000 ALTER TABLE `order_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +229,7 @@ CREATE TABLE `product` (
   `updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +238,37 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'senai22','senai',10.99,100,'2024-03-10 20:25:16','2024-03-10 20:38:49',NULL),(2,'description of Product 2','Product 2',51.00,151,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(3,'description of Product 3','Product 3',91.01,202,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(4,'description of Product 4','Product 4',131.02,253,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(5,'description of Product 5','Product 5',171.03,304,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(6,'description of Product 6','Product 6',211.04,355,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(7,'description of Product 7','Product 7',251.05,406,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(8,'description of Product 8','Product 8',291.06,457,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(9,'description of Product 9','Product 9',331.07,508,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(10,'description of Product 10','Product 10',371.08,559,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(11,'description of Product 11','Product 11',411.09,610,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(12,'description of Product 12','Product 12',451.10,661,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(13,'description of Product 13','Product 13',491.11,712,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(14,'description of Product 14','Product 14',531.12,763,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(15,'description of Product 15','Product 15',571.13,814,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(16,'description of Product 16','Product 16',611.14,865,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(17,'description of Product 17','Product 17',651.15,916,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(18,'description of Product 18','Product 18',691.16,967,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(19,'description of Product 19','Product 19',731.17,1018,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(20,'description of Product 20','Product 20',771.18,1069,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(21,'description of Product 21','Product 21',811.19,1120,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(22,'description of Product 22','Product 22',851.20,1171,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(23,'description of Product 23','Product 23',891.21,1222,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(24,'description of Product 24','Product 24',931.22,1273,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(25,'description of Product 25','Product 25',971.23,1324,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(26,'description of Product 26','Product 26',1011.24,1375,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(27,'description of Product 27','Product 27',1051.25,1426,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(28,'description of Product 28','Product 28',1091.26,1477,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(29,'description of Product 29','Product 29',1131.27,1528,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(30,'description of Product 30','Product 30',1171.28,1579,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(31,'senaii','senai',44.00,44,'2024-03-10 20:26:15','2024-03-10 20:26:52','2024-03-10 20:26:52');
+INSERT INTO `product` VALUES
+(1,'description of product 1','product 1',10.99,100,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(2,'description of product 2','product 2',51.00,151,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(3,'description of product 3','product 3',91.01,202,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(4,'description of product 4','product 4',131.02,253,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(5,'description of product 5','product 5',171.03,304,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(6,'description of product 6','product 6',211.04,355,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(7,'description of product 7','product 7',251.05,406,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(8,'description of product 8','product 8',291.06,457,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(9,'description of product 9','product 9',331.07,508,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(10,'description of product 10','product 10',371.08,559,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(11,'description of product 11','product 11',411.09,610,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(12,'description of product 12','product 12',451.10,661,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(13,'description of product 13','product 13',491.11,712,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(14,'description of product 14','product 14',531.12,763,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(15,'description of product 15','product 15',571.13,814,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(16,'description of product 16','product 16',611.14,865,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(17,'description of product 17','product 17',651.15,916,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(18,'description of product 18','product 18',691.16,967,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(19,'description of product 19','product 19',731.17,1018,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(20,'description of product 20','product 20',771.18,1069,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(21,'description of product 21','product 21',811.19,1120,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(22,'description of product 22','product 22',851.20,1171,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(23,'description of product 23','product 23',891.21,1222,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(24,'description of product 24','product 24',931.22,1273,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(25,'description of product 25','product 25',971.23,1324,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(26,'description of product 26','product 26',1011.24,1375,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(27,'description of product 27','product 27',1051.25,1426,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(28,'description of product 28','product 28',1091.26,1477,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(29,'description of product 29','product 29',1131.27,1528,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(30,'description of product 30','product 30',1171.28,1579,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -210,7 +280,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`dbadm`@`%`*/ /*!50003 TRIGGER delete_product_trigger
+/*!50003 CREATE*/ /*!50017 DEFINER=`maria`@`localhost`*/ /*!50003 TRIGGER delete_product_trigger
 BEFORE DELETE ON product
 FOR EACH ROW
 BEGIN
@@ -252,7 +322,25 @@ CREATE TABLE `product_category` (
 
 LOCK TABLES `product_category` WRITE;
 /*!40000 ALTER TABLE `product_category` DISABLE KEYS */;
-INSERT INTO `product_category` VALUES (1,1,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(2,2,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(2,3,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(3,2,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(3,17,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(5,5,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(7,2,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(9,9,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(11,11,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(13,13,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(15,15,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(17,17,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(19,19,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(21,21,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(23,23,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(25,27,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(27,27,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(29,27,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL);
+INSERT INTO `product_category` VALUES
+(1,1,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(2,2,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(2,3,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(3,2,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(3,17,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(5,5,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(7,2,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(9,9,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(11,11,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(13,13,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(15,15,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(17,17,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(19,19,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(21,21,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(23,23,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(25,27,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(27,27,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL),
+(29,27,'2024-03-19 14:48:31','2024-03-19 14:48:31',NULL);
 /*!40000 ALTER TABLE `product_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +369,37 @@ CREATE TABLE `warehouse` (
 
 LOCK TABLES `warehouse` WRITE;
 /*!40000 ALTER TABLE `warehouse` DISABLE KEYS */;
-INSERT INTO `warehouse` VALUES (1,'A1',50,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(2,'B2',75,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(3,'A2',100,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(4,'B3',125,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(5,'A3',150,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(6,'B4',175,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(7,'A4',200,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(8,'B5',225,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(9,'A5',250,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(10,'B6',275,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(11,'A6',300,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(12,'B7',325,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(13,'A7',350,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(14,'B8',375,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(15,'A8',400,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(16,'B9',425,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(17,'A9',450,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(18,'B10',475,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(19,'A10',500,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(20,'B11',525,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(21,'A11',550,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(22,'B12',575,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(23,'A2',600,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(24,'B3',625,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(25,'A3',650,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(26,'A3',675,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(27,'B4',700,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(28,'A4',725,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(29,'A4',750,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL),(30,'A4',775,'2024-03-10 20:25:16','2024-03-10 20:25:16',NULL);
+INSERT INTO `warehouse` VALUES
+(1,'A1',50,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(2,'B2',75,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(3,'A2',100,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(4,'B3',125,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(5,'A3',150,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(6,'B4',175,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(7,'A4',200,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(8,'B5',225,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(9,'A5',250,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(10,'B6',275,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(11,'A6',300,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(12,'B7',325,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(13,'A7',350,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(14,'B8',375,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(15,'A8',400,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(16,'B9',425,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(17,'A9',450,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(18,'B10',475,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(19,'A10',500,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(20,'B11',525,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(21,'A11',550,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(22,'B12',575,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(23,'A2',600,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(24,'B3',625,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(25,'A3',650,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(26,'A3',675,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(27,'B4',700,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(28,'A4',725,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(29,'A4',750,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL),
+(30,'A4',775,'2024-03-19 13:48:31','2024-03-19 13:48:31',NULL);
 /*!40000 ALTER TABLE `warehouse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,7 +408,7 @@ UNLOCK TABLES;
 --
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP FUNCTION IF EXISTS `order_status` */;
+/*!50003 DROP FUNCTION IF EXISTS `f_order_status` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -298,12 +416,12 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` FUNCTION `order_status`(created_at DATETIME, 
+CREATE DEFINER=`maria`@`localhost` FUNCTION `f_order_status`(created_at DATETIME, 
     updated_at DATETIME, 
     deleted_at DATETIME, 
     ordered_at DATETIME, 
     shipped_at DATETIME
-) RETURNS varchar(20) CHARSET latin1 COLLATE latin1_swedish_ci
+) RETURNS varchar(20) CHARSET utf8mb4 COLLATE utf8mb4_general_ci
 BEGIN
     DECLARE status VARCHAR(20);
 
@@ -339,7 +457,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `add_inventory_log_procedure` */;
+/*!50003 DROP PROCEDURE IF EXISTS `AddInventoryLog` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -347,131 +465,113 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `add_inventory_log_procedure`(
-    in p_eventinstanceid varchar(36),
-    in p_eventdescription varchar(255),
-    in p_eventdate datetime
-)
-begin
-    insert into inventory_log ( event_instance_id, event_description, event_date)
-    values ( p_eventinstanceid, p_eventdescription, p_eventdate);
-end ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `add_product_procedure` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
-DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `add_product_procedure`(
-    in productid int,
-    in description varchar(255),
-    in productname varchar(255),
-    in price decimal(10, 2),
-    in stockquantity int
-)
-begin
-    insert into product (produktid, description, product_name, price, stock)
-    values (productid, description, productname, price, stockquantity);
-end ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `add_product_to_inventory_procedure` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
-DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `add_product_to_inventory_procedure`(
-    in productid int,
-    in shelf varchar(255),
-    in quantity int
-)
-begin
-    insert into warehouse (warehouse_id, product_id, shelf_location, stock_quantity)
-    values (1, productid, shelf, quantity)
-    on duplicate key update stock_quantity = stock_quantity + quantity;
-end ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `add_product_to_shelf_procedure` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
-DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `add_product_to_shelf_procedure`(
-    in productid int,
-    in shelflocation varchar(255),
-    in stockquantity int
-)
-begin
-    insert into warehouse (warehouse_id, product_id, shelf_location, stock_quantity)
-    values (1,productid, shelflocation, stockquantity);
-end ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `change_order_status` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
-DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `change_order_status`(in orderid int)
-begin
-    update `order`
-    set `status` = 'ordered'
-    where `order_id` = orderid;
-end ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `create_category` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
-DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `create_category`(
-    IN the_name VARCHAR(100)
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `AddInventoryLog`(
+    IN logId INT,
+    IN eventdescription VARCHAR(255),
+    IN eventDate DATETIME
 )
 BEGIN
-    INSERT INTO category (name) VALUES (the_name);
+    INSERT INTO inventory_log (log_id, event_description, event_date)
+    VALUES (logId, eventdescription, eventDate);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `AddInventoryLogProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `AddInventoryLogProcedure`(
+    IN p_log_id INT,
+    IN p_event_description TEXT,
+    IN p_event_date DATETIME
+)
+BEGIN
+    INSERT INTO inventory_log (log_id, event_instance_id, event_description, event_date)
+    VALUES (p_log_id, NULL, p_event_description, p_event_date);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `addProductProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `addProductProcedure`(
+    IN pProductId INT,
+    IN pdescription VARCHAR(255),
+    IN pProductName VARCHAR(255),
+    IN pprice DECIMAL(10, 2),
+    IN pstockQuantity INT
+)
+BEGIN
+    INSERT INTO product (product_id, description, product_name, price, stock)
+    VALUES (pProductId, pdescription, pProductName, pprice, pstockQuantity);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `addProductToInventoryProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `addProductToInventoryProcedure`(
+    IN pProductId INT,
+    IN pShelf VARCHAR(255),
+    IN pQuantity INT
+)
+BEGIN
+    INSERT INTO warehouse (product_id, shelf_location, stock_quantity)
+    VALUES (pProductId, pShelf, pQuantity)
+    ON DUPLICATE KEY UPDATE stock_quantity = stock_quantity + pQuantity;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `addProductToShelfProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `addProductToShelfProcedure`(
+    IN pProductId INT,
+    IN pShelfLocation VARCHAR(255),
+    IN pstockQuantity INT
+)
+BEGIN
+    INSERT INTO warehouse (product_id, shelf_location, stock_quantity)
+    VALUES (pProductId, pShelfLocation, pstockQuantity);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -489,14 +589,14 @@ DELIMITER ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
 CREATE DEFINER=`dbadm`@`%` PROCEDURE `create_product`(
-    IN name VARCHAR(100),
-    IN description TEXT,
-    IN price DECIMAL(10,2),
-    IN stock INT
+    IN p_ID INT,
+    IN p_description TEXT,
+    IN p_product_name VARCHAR(255),
+    IN p_price DECIMAL(10, 2),
+    IN p_stock INT
 )
 BEGIN
-    INSERT INTO product (product_name, description, price, stock) VALUES (name, description, price, stock);
-    SET @productId = LAST_INSERT_ID();
+    VALUES (p_ID, p_description, p_product_name, p_price, p_stock);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -505,7 +605,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `delete_category` */;
+/*!50003 DROP PROCEDURE IF EXISTS `DeleteInventoryLog` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -513,11 +613,14 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `delete_category`(
-    IN id INT
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `DeleteInventoryLog`(
+    IN logId INT,
+    IN eventdescription VARCHAR(255),
+    IN eventDate DATETIME
 )
 BEGIN
-    UPDATE category SET deleted = NOW() WHERE category_id = id AND deleted IS NULL;
+    INSERT INTO inventory_log (log_id, event_description, event_date)
+    VALUES (logId, eventdescription, eventDate);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -535,6 +638,399 @@ DELIMITER ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
 CREATE DEFINER=`dbadm`@`%` PROCEDURE `delete_product`(
+    IN p_id INT
+)
+BEGIN
+    DELETE FROM product WHERE product_id = p_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `displayInventoryProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayInventoryProcedure`()
+BEGIN
+    SELECT p.product_id, p.product_name, w.shelf_location, w.stock_quantity
+    FROM product p
+    JOIN warehouse w ON p.product_id = w.product_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `displayLogProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayLogProcedure`(
+    IN pLogNumber INT
+)
+BEGIN
+    SELECT * FROM inventory_log ORDER BY event_date DESC LIMIT pLogNumber;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `displayProductsOnShelvesProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayProductsOnShelvesProcedure`()
+BEGIN
+    SELECT p.product_name, w.shelf_location, w.stock_quantity
+    FROM product p
+    JOIN warehouse w ON p.product_id = w.product_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `displayProductsProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayProductsProcedure`()
+BEGIN
+    SELECT product_id, product_name FROM product;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `displayShelfLocationsProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayShelfLocationsProcedure`()
+BEGIN
+    SELECT DISTINCT shelf_location FROM warehouse;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `displayShelvesProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `displayShelvesProcedure`()
+BEGIN
+    SELECT * FROM warehouse;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `filterInventoryProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `filterInventoryProcedure`(
+    IN pFilterString VARCHAR(255)
+)
+BEGIN
+    SELECT p.product_id, p.product_name, w.shelf_location, w.stock_quantity
+    FROM product p
+    JOIN warehouse w ON p.product_id = w.product_id
+    WHERE p.product_id LIKE CONCAT('%', pFilterString, '%')
+    OR p.product_name LIKE CONCAT('%', pFilterString, '%')
+    OR w.shelf_location LIKE CONCAT('%', pFilterString, '%');
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `invadd` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `invadd`(
+    IN p_Product_id INT,
+    IN p_Shelf_location VARCHAR(255),
+    IN p_stock_quantity INT
+)
+BEGIN
+    DECLARE v_Existing_Quantity INT;
+
+
+    SELECT stock_quantity INTO v_Existing_Quantity
+    FROM warehouse
+    WHERE product_id = p_Product_id AND shelf_location = p_Shelf_location;
+
+
+    IF v_Existing_Quantity IS NOT NULL THEN
+        UPDATE warehouse
+        SET stock_quantity = stock_quantity + p_stock_quantity
+        WHERE product_id = p_Product_id AND shelf_location = p_Shelf_location;
+    ELSE
+
+        INSERT INTO warehouse (product_id, shelf_location, stock_quantity)
+        VALUES (p_Product_id, p_Shelf_location, p_stock_quantity);
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `p_add_inventory_log_procedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_add_inventory_log_procedure`(
+    in p_eventinstanceid varchar(36),
+    in p_eventdescription varchar(255),
+    in p_eventdate datetime
+)
+begin
+    insert into inventory_log ( event_instance_id, event_description, event_date)
+    values ( p_eventinstanceid, p_eventdescription, p_eventdate);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `p_add_product_procedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_add_product_procedure`(
+    in productid int,
+    in description varchar(255),
+    in productname varchar(255),
+    in price decimal(10, 2),
+    in stockquantity int
+)
+begin
+    insert into product (produktid, description, product_name, price, stock)
+    values (productid, description, productname, price, stockquantity);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `p_add_product_to_inventory_procedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_add_product_to_inventory_procedure`(
+    in productid int,
+    in shelf varchar(255),
+    in quantity int
+)
+begin
+    insert into warehouse ( product_id, shelf_location, stock_quantity)
+    values ( productid, shelf, quantity)
+    on duplicate key update stock_quantity = stock_quantity + quantity;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `p_add_product_to_shelf_procedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_add_product_to_shelf_procedure`(
+    in productid int,
+    in shelflocation varchar(255),
+    in stockquantity int
+)
+begin
+    insert into warehouse (warehouse_id, product_id, shelf_location, stock_quantity)
+    values (1,productid, shelflocation, stockquantity);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `p_change_order_status` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_change_order_status`(in orderid int)
+begin
+    update `order`
+    set `status` = 'ordered'
+    where `order_id` = orderid;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `p_create_category` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_create_category`(
+    IN the_name VARCHAR(100)
+)
+BEGIN
+    INSERT INTO category (name) VALUES (the_name);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `p_create_product` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_create_product`(
+    IN name VARCHAR(100),
+    IN description TEXT,
+    IN price DECIMAL(10,2),
+    IN stock INT
+)
+BEGIN
+    INSERT INTO product (product_name, description, price, stock) VALUES (name, description, price, stock);
+    SET @productId = LAST_INSERT_ID();
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `p_delete_category` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_delete_category`(
+    IN id INT
+)
+BEGIN
+    UPDATE category SET deleted = NOW() WHERE category_id = id AND deleted IS NULL;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `p_delete_product` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_delete_product`(
     IN id INT
 )
 BEGIN
@@ -547,7 +1043,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `display_inventory_procedure` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_display_inventory_procedure` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -555,7 +1051,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `display_inventory_procedure`()
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_display_inventory_procedure`()
 begin
     select p.product_id, p.product_name, w.shelf_location, w.stock_quantity
     from product p
@@ -568,7 +1064,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `display_log_procedure` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_display_log_procedure` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -576,7 +1072,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `display_log_procedure`(
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_display_log_procedure`(
     in lognumber int
 )
 begin
@@ -589,7 +1085,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `display_products_on_shelves_procedure` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_display_products_on_shelves_procedure` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -597,7 +1093,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `display_products_on_shelves_procedure`()
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_display_products_on_shelves_procedure`()
 begin
     select p.product_name, w.shelf_location, w.stock_quantity
     from product p
@@ -610,7 +1106,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `display_products_procedure` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_display_products_procedure` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -618,7 +1114,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `display_products_procedure`()
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_display_products_procedure`()
 begin
     select product_id, product_name from product;
 end ;;
@@ -629,7 +1125,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `display_shelf_locations_procedure` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_display_shelf_locations_procedure` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -637,7 +1133,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `display_shelf_locations_procedure`()
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_display_shelf_locations_procedure`()
 begin
     select distinct shelf_location from warehouse;
 end ;;
@@ -648,7 +1144,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `display_shelves_procedure` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_display_shelves_procedure` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -656,7 +1152,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `display_shelves_procedure`()
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_display_shelves_procedure`()
 begin
     select * from warehouse;
 end ;;
@@ -667,7 +1163,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `edit_category` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_edit_category` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -675,7 +1171,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `edit_category`(
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_edit_category`(
     IN id INT,
     IN the_name VARCHAR(100)
 )
@@ -689,7 +1185,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `edit_product` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_edit_product` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -697,7 +1193,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `edit_product`(
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_edit_product`(
     IN id INT,
     IN name VARCHAR(100),
     IN description TEXT,
@@ -714,7 +1210,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `filter_inventory_procedure` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_filter_inventory_procedure` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -722,7 +1218,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `filter_inventory_procedure`(
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_filter_inventory_procedure`(
     in filterstring varchar(255)
 )
 begin
@@ -740,7 +1236,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `get_categories` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_get_categories` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -748,7 +1244,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `get_categories`()
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_get_categories`()
 BEGIN
     SELECT * FROM category WHERE deleted IS NULL;
 END ;;
@@ -759,7 +1255,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `get_category` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_get_category` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -767,7 +1263,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `get_category`(
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_get_category`(
     IN id INT
 )
 BEGIN
@@ -780,7 +1276,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `get_order_information` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_get_order_information` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -788,7 +1284,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `get_order_information`(in orderid int)
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_get_order_information`(in orderid int)
 begin
     select * from `order`
     where `order_id` = orderid;
@@ -800,7 +1296,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `get_order_status` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_get_order_status` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -808,9 +1304,9 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `get_order_status`(IN p_order_id INT)
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_get_order_status`(IN p_order_id INT)
 BEGIN
-    SELECT 
+    SELECT
         order_id,
         order_date,
         customer_id,
@@ -818,10 +1314,10 @@ BEGIN
         updated,
         deleted,
         shipped,
-        order_status(created, updated, deleted, order_date, shipped) AS calculated_status
-    FROM 
+        f_order_status(created, updated, deleted, order_date, shipped) AS calculated_status
+    FROM
         `order`
-    WHERE 
+    WHERE
         order_id = p_order_id;
 END ;;
 DELIMITER ;
@@ -831,7 +1327,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `get_product` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_get_product` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -839,7 +1335,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `get_product`(
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_get_product`(
     IN id INT
 )
 BEGIN
@@ -852,7 +1348,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `get_products` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_get_products` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -860,7 +1356,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `get_products`()
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_get_products`()
 BEGIN
     SELECT * FROM product WHERE deleted IS NULL;
 END ;;
@@ -871,7 +1367,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `get_products_by_category` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_get_products_by_category` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -879,7 +1375,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `get_products_by_category`(
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_get_products_by_category`(
     IN category_id INT
 )
 BEGIN
@@ -895,7 +1391,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `insert_order` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_insert_order` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -903,7 +1399,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `insert_order`(
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_insert_order`(
     IN p_order_date DATETIME,
     IN p_total_price DECIMAL(10,2),
     IN p_customer_id INT,
@@ -920,7 +1416,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `plocklist` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_plocklist` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -928,24 +1424,24 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `plocklist`(IN p_order_id INT)
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_plocklist`(IN p_order_id INT)
 BEGIN
-    SELECT 
-        oi.order_id, 
-        oi.product_id, 
+    SELECT
+        oi.order_id,
+        oi.product_id,
         p.product_name,
-        oi.quantity AS order_quantity, 
+        oi.quantity AS order_quantity,
         (oi.price * oi.quantity ) AS order_price,
         w.shelf_location,
         w.stock_quantity,
         (w.stock_quantity - oi.quantity) AS quantity_difference
-    FROM 
+    FROM
         `order_item` oi
-    JOIN 
+    JOIN
         `product` p ON oi.product_id = p.product_id
-    LEFT JOIN 
+    LEFT JOIN
         `warehouse` w ON oi.product_id = w.product_id
-    WHERE 
+    WHERE
         oi.order_id = p_order_id;
 END ;;
 DELIMITER ;
@@ -955,7 +1451,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `remove_product_from_inventory_procedure` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_remove_product_from_inventory_procedure` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -963,7 +1459,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `remove_product_from_inventory_procedure`(
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_remove_product_from_inventory_procedure`(
     in productid int,
     in shelf varchar(255),
     in quantity int
@@ -980,7 +1476,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `remove_product_from_shelf_procedure` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_remove_product_from_shelf_procedure` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -988,7 +1484,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `remove_product_from_shelf_procedure`(
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_remove_product_from_shelf_procedure`(
     in productid int,
     in shelflocation varchar(255),
     in quantity int
@@ -1005,7 +1501,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `show_all_customers` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_show_all_customers` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1013,7 +1509,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_all_customers`()
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_show_all_customers`()
 BEGIN
     SELECT * FROM `customer`;
 END ;;
@@ -1024,7 +1520,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `show_all_orders` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_show_all_orders` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1032,7 +1528,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_all_orders`()
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_show_all_orders`()
 BEGIN
     SELECT * FROM `order`;
 END ;;
@@ -1043,7 +1539,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `show_customer` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_show_customer` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1051,7 +1547,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_customer`(IN p_customer_id INT)
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_show_customer`(IN p_customer_id INT)
 BEGIN
     SELECT * FROM Customer WHERE Customer_id = p_customer_id;
 END ;;
@@ -1062,7 +1558,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `show_customer_by_id` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_show_customer_by_id` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1070,7 +1566,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_customer_by_id`(IN p_customer_id INT)
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_show_customer_by_id`(IN p_customer_id INT)
 BEGIN
     SELECT * FROM `customer` WHERE `customer_id` = p_customer_id;
 END ;;
@@ -1081,7 +1577,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `show_orders_with_totals` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_show_orders_with_totals` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1089,20 +1585,20 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_orders_with_totals`()
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_show_orders_with_totals`()
 BEGIN
-    SELECT 
+    SELECT
         o.order_id,
         o.order_date,
         o.customer_id,
         o.status,
         COALESCE(SUM(oi.quantity), 0) AS total_products,
         COALESCE(SUM(oi.price * oi.quantity), 0) AS total_combined_price
-    FROM 
+    FROM
         `order` o
-    LEFT JOIN 
+    LEFT JOIN
         `order_item` oi ON o.order_id = oi.order_id
-    GROUP BY 
+    GROUP BY
         o.order_id;
 END ;;
 DELIMITER ;
@@ -1112,7 +1608,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `show_order_details` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_show_order_details` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1120,7 +1616,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_order_details`(IN p_order_id INT)
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_show_order_details`(IN p_order_id INT)
 BEGIN
     SELECT oi.order_id, oi.product_id, p.product_name,
            oi.quantity AS total_product, oi.price AS total_price
@@ -1135,7 +1631,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `show_order_with_totals_custom` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_show_order_with_totals_custom` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1143,22 +1639,22 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_order_with_totals_custom`(IN order_id INT)
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_show_order_with_totals_custom`(IN order_id INT)
 BEGIN
-    SELECT 
+    SELECT
         o.order_id,
         o.order_date,
         o.customer_id,
         o.status,
         COALESCE(SUM(oi.quantity), 0) AS total_products,
         COALESCE(SUM(oi.price * oi.quantity), 0) AS total_combined_price
-    FROM 
+    FROM
         `order` o
-    LEFT JOIN 
+    LEFT JOIN
         `order_item` oi ON o.order_id = oi.order_id
     WHERE
         o.order_id = order_id
-    GROUP BY 
+    GROUP BY
         o.order_id;
 END ;;
 DELIMITER ;
@@ -1168,7 +1664,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `soft_delete_order` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_soft_delete_order` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1176,7 +1672,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `soft_delete_order`(IN p_order_id INT)
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_soft_delete_order`(IN p_order_id INT)
 BEGIN
     UPDATE `order`
     SET `status` = 'deleted', `deleted` = NOW()
@@ -1189,7 +1685,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `update_order_status_to_shipped` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_update_order_status_to_shipped` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1197,12 +1693,148 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb3 */ ;
 /*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dbadm`@`%` PROCEDURE `update_order_status_to_shipped`(in orderid int)
+CREATE DEFINER=`maria`@`localhost` PROCEDURE `p_update_order_status_to_shipped`(in orderid int)
 begin
     update `order`
     set `status` = 'Shipped', `shipped` = now()
     where `order_id` = orderid;
 end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `removeProductFromInventoryProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `removeProductFromInventoryProcedure`(
+    IN pProductId INT,
+    IN pShelf VARCHAR(255),
+    IN pQuantity INT
+)
+BEGIN
+    UPDATE warehouse
+    SET stock_quantity = GREATEST(stock_quantity - pQuantity, 0)
+    WHERE product_id = pProductId AND shelf_location = pShelf;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `removeProductFromShelfProcedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `removeProductFromShelfProcedure`(
+    IN pProductId INT,
+    IN pShelfLocation VARCHAR(255),
+    IN pQuantity INT
+)
+BEGIN
+    UPDATE warehouse
+    SET stock_quantity = GREATEST(stock_quantity - pQuantity, 0)
+    WHERE product_id = pProductId AND shelf_location = pShelfLocation;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_categories` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_categories`()
+BEGIN
+    SELECT * FROM Category;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_product` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_product`(
+    IN p_id INT
+)
+BEGIN
+    SELECT * FROM product WHERE product_id = p_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_products` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `show_products`()
+BEGIN
+    SELECT * FROM product;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `update_product` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`dbadm`@`%` PROCEDURE `update_product`(
+    IN p_id INT,
+    IN p_description TEXT,
+    IN p_product_name VARCHAR(255),
+    IN p_price DECIMAL(10, 2),
+    IN p_stock INT
+)
+BEGIN
+    UPDATE product
+    SET description = p_description, product_name = p_product_name, price = p_price, stock = p_stock
+    WHERE product_id = p_id;
+END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -1218,4 +1850,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-10 20:46:39
+-- Dump completed on 2024-03-19 14:49:53

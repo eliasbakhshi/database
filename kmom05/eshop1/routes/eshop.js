@@ -172,7 +172,7 @@ router.post("/product/create", urlencodedParser, async (req, res) => {
     try {
         const date = new Date();
         const formattedDate = formatDate(date);
-        let eventDescription = `A new product was added with product ID '${productId}'`;
+        let eventDescription = `A new product was added with product ID '${req.body.productId}'`;
         let { name, description, price, stock } = req.body;
 
         // Create the product and get the product ID

@@ -1,7 +1,7 @@
 {
     "host": "localhost",
-    "user": "maria",
+    "user": "dbadm",
     "password": "P@ssw0rd",
-    "database": "skolan",
+    "database": "eshop",
     "multipleStatements": true
 }
